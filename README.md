@@ -5,6 +5,10 @@ _Tässä on sitä kursivoitua tekstiä_
  sekä 
  **sitten meillä on vielä lihavoitua tekstiä**
 
-Martin Luther King sanoi: 
+Martin Luther King Jr. sanoi: 
 > I have a Dream
+
+Tässä on aiheeseen linkki:
+ https://fi.wikipedia.org/wiki/Martin_Luther_King,_Jr.
+
 
