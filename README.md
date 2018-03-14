@@ -1,8 +1,7 @@
-# This is an <h1> tag 
+# This is an tag <h1> 
 
-_Tässä on sitä normaalia tekstiä_
- ja
-_kursiivia_
+_Tässä on sitä kursivoitua tekstiä_
+ ja tässä on aika normaali tekstiä
  sekä 
- **lihavoitua**
+ **sitten meillä on vielä lihavoitua tekstiä**
 
