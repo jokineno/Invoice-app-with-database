@@ -19,3 +19,5 @@ Linkki tiedostoihin [komentorivi.txt](https://github.com/jokineno/otm-harjoitust
 
 # Viikko 2 <h2>
 Linkki tuntikirjanpitoon [tuntikirjanpito.txt](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.txt)
+
+Linkki vaatismusmäärittelyyn [vaatimusmaarittely.md](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
