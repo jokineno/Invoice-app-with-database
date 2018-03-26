@@ -18,3 +18,4 @@ Talletaan uutta tietoa
 Linkki tiedostoihin [komentorivi.txt](https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt) ja [gitlog.txt](https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
 
 # Viikko 2 <h2>
+Linkki tuntikirjanpitoon [tuntikirjanpito.txt](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.txt)
