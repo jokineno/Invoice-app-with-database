@@ -28,6 +28,6 @@ Linkit laskareiden kuviin
 [Monopoli] (https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/monopoly-2.png)
 
 **Sekvenssikaaviot** 
-[tehtävä 3] (https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/Viikko3_Tehtava3.png)
-[tehtävä 4] (https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/viikko3_tehtava4.png)
+[tehtava3.png] (https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/Viikko3_Tehtava3.png)
+[tehtava4.png] (https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/viikko3_tehtava4.png)
 
