@@ -25,13 +25,9 @@ Linkki vaatismusmäärittelyyn [vaatimusmaarittely.md](https://github.com/jokine
 # Viikko 3 <h2>
 Viikko 3 laskareiden kuvat. Löytyy myös laskarit/viikko3 takaa 
 
-![Image of Monopoly-2.png]
-(https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/monopoly-2.png) 
+![Image of Monopoly-2.png](https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/monopoly-2.png "monopoli kuva") 
 
-![tehtava3]
-((https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/Viikko3_Tehtava3.png)
+![tehtava3](https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/Viikko3_Tehtava3.png "tehtava3")
 
-![tehtava4]
-(https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/viikko3_tehtava4.png)
+![tehtava4](https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/viikko3_tehtava4.png "tehtava4")
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
