@@ -23,11 +23,13 @@ Linkki tuntikirjanpitoon [tuntikirjanpito.md](https://github.com/jokineno/otm-ha
 Linkki vaatismusmäärittelyyn [vaatimusmaarittely.md](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 # Viikko 3 <h2>
-Linkit laskareiden kuviin 
- 
-[Monopoli] (https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/monopoly-2.png)
+Viikko 3 laskareiden kuvat. Löytyy myös laskarit/viikko3 takaa 
 
-**Sekvenssikaaviot** 
-[tehtava3.png] (https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/Viikko3_Tehtava3.png)
-[tehtava4.png] (https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/viikko3_tehtava4.png)
+![monopoli]
+(https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/monopoly-2.png) 
 
+![tehtava3]
+((https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/Viikko3_Tehtava3.png)
+
+![tehtava4]
+(https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/viikko3_tehtava4.png)
