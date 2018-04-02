@@ -33,3 +33,5 @@ Viikko 3 laskareiden kuvat. Löytyy myös laskarit/viikko3 takaa
 
 ![tehtava4]
 (https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/viikko3_tehtava4.png)
+
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
