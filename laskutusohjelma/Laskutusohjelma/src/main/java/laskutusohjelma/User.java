@@ -11,7 +11,7 @@ package laskutusohjelma;
  */
 public class User {
     private String name; 
-    private String username; 
+    private String username; //email address
     private String ytunnus;
     
     public User (String name, String username, String ytunnus) {
@@ -21,11 +21,15 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
+    }
+    
+    public String getYtunnus () {
+        return this.ytunnus;
     }
     
     

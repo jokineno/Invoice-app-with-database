@@ -5,6 +5,9 @@
  */
 package laskutusohjelma;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 /**
  *
  * @author ollijokinen
@@ -12,7 +15,16 @@ package laskutusohjelma;
 public class Paaohjelma {
     
     public static void main(String[] args) {
-        User olli = new User ("Olli Jokinen", "Olli", "12345678-8");
+       Connection c = null;
+      
+      try {
+         Class.forName("org.sqlite.JDBC");
+         c = DriverManager.getConnection("jdbc:sqlite:asiakasrekisteriDB.db");
+      } catch ( Exception e ) {
+         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+         System.exit(0);
+      }
+      System.out.println("Opened database successfully");
         
     }
     
