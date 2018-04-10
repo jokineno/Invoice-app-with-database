@@ -12,10 +12,12 @@ package laskutusohjelma;
 public class User {
     private String name; 
     private String username; 
+    private String ytunnus;
     
-    public User (String name, String username) {
+    public User (String name, String username, String ytunnus) {
         this.name = name; 
         this.username = username; 
+        this.ytunnus = ytunnus;
     }
 
     public String getName() {

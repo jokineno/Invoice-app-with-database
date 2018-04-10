@@ -9,11 +9,6 @@ package laskutusohjelma;
  *
  * @author ollijokinen
  */
-public class Paaohjelma {
-    
-    public static void main(String[] args) {
-        User olli = new User ("Olli Jokinen", "Olli", "12345678-8");
-        
-    }
+public class Laskutusohjelma {
     
 }
