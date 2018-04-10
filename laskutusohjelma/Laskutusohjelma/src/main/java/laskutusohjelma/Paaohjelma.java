@@ -5,8 +5,10 @@
  */
 package laskutusohjelma;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,17 +16,29 @@ import java.sql.DriverManager;
  */
 public class Paaohjelma {
     
-    public static void main(String[] args) {
-       Connection c = null;
-      
-      try {
-         Class.forName("org.sqlite.JDBC");
-         c = DriverManager.getConnection("jdbc:sqlite:asiakasrekisteriDB.db");
-      } catch ( Exception e ) {
-         System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-         System.exit(0);
-      }
-      System.out.println("Opened database successfully");
+    public static void main(String[] args) throws Exception {
+        Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/ollijokinen/Documents/Yliopisto/Tietojenkäsittelytiede/otm-harjoitustyo/laskutusohjelma/asiakasrekisteriDB.db");
+        
+        //LUODAAN KYSELY, JOLLA HAETAAN KAIKKI ASIAKASREKISTERISTÄ
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM ASIAKAS");
+        ResultSet rs = statement.executeQuery();
+        
+        List<Asiakas> asiakkaat = new ArrayList<>();
+        
+        while (rs.next()) {
+            Asiakas a = new Asiakas (rs.getInt("id"), rs.getString("name"), rs.getString("ytunnus"));
+            
+            asiakkaat.add(a);
+        }
+        
+        for (Asiakas a : asiakkaat) {
+            System.out.println(a);
+        }
+        statement.close();
+        rs.close();
+        
+        connection.close();
+        
         
     }
     

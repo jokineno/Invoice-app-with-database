@@ -10,38 +10,43 @@ package laskutusohjelma;
  * @author ollijokinen
  */
 public class Asiakas {
-    private String nimi; 
-    private String tilinumero;
+    private Integer id;
+    private String name; 
     private String yTunnus;
     
     
-    public Asiakas (String nimi, String tilinumero, String yTunnus) {
-        this.nimi = nimi;
-        this.tilinumero = tilinumero;
+    public Asiakas (Integer id, String name, String yTunnus) {
+        this.id = id;
+        this.name = name;
         this.yTunnus = yTunnus;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
     public String getNimi() {
-        return nimi;
+        return name;
     }
 
-    public void setNimi(String nimi) {
-        this.nimi = nimi;
+    public void setNimi(String name) {
+        this.name = name;
     }
 
-    public String getTilinumero() {
-        return tilinumero;
-    }
-
-    public void setTilinumero(String tilinumero) {
-        this.tilinumero = tilinumero;
-    }
-
+   
     public String getyTunnus() {
         return yTunnus;
     }
 
     public void setyTunnus(String yTunnus) {
         this.yTunnus = yTunnus;
+    }
+    
+    public String toString() {
+        return "id: " + this.id + ", name: " + this.name + ", yTunnus: " + this.yTunnus;
     }
 }

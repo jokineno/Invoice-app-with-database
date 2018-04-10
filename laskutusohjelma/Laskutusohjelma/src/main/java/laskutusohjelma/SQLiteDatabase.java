@@ -9,6 +9,15 @@ package laskutusohjelma;
  *
  * @author ollijokinen
  */
+import java.sql.*;
 public class SQLiteDatabase {
-    
+    private String databaseAddress;
+
+    public SQLiteDatabase(String databaseAddress) throws ClassNotFoundException {
+        this.databaseAddress = databaseAddress;
+    }
+
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(databaseAddress);
+    }
 }
