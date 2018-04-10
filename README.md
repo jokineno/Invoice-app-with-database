@@ -37,3 +37,5 @@ Tehtävä 4
 
 ![tehtava4](https://github.com/jokineno/otm-harjoitustyo/blob/master/laskarit/viikko3/viikko3_tehtava4.png "tehtava4")
 
+# Viikko 3 <h2> 
+Ohjelma kääntyy nyt NetBeansissa vihreällä nappulalla ja terminaalissa komennolla mvn compile exec:java -Dexec.mainClass=Laskutusohjelma.Paaohjelma
