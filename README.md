@@ -3,13 +3,13 @@
 
 Kayttöohje
 
-[Vaatimusmäärittely] (https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+[Vaatimusmäärittely.md] (https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 Arkkitehtuurikuvaus
 
 Testausdokumentti
 
-[Työaikakirjanpito] (https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md) 
+[Työaikakirjanpito.md] (https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md) 
 
 # Ohjelman kääntyminen <h3> 
 >Ohjelma kääntyy NetBeansissa vihreällä "Run"- nappulalla 
