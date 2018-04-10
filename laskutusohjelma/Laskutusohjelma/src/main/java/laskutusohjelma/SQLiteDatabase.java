@@ -9,6 +9,6 @@ package laskutusohjelma;
  *
  * @author ollijokinen
  */
-public class SQLiteJDBC {
+public class SQLiteDatabase {
     
 }
