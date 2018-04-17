@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-import laskutusohjelma.Asiakas;
-import laskutusohjelma.Lasku;
 import laskutusohjelma.User;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author ollijokinen
  */
-public class LaskuTest {
+public class UserTest {
     
-    public LaskuTest() {
+    public UserTest() {
     }
     
     @BeforeClass
@@ -33,10 +31,6 @@ public class LaskuTest {
     
     @Before
     public void setUp() {
-        User user = new User ("Olli Jokinen", "Olli", "1234567-8");
-        Asiakas asiakas = new Asiakas (1, "pena", "1234567-8");
-        
-        Lasku lasku = new Lasku (user, asiakas, 12.5, 24);
     }
     
     @After
@@ -48,16 +42,11 @@ public class LaskuTest {
     //
     // @Test
     // public void hello() {}
-    @Test
+    
+    @Test 
     public void konstruktoriToimii() {
-        User user = new User ("Olli Jokinen", "Olli", "1234567-8");
-        Asiakas asiakas = new Asiakas (1, "pena", "1234567-8");
+        User user = new User ("Olli", "Ollero", "1234567-8");
         
-        Lasku lasku = new Lasku (user, asiakas, 12.5, 24);
-        
-        assertEquals("Lähettäjä: Olli Jokinen, Vastaanottaja: pena, Summa: 12.5, ALV: 24",lasku.toString());
+        assertEquals("name: Olli, username: Ollero, yTunnus: 1234567-8", user.toString());
     }
-    
-   
-    
 }
