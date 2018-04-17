@@ -17,6 +17,10 @@ import java.util.List;
 public class Paaohjelma {
     
     public static void main(String[] args) throws Exception {
+        
+        //pääohjelmaan tulee vain käyttöliittymän käynnistys
+        //kaikki mitä täällä on nyt on vain testailua. 
+        
         User user = new User ("Olli Jokinen", "Olli", "1234567-8");
         Asiakas asiakas = new Asiakas (1, "pena", "1234567-8");
         

@@ -33,6 +33,10 @@ public class LaskuTest {
     
     @Before
     public void setUp() {
+        User user = new User ("Olli Jokinen", "Olli", "1234567-8");
+        Asiakas asiakas = new Asiakas (1, "pena", "1234567-8");
+        
+        Lasku lasku = new Lasku (user, asiakas, 12.5, 24);
     }
     
     @After
