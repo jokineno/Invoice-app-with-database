@@ -29,11 +29,11 @@ public class Asiakas {
         return id;
     }
 
-    public String getNimi() {
+    public String getName() {
         return name;
     }
 
-    public void setNimi(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

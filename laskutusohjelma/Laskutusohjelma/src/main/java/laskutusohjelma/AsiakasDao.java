@@ -8,35 +8,89 @@
  *
  * @author ollijokinen
  */
-
+package laskutusohjelma;
 import java.util.*;
 import java.sql.*;
 
 public class AsiakasDao implements Dao <Asiakas, Integer> {
     
-    private SQLiteDatabase = database; 
+    private SQLiteDatabase database; 
+    
+    public AsiakasDao(SQLiteDatabase database) {
+        this.database = database;
+    }
     
      @Override
     public Asiakas findOne(Integer key) throws SQLException {
-        // ei toteutettu
-        return null;
+        Connection conn = database.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Asiakas WHERE id = ?");
+        stmt.setInt(1, key);
+
+        ResultSet rs = stmt.executeQuery();
+        boolean hasOne = rs.next();
+        if (!hasOne) {
+            return null;
+        }
+
+        Asiakas a = new Asiakas(rs.getInt("id"), rs.getString("name"),
+            rs.getString("ytunnus"));
+  
+        stmt.close();
+        rs.close();
+
+        conn.close();
+
+        return a;
+        
     }
 
     @Override
     public List<Asiakas> findAll() throws SQLException {
-	// ei toteutettu
-	return null;
+	Connection conn = database.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ASIAKAS");
+        
+        ResultSet resultSet = stmt.executeQuery();
+        
+        List<Asiakas> asiakkaat = new ArrayList<>();
+        
+        while(resultSet.next()) {
+            Integer id = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            String ytunnus = resultSet.getString("ytunnus");
+            Asiakas a = new Asiakas(id, name, ytunnus);
+            asiakkaat.add(a);
+            
+        }
+        if (asiakkaat.isEmpty()) {
+            return null;
+        }
+	return asiakkaat;
     }
 
     @Override
-    public Asiakas saveOrUpdate(Asiakas object) throws SQLException {
-        // ei toteutettu
-        return null;
+    //ensiksi vain tallennetaan myöhemmin voidaan myös muokata
+    public Asiakas save(Asiakas asiakas) throws SQLException {
+        Connection conn = database.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Asiakas" + " (id, name, ytunnus)" +  "VALUES (?,?,?)");
+        
+        stmt.setInt(1, asiakas.getId());
+        stmt.setString(2, asiakas.getName());
+        stmt.setString(3, asiakas.getyTunnus());
+        
+        Asiakas a = new Asiakas (asiakas.getId(), asiakas.getName(), asiakas.getyTunnus());
+        return a;
     }
   
     @Override
     public void delete(Integer key) throws SQLException {
-        // ei toteutettu
+        Connection conn = database.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("DELETE FROM Asiakas WHERE id = ?");
+
+        stmt.setInt(1, key);
+        stmt.executeUpdate();
+
+        stmt.close();
+        conn.close();
     }
     
 }

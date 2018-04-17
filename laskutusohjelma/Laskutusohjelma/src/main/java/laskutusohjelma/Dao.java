@@ -15,6 +15,6 @@ import java.sql.*;
 public interface Dao <T,K> {
     T findOne(K key) throws SQLException; //tätä tarvitaan kun haetaan nimellä
     List<T> findAll() throws SQLException; // kun halutaan kaikki esiin valikosta
-    T saveOrUpdate(T object) throws SQLException; //halutaan päivittää tietoja
+    T save(T object) throws SQLException; //halutaan päivittää tietoja
     void delete(K key) throws SQLException; // halutaan poistaa joku 
 }
