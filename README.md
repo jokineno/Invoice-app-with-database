@@ -23,7 +23,9 @@ Anna komento: **mvn compile exec:java -Dexec.mainClass=laskutusohjelma.Paaohjelm
 
 Anna komento: **mvn test**
 
-# Testikattavuusraportti <h3> 
->mvn jacoco:report
+# Testikattavuusraportti <h3>
+1. Mene ensiksi otm-harjoitustyo/laskutusohjelma/Laskutusohjelma
+
+Anna komento: **mvn jacoco:report**
 
 
