@@ -14,7 +14,9 @@ Testausdokumentti
 # Ohjelman kääntyminen <h3> 
 >Ohjelma kääntyy NetBeansissa vihreällä "Run"- nappulalla 
 
->**Terminaalissa:**  mvn compile exec:java -Dexec.mainClass=Laskutusohjelma.Paaohjelma
+>**Terminaalissa:**
+1. Mene ensiksi otm-harjoitustyo/laskutusohjelma/Laskutusohjelma
+Anna komento: **mvn compile exec:java -Dexec.mainClass=laskutusohjelma.Paaohjelma**
 
 # Testaus <h3> 
 >mvn test
