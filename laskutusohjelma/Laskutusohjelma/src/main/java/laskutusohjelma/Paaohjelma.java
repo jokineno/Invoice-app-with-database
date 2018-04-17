@@ -17,7 +17,14 @@ import java.util.List;
 public class Paaohjelma {
     
     public static void main(String[] args) throws Exception {
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/ollijokinen/Documents/Yliopisto/Tietojenkäsittelytiede/otm-harjoitustyo/laskutusohjelma/asiakasrekisteriDB.db");
+        User user = new User ("Olli Jokinen", "Olli", "1234567-8");
+        Asiakas asiakas = new Asiakas (1, "pena", "1234567-8");
+        
+        Lasku lasku = new Lasku (user, asiakas, 12.50, 24);
+        
+        System.out.println(lasku);
+        
+        /*Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/ollijokinen/Documents/Yliopisto/Tietojenkäsittelytiede/otm-harjoitustyo/laskutusohjelma/asiakasrekisteriDB.db");
         
         //LUODAAN KYSELY, JOLLA HAETAAN KAIKKI ASIAKASREKISTERISTÄ
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM ASIAKAS");
@@ -38,7 +45,7 @@ public class Paaohjelma {
         rs.close();
         
         connection.close();
-        
+        */
         
     }
     

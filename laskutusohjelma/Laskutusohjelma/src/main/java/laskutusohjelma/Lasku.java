@@ -11,14 +11,18 @@ package laskutusohjelma;
  */
 public class Lasku {
     public User lahettaja;
-    public User vastaanottaja;
+    public Asiakas vastaanottaja;
     public double summa;
     public int alv;
     
-    public Lasku (User lahettaja, User vastaanottaja, double summa, int alv) {
+    public Lasku (User lahettaja, Asiakas vastaanottaja, double summa, int alv) {
         this.lahettaja = lahettaja;
         this.vastaanottaja = vastaanottaja;
         this.summa = summa;
         this.alv = alv;
+    }
+    
+    public String toString() {
+        return "Lähettäjä: " + this.lahettaja.getName() + ", Vastaanottaja: " + this.vastaanottaja.getName() + ", Summa: " + this.summa + ", ALV: " + this.alv; 
     }
 }

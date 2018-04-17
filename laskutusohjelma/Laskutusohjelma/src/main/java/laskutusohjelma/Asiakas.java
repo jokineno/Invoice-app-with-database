@@ -26,11 +26,11 @@ public class Asiakas {
     }
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -39,7 +39,7 @@ public class Asiakas {
 
    
     public String getyTunnus() {
-        return yTunnus;
+        return this.yTunnus;
     }
 
     public void setyTunnus(String yTunnus) {

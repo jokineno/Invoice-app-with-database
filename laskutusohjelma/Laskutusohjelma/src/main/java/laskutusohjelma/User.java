@@ -32,5 +32,7 @@ public class User {
         return this.ytunnus;
     }
     
-    
+    public String toString() {
+        return "name: " + this.name + ", username: " + this.username + ", yTunnus: " + this.ytunnus;
+    }
 }
