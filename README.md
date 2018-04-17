@@ -5,7 +5,7 @@ Kayttöohje
 
 [Vaatimusmäärittely.md](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
-[Arkkitehtuuri.md] (https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+[Arkkitehtuuri.md](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
 Testausdokumentti
 
