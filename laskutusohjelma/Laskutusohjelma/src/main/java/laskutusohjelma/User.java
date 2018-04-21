@@ -13,11 +13,14 @@ public class User {
     private String name; 
     private String username; //email address
     private String ytunnus;
+    private String tilinumero;
     
-    public User (String name, String username, String ytunnus) {
+    //tähän on lisätty tilinumero -> muokkaa testejä
+    public User (String name, String username, String ytunnus, String tilinumero) {
         this.name = name; 
         this.username = username; 
         this.ytunnus = ytunnus;
+        this.tilinumero = tilinumero;
     }
 
     public String getName() {
@@ -30,6 +33,10 @@ public class User {
     
     public String getYtunnus () {
         return this.ytunnus;
+    }
+    
+    public String getTilinumero() {
+        return this.tilinumero;
     }
     
     public String toString() {

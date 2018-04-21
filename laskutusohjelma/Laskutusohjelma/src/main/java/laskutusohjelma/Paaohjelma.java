@@ -21,7 +21,7 @@ public class Paaohjelma {
         //pääohjelmaan tulee vain käyttöliittymän käynnistys
         //kaikki mitä täällä on nyt on vain testailua. 
         
-        User user = new User ("Olli Jokinen", "Olli", "1234567-8");
+        User user = new User ("Olli Jokinen", "Olli", "1234567-8", "FI12 1234 1234 1234 123");
         Asiakas asiakas = new Asiakas (1, "pena", "1234567-8");
         
         Lasku lasku = new Lasku (user, asiakas, 12.50, 24);
