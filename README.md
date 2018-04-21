@@ -33,3 +33,5 @@ Anna komento: **mvn jacoco:report**
 Tiedostoon [checkstyle.xlm](https://github.com/jokineno/otm-harjoitustyo/blob/master/laskutusohjelma/Laskutusohjelma/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
 
 >mvn jxr:jxr checkstyle:checkstyle
+
+Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto target/site/checkstyle.html
