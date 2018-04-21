@@ -16,6 +16,7 @@ Testausdokumentti
 
 >**Terminaalissa:**
 1. Mene ensiksi otm-harjoitustyo/laskutusohjelma/Laskutusohjelma
+
 Anna komento: **mvn compile exec:java -Dexec.mainClass=laskutusohjelma.Paaohjelma**
 
 # Testaus <h3> 
@@ -29,7 +30,8 @@ Anna komento: **mvn test**
 Anna komento: **mvn jacoco:report**
 
 
-#Checkstyle <h3> 
+# Checkstyle <h3> 
+
 Tiedostoon [checkstyle.xlm](https://github.com/jokineno/otm-harjoitustyo/blob/master/laskutusohjelma/Laskutusohjelma/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
 
 >mvn jxr:jxr checkstyle:checkstyle
