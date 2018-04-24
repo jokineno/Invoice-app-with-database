@@ -26,7 +26,7 @@ Testausdokumentti
 >**Terminaalissa:**
 1. Mene ensiksi otm-harjoitustyo/laskutusohjelma/Laskutusohjelma
 
-Anna komento: **mvn compile exec:java -Dexec.mainClass=laskutusohjelma.Paaohjelma**
+Anna komento: **mvn compile exec:java -Dexec.mainClass=laskutusohjelma.ui.Paaohjelma**
 
 # Testaus <h3> 
 1. Mene ensiksi otm-harjoitustyo/laskutusohjelma/Laskutusohjelma
