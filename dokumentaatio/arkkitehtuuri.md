@@ -1,6 +1,6 @@
 Pakkausrakenne 
 
-![pakkausrakenne](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/pakkausrakenne.png "Pakkausrakenne)
+![pakkausrakenne](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/pakkausrakenne.png "Pakkausrakenne")
 
 
 Luokkakaavio
