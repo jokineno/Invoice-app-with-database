@@ -19,7 +19,7 @@ public class Lasku {
     private int alv;
     private boolean lahetetty;
     
-    public Lasku (User lahettaja, Asiakas vastaanottaja, double summa, int alv) {
+    public Lasku(User lahettaja, Asiakas vastaanottaja, double summa, int alv) {
         this.lahettaja = lahettaja;
         this.vastaanottaja = vastaanottaja;
         this.summa = summa;

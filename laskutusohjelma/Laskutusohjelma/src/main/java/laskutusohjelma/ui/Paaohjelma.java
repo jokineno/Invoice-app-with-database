@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package laskutusohjelma.domain;
+package laskutusohjelma.ui;
 
 
 import laskutusohjelma.domain.User;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import laskutusohjelma.domain.Asiakas;
+import laskutusohjelma.domain.Lasku;
+import laskutusohjelma.domain.User;
 
 /**
  *
@@ -22,10 +25,10 @@ public class Paaohjelma {
         //pääohjelmaan tulee vain käyttöliittymän käynnistys
         //kaikki mitä täällä on nyt on vain testailua. 
         
-        User user = new User ("Olli Jokinen", "Olli", "1234567-8", "FI12 1234 1234 1234 123");
-        Asiakas asiakas = new Asiakas (1, "pena", "1234567-8");
+        User user = new User("Olli Jokinen", "Olli", "1234567-8", "FI12 1234 1234 1234 123");
+        Asiakas asiakas = new Asiakas(1, "pena", "1234567-8");
         
-        Lasku lasku = new Lasku (user, asiakas, 12.50, 24);
+        Lasku lasku = new Lasku(user, asiakas, 12.50, 24);
         
         System.out.println(lasku);
         

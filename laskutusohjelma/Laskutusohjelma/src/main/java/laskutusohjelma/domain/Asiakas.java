@@ -15,7 +15,7 @@ public class Asiakas {
     private String yTunnus;
     
     
-    public Asiakas (Integer id, String name, String yTunnus) {
+    public Asiakas(Integer id, String name, String yTunnus) {
         this.id = id;
         this.name = name;
         this.yTunnus = yTunnus;

@@ -16,7 +16,7 @@ public class User {
     private String tilinumero;
     
     //tähän on lisätty tilinumero -> muokkaa testejä
-    public User (String name, String username, String ytunnus, String tilinumero) {
+    public User(String name, String username, String ytunnus, String tilinumero) {
         this.name = name; 
         this.username = username; 
         this.ytunnus = ytunnus;
@@ -31,7 +31,7 @@ public class User {
         return this.username;
     }
     
-    public String getYtunnus () {
+    public String getYtunnus() {
         return this.ytunnus;
     }
     

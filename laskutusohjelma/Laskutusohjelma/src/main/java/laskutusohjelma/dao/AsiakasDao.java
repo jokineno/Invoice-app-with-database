@@ -14,15 +14,15 @@ import java.sql.*;
 import laskutusohjelma.domain.Asiakas;
 import laskutusohjelma.domain.SQLiteDatabase;
 
-public class AsiakasDao implements Dao <Asiakas, Integer> {
+public class AsiakasDao implements Dao<Asiakas, Integer> {
     
-    private SQLiteDatabase database; 
+    final SQLiteDatabase database; 
     
     public AsiakasDao(SQLiteDatabase database) {
         this.database = database;
     }
     
-     @Override
+    @Override
     public Asiakas findOne(Integer key) throws SQLException {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Asiakas WHERE id = ?");
@@ -48,14 +48,14 @@ public class AsiakasDao implements Dao <Asiakas, Integer> {
 
     @Override
     public List<Asiakas> findAll() throws SQLException {
-	Connection conn = database.getConnection();
+        Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ASIAKAS");
         
         ResultSet resultSet = stmt.executeQuery();
         
         List<Asiakas> asiakkaat = new ArrayList<>();
         
-        while(resultSet.next()) {
+        while (resultSet.next()) {
             Integer id = resultSet.getInt("id");
             String name = resultSet.getString("name");
             String ytunnus = resultSet.getString("ytunnus");
@@ -66,7 +66,7 @@ public class AsiakasDao implements Dao <Asiakas, Integer> {
         if (asiakkaat.isEmpty()) {
             return null;
         }
-	return asiakkaat;
+        return asiakkaat;
     }
 
     @Override
@@ -79,7 +79,7 @@ public class AsiakasDao implements Dao <Asiakas, Integer> {
         stmt.setString(2, asiakas.getName());
         stmt.setString(3, asiakas.getyTunnus());
         
-        Asiakas a = new Asiakas (asiakas.getId(), asiakas.getName(), asiakas.getyTunnus());
+        Asiakas a = new Asiakas(asiakas.getId(), asiakas.getName(), asiakas.getyTunnus());
         return a;
     }
   

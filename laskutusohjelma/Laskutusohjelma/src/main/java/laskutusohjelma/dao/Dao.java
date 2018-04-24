@@ -12,7 +12,7 @@ package laskutusohjelma.dao;
  */
 import java.util.*;
 import java.sql.*;
-public interface Dao <T,K> {
+public interface Dao<T, K> {
     T findOne(K key) throws SQLException; //tätä tarvitaan kun haetaan nimellä
     List<T> findAll() throws SQLException; // kun halutaan kaikki esiin valikosta
     T save(T object) throws SQLException; //halutaan päivittää tietoja
