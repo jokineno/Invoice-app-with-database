@@ -6,5 +6,5 @@ Päivämäärä | Aika | Tehtävä
 17.4. |1|Sain nyt komentorivin testauksen ja ohjelman kääntymisen toimimaan lisäämällä pom.xml tiedostoon riippuvuuksia. 
 17.4.|4|Jatkoin viikkotavoitteiden saavuttamista. Hieman muistelua myös miten tietokannat yms. rakentuvat. 
 21.4.|0.5|Luokkien lisäyksiä. Esim. laskuun tuli nyt "lähetetty" -status tyyppiä boolean ja käyttäjään tuli tilinumero. Käyttäjän tilinumero on se joka tulee laskuun automaattisesti. 
-
-Yhteensä|11|tuntia
+24.4.|4|Viikon 5 tehtäviä
+Yhteensä|15|tuntia

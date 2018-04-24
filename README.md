@@ -41,3 +41,10 @@ Tiedostoon [checkstyle.xlm](https://github.com/jokineno/otm-harjoitustyo/blob/ma
 
 Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto target/site/checkstyle.html
 
+# Suoritettavan jarin generointi <h3>
+
+Pakkauksen luominen onnistuu terminaalissa komennolla:
+
+> mvn package
+
+generoi hakemistoon target suoritettavan jar-tiedoston laskutusohjelma-1.0-SNAPSHOT.jar
