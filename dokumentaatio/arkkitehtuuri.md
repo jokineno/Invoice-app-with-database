@@ -6,3 +6,8 @@ Pakkausrakenne
 Luokkakaavio
 
 ![luokkakaavio](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/luokkakaavio.png "Luokkakaavio")
+
+
+Sekvenssikaavio 
+
+![sekvenssikaavio](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/laskutusohjelma%20sekvenssikaavio.png "Sekvenssikaavio")
