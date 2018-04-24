@@ -11,6 +11,9 @@ Testausdokumentti
 
 [Työaikakirjanpito.md](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md) 
 
+# Release/viikko5 <h3>
+[Release](https://github.com/jokineno/otm-harjoitustyo/releases/tag/viikko5)
+
 # Ohjelman kääntyminen <h3> 
 >Ohjelma kääntyy NetBeansissa vihreällä "Run"- nappulalla 
 
@@ -37,3 +40,4 @@ Tiedostoon [checkstyle.xlm](https://github.com/jokineno/otm-harjoitustyo/blob/ma
 >mvn jxr:jxr checkstyle:checkstyle
 
 Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto target/site/checkstyle.html
+
