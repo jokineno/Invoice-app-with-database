@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package laskutusohjelma;
+package laskutusohjelma.domain;
 
 /**
  *
@@ -40,6 +40,6 @@ public class User {
     }
     
     public String toString() {
-        return "name: " + this.name + ", username: " + this.username + ", yTunnus: " + this.ytunnus;
+        return "name: " + this.name + ", username: " + this.username + ", yTunnus: " + this.ytunnus + ", tilinumero: " + this.tilinumero;
     }
 }

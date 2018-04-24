@@ -8,9 +8,11 @@
  *
  * @author ollijokinen
  */
-package laskutusohjelma;
+package laskutusohjelma.dao;
 import java.util.*;
 import java.sql.*;
+import laskutusohjelma.domain.Asiakas;
+import laskutusohjelma.domain.SQLiteDatabase;
 
 public class AsiakasDao implements Dao <Asiakas, Integer> {
     

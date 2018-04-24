@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-import laskutusohjelma.Asiakas;
-import laskutusohjelma.Lasku;
-import laskutusohjelma.User;
+import laskutusohjelma.domain.Asiakas;
+import laskutusohjelma.domain.Lasku;
+import laskutusohjelma.domain.User;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -33,7 +33,7 @@ public class LaskuTest {
     
     @Before
     public void setUp() {
-        User user = new User ("Olli Jokinen", "Olli", "1234567-8");
+        User user = new User ("Olli Jokinen", "Olli", "1234567-8", "FI98 1234 1234 1234 12");
         Asiakas asiakas = new Asiakas (1, "pena", "1234567-8");
         
         Lasku lasku = new Lasku (user, asiakas, 12.5, 24);
@@ -50,7 +50,7 @@ public class LaskuTest {
     // public void hello() {}
     @Test
     public void konstruktoriToimii() {
-        User user = new User ("Olli Jokinen", "Olli", "1234567-8");
+        User user = new User ("Olli Jokinen", "Olli", "1234567-8", "FI98 1234 1234 1234 12");
         Asiakas asiakas = new Asiakas (1, "pena", "1234567-8");
         
         Lasku lasku = new Lasku (user, asiakas, 12.5, 24);

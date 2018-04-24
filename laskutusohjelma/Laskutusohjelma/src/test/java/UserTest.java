@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import laskutusohjelma.User;
+import laskutusohjelma.domain.User;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -45,8 +45,8 @@ public class UserTest {
     
     @Test 
     public void konstruktoriToimii() {
-        User user = new User ("Olli", "Ollero", "1234567-8");
+        User user = new User ("Olli", "Ollero", "1234567-8", "FI98 1234 1234 1234 12");
         
-        assertEquals("name: Olli, username: Ollero, yTunnus: 1234567-8", user.toString());
+        assertEquals("name: Olli, username: Ollero, yTunnus: 1234567-8, tilinumero: FI98 1234 1234 1234 12", user.toString());
     }
 }
