@@ -1,6 +1,6 @@
 # OTM-HARJOITUSTYO - Laskutusohjelma<h1> 
 
-Laskutusohjelman avulla voi lähettää pdf-muotoisia laskuja asiakkaille, joita voi tallentaa tietokantaan. Tietokanta tallentuu käyttäjän koneelle. 
+Laskutusohjelman avulla voiluoda pdf-muotoisia laskuja. Laskut tallentuvat tietokantaan. Lisäksi ohjelmassa voi luoda asiakasrekisterin.  Tietokannat tallentuu käyttäjän koneelle. 
 
 
 
