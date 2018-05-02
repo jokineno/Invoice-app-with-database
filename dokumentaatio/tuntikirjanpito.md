@@ -9,4 +9,5 @@ Päivämäärä | Aika | Tehtävä
 24.4.|4|Viikon 5 tehtäviä
 2.5.|3|Käyttöliittymän tekemistä. Nyt napeista siirrytään scenestä toiseen. 
 2.5.|1|PDFkirjoittajan tekeminen
-Yhteensä|19|tuntia
+2.5.|5|checkstyleä, javadoc, yleistä korjailua, käyttöliittymään perehtymistä. tietokantoihin perehtyminen
+Yhteensä|24|tuntia
