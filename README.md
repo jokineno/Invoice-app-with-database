@@ -7,7 +7,7 @@ Laskutusohjelman avulla voiluoda pdf-muotoisia laskuja. Laskut tallentuvat tieto
 
 # Dokumentaatio <h2>
 
-Kayttöohje
+[Kayttöohje](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/kaytto-ohje.md)
 
 [Vaatimusmäärittely.md](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
@@ -17,7 +17,7 @@ Testausdokumentti
 
 [Työaikakirjanpito.md](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md) 
 
-# Release/viikko5 <h3>
+# Release/viikko6 <h3>
 [Release](https://github.com/jokineno/otm-harjoitustyo/releases/tag/viikko5)
 
 # Ohjelman kääntyminen <h3> 
