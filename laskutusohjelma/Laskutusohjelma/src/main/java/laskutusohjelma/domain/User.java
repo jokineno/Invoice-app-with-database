@@ -39,6 +39,12 @@ public class User {
         return this.tilinumero;
     }
     
+     /**
+     * käyttäjän toString tulostus
+     * @param event
+     * @throws IOException 
+     */
+    
     public String toString() {
         return "name: " + this.name + ", username: " + this.username + ", yTunnus: " + this.ytunnus + ", tilinumero: " + this.tilinumero;
     }

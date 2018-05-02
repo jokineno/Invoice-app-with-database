@@ -34,6 +34,12 @@ public class FXMLController implements Initializable {
     create an invoice. 
     */
     
+    /**
+     * loginPressed metodia kutsutaan, kun käyttäjä painaa login etusivulla. Jos tunnus on validi, niin käyttäjä kirjautuu
+     * @param event
+     * @throws IOException 
+     */
+    
     @FXML
     public void loginPressed(ActionEvent event) throws IOException {
         System.out.println("User loggin' in...");
@@ -43,6 +49,12 @@ public class FXMLController implements Initializable {
         createScene(event, scene2View);
     }
     
+    /**
+     * kun käyttäjä painaa signup niin kirjaudutaan signup sivula
+     * @param event
+     * @throws IOException 
+     */
+    
     @FXML
     public void signUpPressed(ActionEvent event) throws IOException {
         System.out.println("Signup pressed...");
@@ -50,6 +62,12 @@ public class FXMLController implements Initializable {
         Scene scene2View = new Scene(scene2Parent);
         createScene(event, scene2View);
     }
+    
+    /**
+     * createscene luo uuden scenen - vältetään copypaste koodia
+     * @param event
+     * @throws IOException 
+     */
     
     public void createScene(ActionEvent event, Scene newScene) {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

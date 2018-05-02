@@ -27,6 +27,11 @@ public class FXMLSignupInfoController implements Initializable {
      * Initializes the controller class.
      */
     
+     /**
+     * käyttäjä luo uuden tilin
+     * @param event
+     * @throws IOException 
+     */
     public void createAccountPressed(ActionEvent event) throws IOException {
         System.out.println("Creating an account...");
         Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLLasku.fxml"));
@@ -35,6 +40,12 @@ public class FXMLSignupInfoController implements Initializable {
         
     }
     
+     /**
+     * käyttäjä voi palata etusivulle
+     * @param event
+     * @throws IOException 
+     */
+    
     public void backPressed(ActionEvent event) throws IOException {
         System.out.println("Signup pressed...");
         Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
@@ -42,6 +53,12 @@ public class FXMLSignupInfoController implements Initializable {
         createScene(event, scene2View);
         
     }
+    
+     /**
+     * vältetään toisteista koodia. luodaan uusi scene
+     * @param event
+     * @throws IOException 
+     */
     
     public void createScene(ActionEvent event, Scene newScene) {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

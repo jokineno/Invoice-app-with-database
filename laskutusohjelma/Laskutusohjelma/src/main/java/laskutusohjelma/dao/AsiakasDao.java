@@ -8,6 +8,7 @@
  *
  * @author ollijokinen
  */
+
 package laskutusohjelma.dao;
 import java.util.*;
 import java.sql.*;
@@ -21,6 +22,12 @@ public class AsiakasDao implements Dao<Asiakas, Integer> {
     public AsiakasDao(SQLiteDatabase database) {
         this.database = database;
     }
+    
+     /**
+     * etsitään asiakas tietokannasta
+     * @param event
+     * @throws IOException 
+     */
     
     @Override
     public Asiakas findOne(Integer key) throws SQLException {
@@ -45,7 +52,11 @@ public class AsiakasDao implements Dao<Asiakas, Integer> {
         return a;
         
     }
-
+ /**
+     * etsitään kaikki käyttäjät tietokannasta
+     * @param event
+     * @throws IOException 
+     */
     @Override
     public List<Asiakas> findAll() throws SQLException {
         Connection conn = database.getConnection();
@@ -68,6 +79,11 @@ public class AsiakasDao implements Dao<Asiakas, Integer> {
         }
         return asiakkaat;
     }
+     /**
+     * tallennetaan asiakas
+     * @param event
+     * @throws IOException 
+     */
 
     @Override
     //ensiksi vain tallennetaan myöhemmin voidaan myös muokata
@@ -82,6 +98,12 @@ public class AsiakasDao implements Dao<Asiakas, Integer> {
         Asiakas a = new Asiakas(asiakas.getId(), asiakas.getName(), asiakas.getyTunnus());
         return a;
     }
+    
+     /**
+     * poistetaan asiakas
+     * @param event
+     * @throws IOException 
+     */
   
     @Override
     public void delete(Integer key) throws SQLException {

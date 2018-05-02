@@ -56,6 +56,12 @@ public class FXMLLaskuController implements Initializable {
     private TextField message;*/
     
     
+    /**
+     * käyttäjä voi laskunäkymästä kirjautua ulos
+     * @param event
+     * @throws IOException 
+     */
+    
     
     @FXML
     public void logoutPressed(ActionEvent event) throws IOException {
@@ -64,6 +70,12 @@ public class FXMLLaskuController implements Initializable {
         Scene scene1View = new Scene(scene1Parent);
         createScene(event, scene1View);
     }
+    
+    /**
+     * käyttäjä voi muokata profiilin tietoja painamalla profile
+     * @param event
+     * @throws IOException 
+     */
     
     @FXML
     public void profilePressed(ActionEvent event) throws IOException {
@@ -74,6 +86,11 @@ public class FXMLLaskuController implements Initializable {
         //this line get stage information
         
     }
+     /**
+     * käyttäjä klikkaa create pdf invoice ja uusi lasku luodaan
+     * @param event
+     * @throws IOException 
+     */
     
     @FXML
     public void createPdfInvoicePressed(ActionEvent event) throws IOException {
@@ -83,12 +100,23 @@ public class FXMLLaskuController implements Initializable {
         
     }
     
+     /**
+     * testataan onko käyttäjän antamat tunnukset ok
+     * @param event
+     * @throws IOException 
+     */
+    
     
     @FXML
     public boolean logInInformation() {
         return true;
     }
     
+     /**
+     * vältetään toisteista koodia. Luodaan uusi scene
+     * @param event
+     * @throws IOException 
+     */
     public void createScene(ActionEvent event, Scene newScene) {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(newScene);

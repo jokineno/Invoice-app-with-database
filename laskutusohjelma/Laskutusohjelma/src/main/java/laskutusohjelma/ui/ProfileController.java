@@ -30,12 +30,24 @@ public class ProfileController implements Initializable {
      * @throws java.io.IOException
      */
     
+     /**
+     * käyttäjä voi palata laskuihin
+     * @param event
+     * @throws IOException 
+     */
+    
     @FXML
     public void backPressed(ActionEvent event) throws IOException {
         Parent scene1Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLLasku.fxml"));
         Scene scene1View = new Scene(scene1Parent);
         createScene(event, scene1View);
     }
+    
+     /**
+     * vältetään toisteista koodia. luodaan uusi scene
+     * @param event
+     * @throws IOException 
+     */
     
     public void createScene(ActionEvent event, Scene newScene) {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

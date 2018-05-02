@@ -18,11 +18,29 @@ import java.io.IOException;
 public class PDFCreator {
     public static final String DEST = "PDFfiles/invoiceAppFile.pdf";
     
+    /**
+     * 
+     * @param product
+     * @param user
+     * @param customer
+     * @throws IOException 
+     * runPDF metodi luo itse pdf tiedoston annettuun tallennussijaintiin
+     */
+    
     public void runPDF(Product product, User user, Asiakas customer) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
         new PDFCreator().createPDF(DEST, product, user, customer);
     }
+    
+    /**
+     * 
+     * @param dest tallennussijainti
+     * @param product käyttäjä antaa
+     * @param user käyttäjä antaa
+     * @param customer käyttäjä antaa
+     * @throws IOException 
+     */
     
     public void createPDF(String dest, Product product, User user, Asiakas customer) throws IOException {
         FileOutputStream fos = new FileOutputStream(dest);
@@ -35,6 +53,12 @@ public class PDFCreator {
         
        
     }
+    
+    /**
+     * @param syötteet annetaan käyttöliittymässä käyttäjän toimesta. 
+     * User tiedot täyttyvät automaattisesti, kun käyttäjä luonut profiilin. 
+    *Tässä täytetään laskun tiedot 
+    */
      
     public void invoiceText(Document document, Product product, User user, Asiakas customer) {
         
