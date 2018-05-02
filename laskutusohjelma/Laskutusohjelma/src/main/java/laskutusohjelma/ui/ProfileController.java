@@ -32,11 +32,12 @@ public class ProfileController implements Initializable {
     public void backPressed(ActionEvent event) throws IOException {
         Parent scene1Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLLasku.fxml"));
         Scene scene1View = new Scene(scene1Parent);
-        
-        //this line get stage information
+        createScene(event,scene1View);
+    }
+    
+    public void createScene(ActionEvent event, Scene newScene) {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-        window.setScene(scene1View);
+        window.setScene(newScene);
         window.show();
     }
     @Override

@@ -40,12 +40,7 @@ public class FXMLController implements Initializable {
         
         Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLLasku.fxml"));
         Scene scene2View = new Scene(scene2Parent);
-        
-        //this line get stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-        window.setScene(scene2View);
-        window.show();
+        createScene(event,scene2View);
     }
     
     @FXML
@@ -53,11 +48,12 @@ public class FXMLController implements Initializable {
         System.out.println("Signup pressed...");
         Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLSignupInfo.fxml"));
         Scene scene2View = new Scene(scene2Parent);
-        
-        //this line get stage information
+        createScene(event, scene2View);
+    }
+    
+    public void createScene(ActionEvent event, Scene newScene) {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-        window.setScene(scene2View);
+        window.setScene(newScene);
         window.show();
     }
     

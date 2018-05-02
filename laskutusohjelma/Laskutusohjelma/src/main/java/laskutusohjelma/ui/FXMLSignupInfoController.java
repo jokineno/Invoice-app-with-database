@@ -31,26 +31,23 @@ public class FXMLSignupInfoController implements Initializable {
         System.out.println("Creating an account...");
         Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLLasku.fxml"));
         Scene scene2View = new Scene(scene2Parent);
+        createScene(event,scene2View);
         
-        //this line get stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-        window.setScene(scene2View);
-        window.show();
     }
     
     public void backPressed(ActionEvent event) throws IOException {
         System.out.println("Signup pressed...");
         Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
         Scene scene2View = new Scene(scene2Parent);
+        createScene(event, scene2View);
         
-        //this line get stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-        window.setScene(scene2View);
-        window.show();
     }
     
+    public void createScene(ActionEvent event, Scene newScene) {
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(newScene);
+        window.show();
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
