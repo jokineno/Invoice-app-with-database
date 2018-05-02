@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="461.0" prefWidth="636.0" style="-fx-background-color: yellow;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laskutusohjelma.ui.FXMLLaskuController">
+    <stylesheets>
+        <URL value="@/styles/fxmllasku.css" />
+    </stylesheets>
+   <children>
+      <Text fill="RED" layoutX="143.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create new Invoice" textAlignment="CENTER" underline="true" AnchorPane.rightAnchor="181.74801635742188">
+         <font>
+            <Font name="Anders" size="27.0" />
+         </font>
+         <effect>
+            <Reflection />
+         </effect>
+      </Text>
+      <VBox layoutX="232.0" layoutY="106.0" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <TextField promptText="receiver" />
+            <TextField layoutX="10.0" layoutY="10.0" promptText="y-tunnus" />
+         </children>
+      </VBox>
+      <VBox layoutX="332.0" layoutY="107.0" prefHeight="229.0" prefWidth="200.0">
+         <children>
+            <TextField promptText="product" />
+            <TextField promptText="price per unit" />
+            <TextField promptText="amount" />
+            <TextField promptText="vat%: 10%, 14%, 24%" />
+            <TextField layoutX="10.0" layoutY="91.0" promptText="date" />
+            <TextArea prefHeight="72.0" prefWidth="200.0" promptText="message" />
+         </children>
+      </VBox>
+      <VBox layoutX="36.0" layoutY="114.0" prefHeight="200.0" prefWidth="178.0">
+         <children>
+            <ComboBox prefHeight="27.0" prefWidth="179.0" promptText="Select a customer" />
+         </children>
+      </VBox>
+      <HBox layoutX="143.0" layoutY="334.0" prefHeight="52.0" prefWidth="346.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#createPdfInvoicePressed" prefHeight="69.0" prefWidth="363.0" style="-fx-background-color: red;" text="Create PDF Invoice" underline="true">
+               <font>
+                  <Font name="Anders" size="22.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <VBox layoutX="513.0" layoutY="359.0" prefHeight="27.0" prefWidth="90.0" />
+      <Button layoutX="520.0" layoutY="59.0" mnemonicParsing="false" onAction="#logoutPressed" prefHeight="32.0" prefWidth="100.0" text="Logout">
+         <font>
+            <Font name="Andale Mono" size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="520.0" layoutY="17.0" mnemonicParsing="false" onAction="#profilePressed" prefHeight="32.0" prefWidth="100.0" text="Profile">
+         <font>
+            <Font name="Andale Mono" size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

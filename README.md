@@ -21,7 +21,7 @@ Testausdokumentti
 [Release](https://github.com/jokineno/otm-harjoitustyo/releases/tag/viikko5)
 
 # Ohjelman kääntyminen <h3> 
->Ohjelma kääntyy NetBeansissa vihreällä "Run"- nappulalla 
+Ohjelma kääntyy NetBeansissa vihreällä "Run"- nappulalla 
 
 >**Terminaalissa:**
 1. Mene ensiksi otm-harjoitustyo/laskutusohjelma/Laskutusohjelma

@@ -5,56 +5,52 @@
  */
 package laskutusohjelma.ui;
 
-
-import laskutusohjelma.domain.User;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import laskutusohjelma.domain.Asiakas;
-import laskutusohjelma.domain.Lasku;
-import laskutusohjelma.domain.User;
+import javafx.application.Application;
+import static javafx.application.Application.launch;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
  * @author ollijokinen
  */
-public class Paaohjelma {
+public class Paaohjelma extends Application {
     
-    public static void main(String[] args) throws Exception {
+    Stage window; 
+    Scene scene1, scene2;
+    
+    @Override
+    public void start(Stage stage) throws Exception {
+        window = stage;
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
+        window.initStyle(StageStyle.DECORATED);
         
-        //pääohjelmaan tulee vain käyttöliittymän käynnistys
-        //kaikki mitä täällä on nyt on vain testailua. 
+        scene1 = new Scene(root);
         
-        User user = new User("Olli Jokinen", "Olli", "1234567-8", "FI12 1234 1234 1234 123");
-        Asiakas asiakas = new Asiakas(1, "pena", "1234567-8");
+        window.setScene(scene1);
+        window.show();
         
-        Lasku lasku = new Lasku(user, asiakas, 12.50, 24);
-        
-        System.out.println(lasku);
-        
-        /*Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/ollijokinen/Documents/Yliopisto/Tietojenkäsittelytiede/otm-harjoitustyo/laskutusohjelma/asiakasrekisteriDB.db");
-        
-        //LUODAAN KYSELY, JOLLA HAETAAN KAIKKI ASIAKASREKISTERISTÄ
-        PreparedStatement statement = connection.prepareStatement("SELECT * FROM ASIAKAS");
-        ResultSet rs = statement.executeQuery();
-        
-        List<Asiakas> asiakkaat = new ArrayList<>();
-        
-        while (rs.next()) {
-            Asiakas a = new Asiakas (rs.getInt("id"), rs.getString("name"), rs.getString("ytunnus"));
-            
-            asiakkaat.add(a);
-        }
-        
-        for (Asiakas a : asiakkaat) {
-            System.out.println(a);
-        }
-        statement.close();
-        rs.close();
-        
-        connection.close();
-        */
-        
+        /*FXMLController kontrolli = new FXMLController();
+        Parent root2 = FXMLLoader.load(getClass().getResource("fxml/FXMLLasku.fxml"));
+        scene2 = new Scene(root2);
+        ActionEvent event = e -> window.setScene(scene2);
+        kontrolli.handleButtonAction(event);*/
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
     }
     
 }
+
+   

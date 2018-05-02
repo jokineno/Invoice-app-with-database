@@ -52,11 +52,10 @@ public class LaskuTest {
     public void konstruktoriToimii() {
         User user = new User ("Olli Jokinen", "Olli", "1234567-8", "FI98 1234 1234 1234 12");
         Asiakas asiakas = new Asiakas (1, "pena", "1234567-8");
-        
         Lasku lasku = new Lasku (user, asiakas, 12.5, 24);
-        
         assertEquals("Lähettäjä: Olli Jokinen, Vastaanottaja: pena, Summa: 12.5, ALV: 24",lasku.toString());
     }
+    
     
    
     

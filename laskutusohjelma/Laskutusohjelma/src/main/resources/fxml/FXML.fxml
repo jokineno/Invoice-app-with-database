@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gold;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laskutusohjelma.ui.FXMLController">
+   <children>
+      <AnchorPane layoutX="310.0" layoutY="79.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label layoutX="83.0" layoutY="23.0" text="Sign in" />
+            <TextField layoutX="21.0" layoutY="61.0" promptText="username" />
+            <TextField layoutX="21.0" layoutY="115.0" promptText="password" />
+            <Button layoutX="71.0" layoutY="159.0" mnemonicParsing="false" onAction="#loginPressed" style="-fx-border-color: gold;" text="Login">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="185.0" fitWidth="249.0" layoutX="28.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@https://i1.wp.com/concentuswealth.com/wp-content/uploads/saupload_Chasing-Money-ETF-538x218.jpg" /> 
+         </image>
+      </ImageView>
+      <Label layoutX="120.0" layoutY="14.0" prefHeight="109.0" prefWidth="435.0" text="Welcome to Incredible Invoices" textAlignment="CENTER" textFill="#ff0505">
+         <font>
+            <Font name="Anders" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="62.0" layoutY="226.0" text="It's time to chase your money" />
+      <Button layoutX="120.0" layoutY="265.0" mnemonicParsing="false" onAction="#signUpPressed" text="Sign up" />
+   </children>
+</AnchorPane>
