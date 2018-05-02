@@ -16,7 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import laskutusohjelma.domain.PDFCreator;
 
 /**
  * FXML Controller class
@@ -28,6 +30,32 @@ public class FXMLLaskuController implements Initializable {
     /**
      * Initializes the controller class.
      */
+   /* 
+    @FXML
+    private TextField Receiver;
+    
+    @FXML
+    private TextField yNumber;
+    
+    @FXML
+    private TextField product;
+    
+    @FXML
+    private TextField pricePerUnit;
+    
+    @FXML
+    private TextField amount;
+    
+    @FXML
+    private TextField vat;
+    
+    @FXML
+    private TextField date;
+    
+    @FXML
+    private TextField message;*/
+    
+    
     
     @FXML
     public void logoutPressed(ActionEvent event) throws IOException {
@@ -48,7 +76,10 @@ public class FXMLLaskuController implements Initializable {
     }
     
     @FXML
-    public void createPdfInvoicePressed(ActionEvent event) {
+    public void createPdfInvoicePressed(ActionEvent event) throws IOException {
+        //PDFCreator creator = new PDFCreator();
+        //creator.runPDF(product, user, customer);
+        
         
     }
     

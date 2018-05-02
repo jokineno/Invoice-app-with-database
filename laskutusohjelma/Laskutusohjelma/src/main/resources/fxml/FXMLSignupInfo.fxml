@@ -27,7 +27,7 @@
             <TextField promptText="y-number" />
          </children>
       </VBox>
-      <Button layoutX="370.0" layoutY="108.0" mnemonicParsing="false" onAction="#createAccountPressed" text="Create Account and sign up" />
-      <Button layoutX="369.0" layoutY="147.0" mnemonicParsing="false" onAction="#backPressed" text="Back" />
+      <Button layoutX="370.0" layoutY="108.0" mnemonicParsing="false" onAction="#createAccountPressed" text="Create Account and SignUp" />
+      <Button layoutX="369.0" layoutY="147.0" mnemonicParsing="false" onAction="#backPressed" text="Back to Main" />
    </children>
 </AnchorPane>

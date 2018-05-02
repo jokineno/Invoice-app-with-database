@@ -19,19 +19,22 @@
             <Font name="Anders" size="36.0" />
          </font>
       </Text>
-      <VBox layoutX="109.0" layoutY="155.0" prefHeight="91.0" prefWidth="342.0">
+      <VBox layoutX="136.0" layoutY="155.0" prefHeight="91.0" prefWidth="342.0">
          <children>
             <TextField promptText="account number" />
             <TextField promptText="name" />
             <TextField promptText="y-tunnus" />
          </children>
       </VBox>
-      <VBox layoutX="242.0" layoutY="211.0" prefHeight="84.0" prefWidth="100.0" />
       <ImageView fitHeight="69.0" fitWidth="83.0" layoutX="251.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" />
          </image>
       </ImageView>
-      <Button layoutX="245.0" layoutY="280.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="91.0" prefWidth="105.0" text="Back" />
+      <Button layoutX="136.0" layoutY="284.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="47.0" prefWidth="127.0" text="Back to Invoices" />
+      <Button layoutX="136.0" layoutY="246.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="27.0" prefWidth="127.0" text="Save Changes" />
+      <Text layoutX="14.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account number" />
+      <Text layoutX="14.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+      <Text layoutX="14.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Y-number" />
    </children>
 </AnchorPane>

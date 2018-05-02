@@ -26,6 +26,8 @@ public class ProfileController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param event
+     * @throws java.io.IOException
      */
     
     @FXML

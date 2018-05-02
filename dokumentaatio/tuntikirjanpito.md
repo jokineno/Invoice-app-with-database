@@ -8,5 +8,5 @@ Päivämäärä | Aika | Tehtävä
 21.4.|0.5|Luokkien lisäyksiä. Esim. laskuun tuli nyt "lähetetty" -status tyyppiä boolean ja käyttäjään tuli tilinumero. Käyttäjän tilinumero on se joka tulee laskuun automaattisesti. 
 24.4.|4|Viikon 5 tehtäviä
 2.5.|3|Käyttöliittymän tekemistä. Nyt napeista siirrytään scenestä toiseen. 
-
-Yhteensä|18|tuntia
+2.5.|1|PDFkirjoittajan tekeminen
+Yhteensä|19|tuntia

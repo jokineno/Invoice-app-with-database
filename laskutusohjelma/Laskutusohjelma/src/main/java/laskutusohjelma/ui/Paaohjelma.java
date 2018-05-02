@@ -37,11 +37,6 @@ public class Paaohjelma extends Application {
         window.setScene(scene1);
         window.show();
         
-        /*FXMLController kontrolli = new FXMLController();
-        Parent root2 = FXMLLoader.load(getClass().getResource("fxml/FXMLLasku.fxml"));
-        scene2 = new Scene(root2);
-        ActionEvent event = e -> window.setScene(scene2);
-        kontrolli.handleButtonAction(event);*/
     }
 
     /**
