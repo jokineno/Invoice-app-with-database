@@ -54,3 +54,11 @@ Pakkauksen luominen onnistuu terminaalissa komennolla:
 > mvn package
 
 generoi hakemistoon target suoritettavan jar-tiedoston laskutusohjelma-1.0-SNAPSHOT.jar
+
+
+# JavaDoc <h3> 
+JavaDocin suoritus onnistuu komennolla: 
+
+>mvn javadoc:javadoc
+
+JavaDocia voi tarkastella avaamalla selaimella tiedosto target/site/apidocs/index.html

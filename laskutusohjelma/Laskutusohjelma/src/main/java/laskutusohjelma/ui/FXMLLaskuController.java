@@ -62,7 +62,7 @@ public class FXMLLaskuController implements Initializable {
         System.out.println("user loggin out...");
         Parent scene1Parent = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
         Scene scene1View = new Scene(scene1Parent);
-        createScene(event,scene1View);
+        createScene(event, scene1View);
     }
     
     @FXML
@@ -70,7 +70,7 @@ public class FXMLLaskuController implements Initializable {
         System.out.println("loading profile..");
         Parent scene1Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLProfile.fxml"));
         Scene scene1View = new Scene(scene1Parent);
-        createScene(event,scene1View);
+        createScene(event, scene1View);
         //this line get stage information
         
     }
@@ -90,7 +90,7 @@ public class FXMLLaskuController implements Initializable {
     }
     
     public void createScene(ActionEvent event, Scene newScene) {
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(newScene);
         window.show();
     }

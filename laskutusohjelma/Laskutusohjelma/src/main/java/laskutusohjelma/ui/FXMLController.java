@@ -40,7 +40,7 @@ public class FXMLController implements Initializable {
         
         Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLLasku.fxml"));
         Scene scene2View = new Scene(scene2Parent);
-        createScene(event,scene2View);
+        createScene(event, scene2View);
     }
     
     @FXML
@@ -52,7 +52,7 @@ public class FXMLController implements Initializable {
     }
     
     public void createScene(ActionEvent event, Scene newScene) {
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(newScene);
         window.show();
     }

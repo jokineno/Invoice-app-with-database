@@ -24,7 +24,7 @@ public class PDFCreator {
         new PDFCreator().createPDF(DEST, product, user, customer);
     }
     
-     public void createPDF(String dest, Product product, User user, Asiakas customer) throws IOException {
+    public void createPDF(String dest, Product product, User user, Asiakas customer) throws IOException {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         
@@ -45,13 +45,13 @@ public class PDFCreator {
         document.add(new Paragraph(customer.getName()));
         document.add(new Paragraph(customer.getyTunnus()));
         
-        document.add(new Paragraph("Product: " + product.getPname() + "  " + "Amount: " + product.getAmount() +"  "+ "VAT%: " + product.getVat()));
+        document.add(new Paragraph("Product: " + product.getPname() + "  " + "Amount: " + product.getAmount() + "  " + "VAT%: " + product.getVat()));
         document.add(new Paragraph("FINAL PRICE: " + product.getPrice()));
         document.add(new Paragraph("Message: ")); //from the user
-        document.add(new Paragraph("Date")) ;  //from the user
+        document.add(new Paragraph("Date"));  //from the user
         document.add(new Paragraph("\n" + "\n"));  //from the user
         document.add(new Paragraph("\n" + "\n"));  
-        document.add(new Paragraph(user.getName() + "    " + user.getTilinumero() + "     "+ user.getYtunnus()));  
+        document.add(new Paragraph(user.getName() + "    " + user.getTilinumero() + "     " + user.getYtunnus()));  
         
         
         document.close(); 
