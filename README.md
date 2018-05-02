@@ -18,7 +18,7 @@ Testausdokumentti
 [Työaikakirjanpito.md](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md) 
 
 # Release/viikko6 <h3>
-[Release](https://github.com/jokineno/otm-harjoitustyo/releases/tag/viikko5)
+[Release](https://github.com/jokineno/otm-harjoitustyo/releases/tag/viikko6)
 
 # Ohjelman kääntyminen <h3> 
 Ohjelma kääntyy NetBeansissa vihreällä "Run"- nappulalla 
