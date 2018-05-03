@@ -7,14 +7,20 @@ package laskutusohjelma.ui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import laskutusohjelma.dao.FileUserDao;
+import laskutusohjelma.domain.SQLiteDatabase;
+import laskutusohjelma.domain.User;
 
 /**
  * FXML Controller class
@@ -22,18 +28,54 @@ import javafx.stage.Stage;
  * @author ollijokinen
  */
 public class FXMLSignupInfoController implements Initializable {
-
+    
     /**
      * Initializes the controller class.
      */
     
+    private FileUserDao userDao;
+    private SQLiteDatabase database;
+    
+    @FXML
+    private TextField username;
+    
+    @FXML
+    private TextField password;
+    
+    @FXML
+    private TextField companyname;
+    
+    @FXML
+    private TextField accountNumber;
+    
+    @FXML
+    private TextField yNumber;
+    
+    
+   /* private SQLiteDatabase database;
+    private FileUserDao userDatabase;
+    */
      /**
      * käyttäjä luo uuden tilin
      * @param event
      * @throws IOException 
      */
-    public void createAccountPressed(ActionEvent event) throws IOException {
-        System.out.println("Creating an account...");
+    
+    /**
+     * käyttäjä luo uuden tilin
+     * @param event
+     * @throws IOException
+     * 
+     */
+    public void createAccountPressed(ActionEvent event) throws IOException, SQLException {
+        System.out.println("Creating an account and signing up...");
+        
+        User user = new User(companyname.getText(), username.getText(), yNumber.getText(), accountNumber.getText());
+        database = new SQLiteDatabase();
+        userDao = new FileUserDao(database);
+        userDao.create(user);
+        
+        
         Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLLasku.fxml"));
         Scene scene2View = new Scene(scene2Parent);
         createScene(event, scene2View);

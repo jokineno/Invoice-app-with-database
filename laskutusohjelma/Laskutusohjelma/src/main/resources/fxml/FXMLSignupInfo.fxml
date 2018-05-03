@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: yellow;" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="laskutusohjelma.ui.FXMLSignupInfoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: yellow;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laskutusohjelma.ui.FXMLSignupInfoController">
     <stylesheets>
         <URL value="@/styles/fxmlsignupinfo.css" />
     </stylesheets>
@@ -20,11 +20,11 @@
       </Text>
       <VBox layoutX="166.0" layoutY="108.0" prefHeight="200.0" prefWidth="162.0">
          <children>
-            <TextField promptText="username" />
-            <TextField promptText="password" />
-            <TextField promptText="Company name" />
-            <TextField promptText="account number" />
-            <TextField promptText="y-number" />
+            <TextField fx:id="username" promptText="username" />
+            <TextField fx:id="password" promptText="password" />
+            <TextField fx:id="companyname" promptText="Company name" />
+            <TextField fx:id="accountNumber" promptText="account number" />
+            <TextField fx:id="yNumber" promptText="y-number" />
          </children>
       </VBox>
       <Button layoutX="370.0" layoutY="108.0" mnemonicParsing="false" onAction="#createAccountPressed" text="Create Account and SignUp" />

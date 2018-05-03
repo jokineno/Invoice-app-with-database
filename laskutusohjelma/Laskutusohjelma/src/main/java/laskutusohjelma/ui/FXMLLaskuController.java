@@ -20,9 +20,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import laskutusohjelma.dao.AsiakasDao;
 import laskutusohjelma.domain.Asiakas;
 import laskutusohjelma.domain.PDFCreator;
 import laskutusohjelma.domain.Product;
+import laskutusohjelma.domain.SQLiteDatabase;
 import laskutusohjelma.domain.User;
 
 /**
@@ -115,6 +117,7 @@ public class FXMLLaskuController implements Initializable {
         Double final1 = Double.parseDouble(finalPrice.getText());
         CharSequence date1 = date.getCharacters();
         String message1 = message.getText();
+        
         
         Product newProduct = new Product(product.getText(), vat1, final1, amount1, message1, date1);
         User user = new User("olli", "ollinfirma", "123456-7", "fi98 1234 1234 1234 12");

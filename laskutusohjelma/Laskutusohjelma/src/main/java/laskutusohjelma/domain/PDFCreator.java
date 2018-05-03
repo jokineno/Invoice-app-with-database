@@ -118,7 +118,7 @@ public class PDFCreator {
         
         document.add(new Paragraph("\n" + "\n"));  //from the user
         document.add(new Paragraph("\n" + "\n"));  
-        document.add(new Paragraph("Customer's information"));
+        document.add(new Paragraph("TO: "));
         document.add(new Paragraph("Customer: " + customer.getName() + "\n" + "Customer's yNumber: " + customer.getyTunnus()));
         document.add(new Paragraph("\n" + "\n"));  
         document.add(new Paragraph("Product: " + product.getPname() + "\n  " + "Amount: " + product.getAmount() + "\n  " + "VAT%: " + product.getVat()));
@@ -131,10 +131,7 @@ public class PDFCreator {
         document.add(new Paragraph("\n" + "\n"));  //from the user
         document.add(new Paragraph("\n" + "\n"));
         document.add(new Paragraph("\n" + "\n"));  //from the user
-        document.add(new Paragraph("\n" + "\n"));
-        document.add(new Paragraph("\n" + "\n"));  //from the user
-        document.add(new Paragraph("Sender: " + user.getName() + "    " + "Bank account: " + user.getTilinumero() + "     " + "Sender's yNumber: " + user.getYtunnus()));  
-        
+        document.add(new Paragraph("FROM: \n" + "Company: " + user.getName() + "\n" + "Bank account: " + user.getTilinumero() + "\n" + "yNumber: " + user.getYtunnus()));  
         
         document.close(); 
     }
