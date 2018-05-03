@@ -16,9 +16,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import laskutusohjelma.domain.Asiakas;
 import laskutusohjelma.domain.PDFCreator;
+import laskutusohjelma.domain.Product;
+import laskutusohjelma.domain.User;
 
 /**
  * FXML Controller class
@@ -30,14 +35,15 @@ public class FXMLLaskuController implements Initializable {
     /**
      * Initializes the controller class.
      */
-   /* 
+    
+   
     @FXML
-    private TextField Receiver;
+    private TextField receiver;
     
     @FXML
     private TextField yNumber;
     
-    @FXML
+   @FXML
     private TextField product;
     
     @FXML
@@ -50,11 +56,16 @@ public class FXMLLaskuController implements Initializable {
     private TextField vat;
     
     @FXML
+    private TextField finalPrice;
+    
+    @FXML
     private TextField date;
     
     @FXML
-    private TextField message;*/
+    private TextArea message;
     
+    @FXML
+    private ComboBox drop;
     
     /**
      * käyttäjä voi laskunäkymästä kirjautua ulos
@@ -94,9 +105,29 @@ public class FXMLLaskuController implements Initializable {
     
     @FXML
     public void createPdfInvoicePressed(ActionEvent event) throws IOException {
-        //PDFCreator creator = new PDFCreator();
-        //creator.runPDF(product, user, customer);
+        System.out.println("create pdf pressed");
+        String receive = receiver.getText();
+        String yNumber1 = yNumber.getText();
+        String product1 = product.getText();
+        CharSequence ppu = pricePerUnit.getCharacters();
+        Double amount1 = Double.parseDouble(amount.getText());
+        Integer vat1 = Integer.parseInt(vat.getText());
+        Double final1 = Double.parseDouble(finalPrice.getText());
+        CharSequence date1 = date.getCharacters();
+        String message1 = message.getText();
         
+        Product newProduct = new Product(product.getText(), vat1, final1, amount1, message1, date1);
+        User user = new User("olli", "ollinfirma", "123456-7", "fi98 1234 1234 1234 12");
+        Asiakas customer = new Asiakas(1, receive, yNumber1);
+        
+        PDFCreator creator = new PDFCreator();
+        creator.runPDF(newProduct, user, customer);
+        
+        
+    }
+    
+    @FXML
+    public void selectCustomerPressed(ActionEvent event) {
         
     }
     

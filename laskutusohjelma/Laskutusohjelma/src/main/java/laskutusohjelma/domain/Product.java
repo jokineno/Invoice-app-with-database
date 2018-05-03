@@ -14,12 +14,16 @@ public class Product {
     private int vat; 
     private double price;
     private double amount;
+    private CharSequence message;
+    private CharSequence date;
     
-    public Product(String pname, int vat, double price, double amount) {
+    public Product(String pname, int vat, double price, double amount, CharSequence message, CharSequence date) {
         this.pname = pname;
         this.amount = amount;
         this.vat = vat;
         this.price = price;
+        this.message = message;
+        this.date = date;
     }
 
     public String getPname() {
@@ -52,6 +56,18 @@ public class Product {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+    
+    public CharSequence getMessage() {
+        return this.message;
+    }
+    
+    public void setMessage(CharSequence message) {
+        this.message = message;
+    }
+    
+    public CharSequence getDate() {
+        return this.date;
     }
     
     

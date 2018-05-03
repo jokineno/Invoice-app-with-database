@@ -10,4 +10,5 @@ Päivämäärä | Aika | Tehtävä
 2.5.|3|Käyttöliittymän tekemistä. Nyt napeista siirrytään scenestä toiseen. 
 2.5.|1|PDFkirjoittajan tekeminen
 2.5.|5|checkstyleä, javadoc, yleistä korjailua, käyttöliittymään perehtymistä. tietokantoihin perehtyminen
-Yhteensä|24|tuntia
+3.5.|2|tietokantoja
+Yhteensä|26|tuntia

@@ -34,16 +34,17 @@
             <TextField fx:id="pricePerUnit" promptText="price per unit" />
             <TextField fx:id="amount" promptText="amount" />
             <TextField fx:id="vat" promptText="vat%: 10%, 14%, 24%" />
+            <TextField fx:id="finalPrice" layoutX="10.0" layoutY="118.0" promptText="finalPrice" />
             <TextField fx:id="date" layoutX="10.0" layoutY="91.0" promptText="date" />
             <TextArea fx:id="message" prefHeight="72.0" prefWidth="200.0" promptText="message" />
          </children>
       </VBox>
       <VBox layoutX="36.0" layoutY="160.0" prefHeight="119.0" prefWidth="178.0">
          <children>
-            <ComboBox prefHeight="27.0" prefWidth="179.0" promptText="Select a customer" />
+            <ComboBox fx:id="drop" onAction="#selectCustomerPressed" prefHeight="27.0" prefWidth="179.0" promptText="Select a customer" />
          </children>
       </VBox>
-      <HBox layoutX="143.0" layoutY="334.0" prefHeight="52.0" prefWidth="346.0">
+      <HBox layoutX="145.0" layoutY="359.0" prefHeight="52.0" prefWidth="346.0">
          <children>
             <Button mnemonicParsing="false" onAction="#createPdfInvoicePressed" prefHeight="69.0" prefWidth="363.0" style="-fx-background-color: red;" text="Create PDF Invoice" underline="true">
                <font>
