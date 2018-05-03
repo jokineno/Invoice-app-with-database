@@ -11,4 +11,5 @@ Päivämäärä | Aika | Tehtävä
 2.5.|1|PDFkirjoittajan tekeminen
 2.5.|5|checkstyleä, javadoc, yleistä korjailua, käyttöliittymään perehtymistä. tietokantoihin perehtyminen
 3.5.|2|tietokantoja
-Yhteensä|26|tuntia
+3.5.|6|tietokantojen ja javafx synkkaamista
+Yhteensä|32|tuntia
