@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="461.0" prefWidth="636.0" style="-fx-background-color: yellow;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laskutusohjelma.ui.FXMLLaskuController">
+<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="645.0" style="-fx-background-color: yellow;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="laskutusohjelma.ui.FXMLLaskuController">
     <stylesheets>
         <URL value="@/styles/fxmllasku.css" />
     </stylesheets>
@@ -22,13 +22,13 @@
             <Reflection />
          </effect>
       </Text>
-      <VBox layoutX="232.0" layoutY="106.0" prefHeight="200.0" prefWidth="100.0">
+      <VBox layoutX="287.0" layoutY="114.0" prefHeight="69.0" prefWidth="100.0">
          <children>
             <TextField fx:id="receiver" promptText="receiver" />
             <TextField fx:id="yNumber" layoutX="10.0" layoutY="10.0" promptText="y-number" />
          </children>
       </VBox>
-      <VBox layoutX="332.0" layoutY="107.0" prefHeight="229.0" prefWidth="200.0">
+      <VBox layoutX="420.0" layoutY="114.0" prefHeight="229.0" prefWidth="200.0">
          <children>
             <TextField fx:id="product" promptText="product" />
             <TextField fx:id="pricePerUnit" promptText="price per unit" />
@@ -39,20 +39,8 @@
             <TextArea fx:id="message" prefHeight="72.0" prefWidth="200.0" promptText="message" />
          </children>
       </VBox>
-      <VBox layoutX="36.0" layoutY="160.0" prefHeight="119.0" prefWidth="178.0">
-         <children>
-            <ComboBox fx:id="drop" onAction="#selectCustomerPressed" prefHeight="27.0" prefWidth="179.0" promptText="Select a customer" />
-         </children>
-      </VBox>
-      <HBox layoutX="145.0" layoutY="359.0" prefHeight="52.0" prefWidth="346.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#createPdfInvoicePressed" prefHeight="69.0" prefWidth="363.0" style="-fx-background-color: red;" text="Create PDF Invoice" underline="true">
-               <font>
-                  <Font name="Anders" size="22.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
+      <VBox layoutX="36.0" layoutY="160.0" prefHeight="27.0" prefWidth="178.0" />
+      <HBox layoutX="145.0" layoutY="359.0" prefHeight="52.0" prefWidth="346.0" />
       <VBox layoutX="513.0" layoutY="359.0" prefHeight="27.0" prefWidth="90.0" />
       <Button layoutX="520.0" layoutY="59.0" mnemonicParsing="false" onAction="#logoutPressed" prefHeight="32.0" prefWidth="100.0" text="Logout">
          <font>
@@ -64,10 +52,19 @@
             <Font name="Andale Mono" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="36.0" layoutY="107.0" mnemonicParsing="false" onAction="#logoutPressed" prefHeight="32.0" prefWidth="178.0" text="Create a new Customer">
+      <Label fx:id="welcomeuser" layoutX="14.0" layoutY="30.0" text="WelcomeUser" />
+      <TextField fx:id="customerName" layoutX="57.0" layoutY="238.0" promptText="name" />
+      <Button layoutX="160.0" layoutY="481.0" mnemonicParsing="false" onAction="#createPdfInvoicePressed" prefHeight="69.0" prefWidth="363.0" style="-fx-background-color: orange;" text="Create PDF Invoice" underline="true">
+         <font>
+            <Font name="Anders" size="22.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="drop" layoutX="58.0" layoutY="112.0" onAction="#customerSelected" prefHeight="27.0" prefWidth="179.0" promptText="Select a customer" />
+      <Button layoutX="248.0" layoutY="235.0" mnemonicParsing="false" onAction="#addCustomerPressed" prefHeight="32.0" prefWidth="121.0" text="Add a Customer">
          <font>
             <Font name="Andale Mono" size="12.0" />
          </font>
       </Button>
+      <TextField fx:id="customerYNumber" layoutX="57.0" layoutY="290.0" promptText="yNumber" />
    </children>
 </AnchorPane>

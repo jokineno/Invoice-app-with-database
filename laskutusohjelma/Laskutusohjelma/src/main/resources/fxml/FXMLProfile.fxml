@@ -21,9 +21,9 @@
       </Text>
       <VBox layoutX="136.0" layoutY="155.0" prefHeight="91.0" prefWidth="342.0">
          <children>
-            <TextField promptText="account number" />
-            <TextField promptText="name" />
-            <TextField promptText="y-tunnus" />
+            <TextField fx:id="accountNumber" promptText="account number" />
+            <TextField fx:id="name" promptText="name" />
+            <TextField fx:id="yNumber" promptText="yNumber" />
          </children>
       </VBox>
       <ImageView fitHeight="69.0" fitWidth="83.0" layoutX="251.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
@@ -36,5 +36,6 @@
       <Text layoutX="14.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account number" />
       <Text layoutX="14.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
       <Text layoutX="14.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Y-number" />
+      <Text fx:id="username" layoutX="33.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
    </children>
 </AnchorPane>

@@ -71,14 +71,19 @@ public class FXMLSignupInfoController implements Initializable {
         System.out.println("Creating an account and signing up...");
         
         User user = new User(companyname.getText(), username.getText(), yNumber.getText(), accountNumber.getText());
-        database = new SQLiteDatabase();
         userDao = new FileUserDao(database);
         userDao.create(user);
         
         
-        Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLLasku.fxml"));
-        Scene scene2View = new Scene(scene2Parent);
-        createScene(event, scene2View);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/FXMLLasku.fxml"));
+        Parent scene1Parent = loader.load();
+        Scene scene1View = new Scene(scene1Parent);
+        
+        FXMLLaskuController controller = loader.getController();
+        controller.initData(companyname.getText());
+        controller.fillComboBox();
+        createScene(event, scene1View);
         
     }
     

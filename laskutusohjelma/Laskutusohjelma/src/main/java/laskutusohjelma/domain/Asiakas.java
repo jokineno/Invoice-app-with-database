@@ -47,6 +47,6 @@ public class Asiakas {
     }
     
     public String toString() {
-        return "id: " + this.id + ", name: " + this.name + ", yTunnus: " + this.yTunnus;
+        return "" + this.name;
     }
 }

@@ -17,8 +17,6 @@ import laskutusohjelma.domain.User;
  */
 public interface UserDao <T,K> {
     void create(T user) throws SQLException;
-
     boolean findByUsername(K username) throws SQLException;
 
-    List<T> getAll();
 }

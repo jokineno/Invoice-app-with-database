@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import laskutusohjelma.dao.FileUserDao;
 import laskutusohjelma.domain.SQLiteDatabase;
+import laskutusohjelma.domain.User;
 
 /**
  *
@@ -34,6 +35,9 @@ public class FXMLController implements Initializable {
     @FXML
     private TextField username;
     
+    @FXML
+    private TextField status;
+    
     /*
     When you call this method, you'll login and change the scene to scene2 where you can
     create an invoice. 
@@ -41,6 +45,8 @@ public class FXMLController implements Initializable {
     
     /**
      * loginPressed metodia kutsutaan, kun käyttäjä painaa login etusivulla. Jos tunnus on validi, niin käyttäjä kirjautuu
+     * jos käyttäjätunnus on olemassa, niin lasku-sivu tervehtii "welcome pena" tms. 
+     * Se myös siirtää kirjautuneen tiedot profile näkymään. 
      * @param event
      * @throws IOException 
      */
@@ -49,18 +55,27 @@ public class FXMLController implements Initializable {
     public void loginPressed(ActionEvent event) throws IOException, SQLException {
         System.out.println("User loggin' in...");
         
-        database = new SQLiteDatabase();
+        //database = new SQLiteDatabase();
         userDao = new FileUserDao(database);
         if(userDao.findByUsername(username.getText())){
-            Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLLasku.fxml"));
+            String welcomeNameForInvoiceView = userDao.returnName(username.getText());
+            
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/FXMLLasku.fxml"));
+            Parent scene2Parent = loader.load();
             Scene scene2View = new Scene(scene2Parent);
+            
+            //access a controller and call a method
+            FXMLLaskuController controller = loader.getController();
+            controller.initData(welcomeNameForInvoiceView);
+            controller.fillComboBox();
+            
             createScene(event, scene2View);
+            
         }else {
-            System.out.println("yritä uudestaan");
+            System.out.println("et pääse kirjautumaan");
         }
-        
-        
-        
+    
         
     }
     
@@ -88,6 +103,10 @@ public class FXMLController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(newScene);
         window.show();
+    }
+    
+    public void downloadCustomerList() {
+        
     }
     
     @Override

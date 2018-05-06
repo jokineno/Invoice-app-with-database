@@ -8,7 +8,11 @@ package laskutusohjelma.ui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,10 +21,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import laskutusohjelma.dao.AsiakasDao;
+import laskutusohjelma.dao.FileAsiakasDao;
+import laskutusohjelma.dao.FileUserDao;
 import laskutusohjelma.domain.Asiakas;
 import laskutusohjelma.domain.PDFCreator;
 import laskutusohjelma.domain.Product;
@@ -33,7 +39,10 @@ import laskutusohjelma.domain.User;
  * @author ollijokinen
  */
 public class FXMLLaskuController implements Initializable {
-
+    private FileUserDao userDao;
+    private FileAsiakasDao asiakasDao;
+    private SQLiteDatabase database;  
+    private User user;
     /**
      * Initializes the controller class.
      */
@@ -69,11 +78,52 @@ public class FXMLLaskuController implements Initializable {
     @FXML
     private ComboBox drop;
     
+    @FXML   
+    private Label welcomeuser;
+    
+    @FXML 
+    private TextField customerName;
+    
+    @FXML TextField customerYNumber;
+    
+    
     /**
      * käyttäjä voi laskunäkymästä kirjautua ulos
      * @param event
      * @throws IOException 
      */
+    
+    public void initData(String user) {
+        welcomeuser.setText(user);
+    }
+    
+    public void fillComboBox() throws SQLException {
+        asiakasDao = new FileAsiakasDao(database);
+        drop.setItems(asiakasDao.findAll());
+        
+    }
+    
+    //fill form according to a name selected.
+   
+    
+    @FXML
+    public void customerSelected(ActionEvent event) throws IOException, SQLException {
+        
+        asiakasDao = new FileAsiakasDao(database);
+        String welcomeText = welcomeuser.getText();
+        
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/FXMLLasku.fxml"));
+        Parent scene2Parent = loader.load();
+        Scene scene2View = new Scene(scene2Parent);
+        FXMLLaskuController controller = loader.getController();
+        controller.initData(welcomeText);
+        controller.fillComboBox();
+        controller.receiver.setText(drop.getValue().toString());
+        controller.yNumber.setText(asiakasDao.findYNumber(drop.getValue().toString()));
+        createScene(event,scene2View);
+        
+    }
     
     
     @FXML
@@ -91,12 +141,31 @@ public class FXMLLaskuController implements Initializable {
      */
     
     @FXML
-    public void profilePressed(ActionEvent event) throws IOException {
+    public void profilePressed(ActionEvent event) throws IOException, SQLException {
         System.out.println("loading profile..");
-        Parent scene1Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLProfile.fxml"));
+        
+        
+        userDao = new FileUserDao(database);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/Profile.fxml"));
+        Parent scene1Parent = loader.load();
         Scene scene1View = new Scene(scene1Parent);
+        
+        ProfileController controller = loader.getController();
+        
+        String companyForProfile = userDao.returnUsername(welcomeuser.getText());
+        String bankAccountForProfile = userDao.returnBankAccount(welcomeuser.getText());
+        String yNumberForProfile = userDao.returnYNumber(welcomeuser.getText());
+        
+        
+        
+        
+        controller.initDataToProfile(companyForProfile, bankAccountForProfile, yNumberForProfile);
+        controller.initUserName(welcomeuser.getText());
+        
+        
         createScene(event, scene1View);
-        //this line get stage information
+       
         
     }
      /**
@@ -119,20 +188,39 @@ public class FXMLLaskuController implements Initializable {
         String message1 = message.getText();
         
         
-        Product newProduct = new Product(product.getText(), vat1, final1, amount1, message1, date1);
+        Product newProduct = new Product(product1   , vat1, final1, amount1, message1, date1);
         User user = new User("olli", "ollinfirma", "123456-7", "fi98 1234 1234 1234 12");
         Asiakas customer = new Asiakas(1, receive, yNumber1);
         
         PDFCreator creator = new PDFCreator();
         creator.runPDF(newProduct, user, customer);
         
-        
     }
     
-    @FXML
-    public void selectCustomerPressed(ActionEvent event) {
+    public void addCustomerPressed(ActionEvent event) throws IOException, SQLException {
+        asiakasDao = new FileAsiakasDao(database);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/FXMLLasku.fxml"));
+        Parent scene1Parent = loader.load();
+        Scene scene1View = new Scene(scene1Parent);
         
+        FXMLLaskuController controller = loader.getController();
+        
+        //id is 1 but it's calculated by the size of customer table in fileasiakasdao
+        Asiakas customer = new Asiakas (1,customerName.getText(), customerYNumber.getText());
+        asiakasDao.createCustomer(customer);
+        controller.fillComboBox();
+        controller.welcomeuser.setText(welcomeuser.getText());
+        
+        //receiver and ynumber dont get updated
+        controller.receiver.setText(receiver.getText());
+        controller.yNumber.setText(yNumber.getText());
+        
+        
+        createScene(event,scene1View);
     }
+    
+    
     
      /**
      * testataan onko käyttäjän antamat tunnukset ok

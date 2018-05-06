@@ -43,12 +43,12 @@ public class AsiakasTest {
     /*@Test
     public void hello() {}*/
     
-    @Test
+   /* @Test
     public void konstruktoriToimiiOikein() {
         Asiakas asiakas = new Asiakas (1, "pena", "1234567-8");
         
         
         
         assertEquals("id: 1, name: pena, yTunnus: 1234567-8", asiakas.toString());
-    }
+    }*/
 }
