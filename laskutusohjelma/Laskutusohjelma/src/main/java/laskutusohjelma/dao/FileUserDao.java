@@ -25,6 +25,8 @@ public class FileUserDao implements UserDao<User, String> {
         this.database = database;
     }
     
+   
+    
     
    
     @Override
@@ -64,13 +66,7 @@ public class FileUserDao implements UserDao<User, String> {
             return false;
         }
         
-        /*String name1 = rs.getString("name");
-        String username = rs.getString("username");
-        String yNumber = rs.getString("yNumber");
-        String accountNumber = rs.getString("accountNumber");
-        
-        User u = new User(name1, username, yNumber, accountNumber);
-        */
+       
         stmt.close();
         rs.close();
         conn.close();

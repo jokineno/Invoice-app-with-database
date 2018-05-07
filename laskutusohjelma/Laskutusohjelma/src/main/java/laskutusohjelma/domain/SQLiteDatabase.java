@@ -13,20 +13,29 @@ public class SQLiteDatabase {
     private static File file1;
     private static Boolean test =false;
     private static Connection conn;
-    private static Boolean hasData =false;
-    
+    private static Boolean hasData = false;
+    private static Boolean hasData2 = false;
     public SQLiteDatabase() {
     }
     
     public SQLiteDatabase(File file) {
         file1 = file;
-        test = true;
     }
-    
+  
     public static Connection getConnection() throws SQLException {
 
         if (test) {
+            System.out.println("jeejeeej");
             conn = DriverManager.getConnection("jdbc:sqlite:" + file1.getAbsolutePath());
+            try {
+                Class.forName("org.sqlite.JDBC");
+            } catch (ClassNotFoundException ex) {
+                System.out.println(ex);
+            }
+            conn = DriverManager.getConnection("jdbc:sqlite:asiakasrekisteriDB.db");
+           
+            initCustomer();
+            initUser();
             
         } else {
             try {
@@ -35,53 +44,74 @@ public class SQLiteDatabase {
                 System.out.println(ex);
             }
             conn = DriverManager.getConnection("jdbc:sqlite:asiakasrekisteriDB.db");
-
-            init();
+            
+            initCustomer();
+            initUser();
+            
         }
 
         return conn;
     }
     
     /*
-    Metodi lisää esimerkkikäyttäjän tietokantaan
+    Method creates user table into database. 
     */
-    private static void init() throws SQLException {
-        if (!hasData) {
-            hasData = true;
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT name FROM sqlite_master WHERE type='table'");
+    private static void initUser() throws SQLException {
+            if(!hasData) {
+                hasData = true;
             
-            
-            if(!rs.next()) {
-                PreparedStatement stmt2 = conn.prepareStatement("CREATE TABLE User"
-                + "(name String PRIMARY KEY, username String,"
-                + " yNumber String,"
-                + " accountNumber String)");
+                Statement stmt = conn.createStatement();
+                PreparedStatement stmt2 = conn.prepareStatement("CREATE TABLE IF NOT EXISTS User"
+                    + "(name String, username String,"
+                    + " yNumber String,"
+                    + " accountNumber String)");
                 stmt2.execute();
-        
-                PreparedStatement prep = conn.prepareStatement("INSERT INTO User"
-                    + "(name, username, yNumber, accountNumber)"
-                    + " VALUES (?,?,?,?)");
-                prep.setString(1, "esimerkki");
-                prep.setString(2, "esimerkkiusername");
-                prep.setString(3, "1234567-8");
-                prep.setString(4, "FI98 1234 1234 1234 12");
-        
-                prep.executeUpdate();
-        
                 stmt.close();
-                prep.close();
                 stmt2.close();
-               
+                stmt.close();
+         
             }
-            
-            stmt.close();
-        }
+   
     }
+    
+    /*
+    Method creates Customer table to database. 
+    */
+    private static void initCustomer() throws SQLException {
+            if(!hasData2) {
+                hasData2 = true;
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT name FROM sqlite_master WHERE type='table'");
+                
+                if(!rs.next()) {
+                    PreparedStatement stmt2 = conn.prepareStatement("CREATE TABLE Customer"
+                        + "(id Integer, name String,"
+                        + " yNumber String)");
+                    stmt2.execute();
+        
+                    PreparedStatement prep = conn.prepareStatement("INSERT INTO Customer"
+                        + "(id, name, yNumber)"
+                        + " VALUES (?,?,?)");
+                    prep.setInt(1, 1);
+                    prep.setString(2, "exampleCustomer");
+                    prep.setString(3, "1234567-8");
+        
+                    prep.executeUpdate();
+    
+                    stmt.close();
+                    prep.close();
+                    stmt2.close();
+                }
+            
+            
+                stmt.close();
+            
+            }
+    }
+}
     
 
    
     
     
   
-}

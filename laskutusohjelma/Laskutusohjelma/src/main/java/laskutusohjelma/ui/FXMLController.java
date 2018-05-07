@@ -112,6 +112,7 @@ public class FXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Loading user data....");
+        System.out.println("Creating database for users and customers");
     }    
     
 }

@@ -5,6 +5,7 @@
  */
 package laskutusohjelma.ui;
 
+import java.sql.SQLException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
@@ -16,6 +17,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import laskutusohjelma.dao.FileAsiakasDao;
+import laskutusohjelma.dao.FileUserDao;
+import laskutusohjelma.domain.SQLiteDatabase;
 
 /**
  *
@@ -25,9 +29,19 @@ public class Paaohjelma extends Application {
     
     Stage window; 
     Scene scene1, scene2;
+    private SQLiteDatabase database;
+    
+    public void initializeDatabase() throws SQLException {
+        database.getConnection();
+    }
+    
     
     @Override
     public void start(Stage stage) throws Exception {
+        //initializing database
+        initializeDatabase();
+        
+        //building and loading scene
         window = stage;
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
         window.initStyle(StageStyle.DECORATED);
@@ -38,6 +52,7 @@ public class Paaohjelma extends Application {
         window.show();
         
     }
+    
 
     /**
      * @param args the command line arguments
