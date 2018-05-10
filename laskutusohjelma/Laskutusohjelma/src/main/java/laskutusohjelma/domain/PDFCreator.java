@@ -32,7 +32,7 @@ import java.io.IOException;
  * @author ollijokinen
  */
 public class PDFCreator {
-    public static final String DEST = "PDFfiles/invoiceAppFile.pdf";
+    public static final String DEST = "PDFfiles/";
     /**
      * 
      * @param product
@@ -82,11 +82,11 @@ public class PDFCreator {
     }
  
     
-    public void runPDF(Product product, User user, Asiakas customer) throws IOException {
-        File file = new File(DEST);
+    public void runPDF(String dest,Product product, User user, Asiakas customer) throws IOException {
+        File file = new File(DEST + dest);
         file.getParentFile().mkdirs();
         //new PDFCreator().createPDF(DEST, product, user, customer);
-        new PDFCreator().createPdf(DEST, product, user, customer);
+        new PDFCreator().createPdf(DEST + dest + ".pdf", product, user, customer);
     }
     
     /**
@@ -103,7 +103,7 @@ public class PDFCreator {
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdf = new PdfDocument(writer);
         Document document = new Document(pdf);
-       // invoiceText(document, product, user, customer);
+        invoiceText(document, product, user, customer);
         
        
     }

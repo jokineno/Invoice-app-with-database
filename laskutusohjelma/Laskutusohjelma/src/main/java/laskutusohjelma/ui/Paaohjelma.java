@@ -5,6 +5,7 @@
  */
 package laskutusohjelma.ui;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -17,9 +18,13 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import laskutusohjelma.dao.AsiakasDao;
 import laskutusohjelma.dao.FileAsiakasDao;
 import laskutusohjelma.dao.FileUserDao;
+import laskutusohjelma.dao.UserDao;
+import laskutusohjelma.domain.InvoiceService;
 import laskutusohjelma.domain.SQLiteDatabase;
+import laskutusohjelma.ui.FXMLLaskuController;
 
 /**
  *
@@ -27,12 +32,15 @@ import laskutusohjelma.domain.SQLiteDatabase;
  */
 public class Paaohjelma extends Application {
     
-    Stage window; 
-    Scene scene1, scene2;
-    private SQLiteDatabase database;
+    Stage stage; 
+    Scene startViewScene, signUpScene, invoiceScene, profileScene;
+    
+    private InvoiceService invoiceService; 
+   
+    
     
     public void initializeDatabase() throws SQLException {
-        database.getConnection();
+        invoiceService.initializeDatabase();
     }
     
     
@@ -41,19 +49,103 @@ public class Paaohjelma extends Application {
         //initializing database
         initializeDatabase();
         
+        
         //building and loading scene
-        window = stage;
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
-        window.initStyle(StageStyle.DECORATED);
-        
-        scene1 = new Scene(root);
-        
-        window.setScene(scene1);
-        window.show();
+        this.stage = stage;
+        setLoginScene();
+        stage.show();
         
     }
     
+    @Override 
+    public void init() throws Exception {
+        invoiceService = new InvoiceService(new FileUserDao(), new FileAsiakasDao());
+        
+        FXMLLoader startView = new FXMLLoader(getClass().getResource("/fxml/FXML.fxml"));
+        Parent loginPane = startView.load();
+        FXMLController startViewController = startView.getController();
+        startViewController.setInvoiceService(invoiceService); 
+        startViewController.setApplication(this);
+        startViewScene = new Scene(loginPane);
+        
+        FXMLLoader signUpView = new FXMLLoader(getClass().getResource("/fxml/FXMLSignupInfo.fxml"));
+        Parent signUpPane = signUpView.load();
+        FXMLSignupInfoController signUpViewController = signUpView.getController();
+        signUpViewController.setInvoiceService(invoiceService); 
+        signUpViewController.setApplication(this);
+        signUpScene = new Scene(signUpPane);
+        
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/FXMLLasku.fxml"));
+        Parent invoicePane = loader.load();
+        FXMLLaskuController invoiceViewController = loader.getController();
+        invoiceViewController.setInvoiceService(invoiceService); 
+        invoiceViewController.setApplication(this);
+        invoiceViewController.fillReceiverAndYNumber();
+        invoiceViewController.fillComboBox();
+        invoiceViewController.initData();
+        invoiceScene = new Scene(invoicePane);
+        
+        
+        FXMLLoader profileView = new FXMLLoader(getClass().getResource("/fxml/Profile.fxml"));
+        Parent profilePane = profileView.load();
+        ProfileController profileViewController = profileView.getController();
+        profileViewController.setInvoiceService(invoiceService); 
+        profileViewController.setApplication(this);
+        //profileViewController.initDataToProfile1();
+        profileScene = new Scene(profilePane);
+       
+    }
+    
+    public void setLoginScene() {
+        
+        stage.setScene(startViewScene);
+    }
 
+    public void setSignUpScene() {
+        stage.setScene(signUpScene);
+    }   
+    
+    
+    public void setProfileScene() {
+        stage.setScene(profileScene);
+    }
+    
+    public void setProfileScene2() throws IOException, SQLException {
+        FXMLLoader profileView = new FXMLLoader(getClass().getResource("/fxml/Profile.fxml"));
+        Parent profilePane = profileView.load();
+        ProfileController profileViewController = profileView.getController();
+        profileViewController.setInvoiceService(invoiceService); 
+        profileViewController.setApplication(this);
+        profileViewController.initDataToProfile1();
+        profileViewController.initUserName();
+        profileScene = new Scene(profilePane);
+        stage.setScene(profileScene);
+    }
+    
+    
+    
+    public void setInvoiceScene() {
+        stage.setScene(invoiceScene);
+    }
+    public void setInvoiceScene2() throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/FXMLLasku.fxml"));
+        Parent invoicePane = loader.load();
+        FXMLLaskuController invoiceViewController = loader.getController();
+        invoiceViewController.setInvoiceService(invoiceService); 
+        invoiceViewController.setApplication(this);
+        invoiceViewController.fillReceiverAndYNumber();
+        invoiceViewController.fillComboBox();
+        invoiceViewController.initData();
+        invoiceScene = new Scene(invoicePane);
+        stage.setScene(invoiceScene);
+    }
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */

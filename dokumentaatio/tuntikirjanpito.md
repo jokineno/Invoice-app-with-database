@@ -12,4 +12,9 @@ Päivämäärä | Aika | Tehtävä
 2.5.|5|checkstyleä, javadoc, yleistä korjailua, käyttöliittymään perehtymistä. tietokantoihin perehtyminen
 3.5.|2|tietokantoja
 3.5.|6|tietokantojen ja javafx synkkaamista
-Yhteensä|32|tuntia
+5.5.|4|
+6.5|4|
+7.5.|6|
+8.5.|5|
+9.5.|8|
+Yhteensä|59|tuntia

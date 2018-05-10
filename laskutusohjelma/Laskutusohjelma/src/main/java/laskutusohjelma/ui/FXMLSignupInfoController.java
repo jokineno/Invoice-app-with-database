@@ -18,7 +18,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import laskutusohjelma.dao.FileAsiakasDao;
 import laskutusohjelma.dao.FileUserDao;
+import laskutusohjelma.domain.InvoiceService;
 import laskutusohjelma.domain.SQLiteDatabase;
 import laskutusohjelma.domain.User;
 
@@ -32,9 +34,8 @@ public class FXMLSignupInfoController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
-    private FileUserDao userDao;
-    private SQLiteDatabase database;
+    private InvoiceService invoiceService;
+    private Paaohjelma application;
     
     @FXML
     private TextField username;
@@ -61,6 +62,14 @@ public class FXMLSignupInfoController implements Initializable {
      * @throws IOException 
      */
     
+    public void setInvoiceService(InvoiceService invoiceService) {
+        this.invoiceService = invoiceService;
+    }
+    
+    public void setApplication(Paaohjelma application) {
+        this.application = application;
+    }
+    
     /**
      * käyttäjä luo uuden tilin
      * @param event
@@ -70,10 +79,9 @@ public class FXMLSignupInfoController implements Initializable {
     public void createAccountPressed(ActionEvent event) throws IOException, SQLException {
         System.out.println("Creating an account and signing up...");
         
+       /* //create account based on textfields that user has filled up
         User user = new User(companyname.getText(), username.getText(), yNumber.getText(), accountNumber.getText());
-        userDao = new FileUserDao(database);
-        userDao.create(user);
-        
+        invoiceService.createUser(user);
         
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/FXMLLasku.fxml"));
@@ -83,7 +91,7 @@ public class FXMLSignupInfoController implements Initializable {
         FXMLLaskuController controller = loader.getController();
         controller.initData(companyname.getText());
         controller.fillComboBox();
-        createScene(event, scene1View);
+        createScene(event, scene1View);*/
         
     }
     
@@ -94,10 +102,11 @@ public class FXMLSignupInfoController implements Initializable {
      */
     
     public void backPressed(ActionEvent event) throws IOException {
-        System.out.println("Signup pressed...");
-        Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
+        System.out.println("back pressed...");
+        application.setLoginScene();
+        /*Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
         Scene scene2View = new Scene(scene2Parent);
-        createScene(event, scene2View);
+        createScene(event, scene2View);*/
         
     }
     
@@ -114,7 +123,7 @@ public class FXMLSignupInfoController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
 }

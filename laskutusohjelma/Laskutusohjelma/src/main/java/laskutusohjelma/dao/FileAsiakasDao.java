@@ -21,18 +21,19 @@ public class FileAsiakasDao implements AsiakasDao<Asiakas, String> {
     
     final SQLiteDatabase database; 
     
-    public FileAsiakasDao(SQLiteDatabase database) {
-        this.database = database;
+    public FileAsiakasDao() {
+        this.database = new SQLiteDatabase();
     }
     
      /**
      * etsitään asiakas tietokannasta
      * @param event
+     * @throws java.sql.SQLException
      * @throws IOException 
      */
     
     public Integer tableSize() throws SQLException {
-        Connection conn = database.getConnection();
+        Connection conn = this.database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM Customer");
         ResultSet rs = stmt.executeQuery();
         Integer tableSize = null;
@@ -45,8 +46,9 @@ public class FileAsiakasDao implements AsiakasDao<Asiakas, String> {
         return tableSize;
     }
     
+    @Override
     public void createCustomer(Asiakas customer) throws SQLException {
-        Connection conn = database.getConnection();
+        Connection conn = this.database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO Customer" + " (id, name, yNumber)" +  "VALUES (?,?,?)");
         
         
@@ -60,7 +62,7 @@ public class FileAsiakasDao implements AsiakasDao<Asiakas, String> {
         
     }
     
-    @Override
+   /* @Override
     public Asiakas findOne(String name) throws SQLException {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Asiakas WHERE name = ?");
@@ -81,10 +83,10 @@ public class FileAsiakasDao implements AsiakasDao<Asiakas, String> {
 
         return a;
         
-    }
-    
+    }*/
+    @Override
     public String findYNumber(String name) throws SQLException {
-        Connection conn = database.getConnection();
+        Connection conn = this.database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT yNumber FROM Customer WHERE name = ?");
         stmt.setObject(1, name);
         ResultSet rs = stmt.executeQuery();
@@ -101,15 +103,16 @@ public class FileAsiakasDao implements AsiakasDao<Asiakas, String> {
   /**
      * etsitään kaikki käyttäjät tietokannasta
      * @param event
+     * @return 
+     * @throws java.sql.SQLException
      * @throws IOException 
      */
     @Override
     public ObservableList<Asiakas> findAll() throws SQLException {
-        Connection conn = database.getConnection();
+        Connection conn = this.database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Customer");
         
         ResultSet resultSet = stmt.executeQuery();
-        
         ObservableList<Asiakas> asiakkaat = FXCollections.observableArrayList();
         
         while (resultSet.next()) {
@@ -119,8 +122,7 @@ public class FileAsiakasDao implements AsiakasDao<Asiakas, String> {
             Asiakas a = new Asiakas(id, name, ytunnus);
             asiakkaat.add(a);
             
-        }
-        if (asiakkaat.isEmpty()) {
+        }if (asiakkaat.isEmpty()) {
             return null;
         }
         
@@ -135,7 +137,14 @@ public class FileAsiakasDao implements AsiakasDao<Asiakas, String> {
      * @throws IOException 
      */
 
-    @Override
+    /**
+     * tallennetaan asiakas
+     * @param asiakas
+     * @param event
+     * @throws IOException
+     */
+   
+    /*@Override
     //ensiksi vain tallennetaan myöhemmin voidaan myös muokata
     public Asiakas save(Asiakas asiakas) throws SQLException {
         Connection conn = database.getConnection();
@@ -147,7 +156,7 @@ public class FileAsiakasDao implements AsiakasDao<Asiakas, String> {
         
         Asiakas a = new Asiakas(asiakas.getId(), asiakas.getName(), asiakas.getyTunnus());
         return a;
-    }   
+    }  */ 
     
      /**
      * poistetaan asiakas
@@ -155,7 +164,7 @@ public class FileAsiakasDao implements AsiakasDao<Asiakas, String> {
      * @throws IOException 
      */
   
-    @Override
+    /*@Override
     public void delete(String name) throws SQLException {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("DELETE FROM Customer WHERE name = ?");
@@ -166,5 +175,5 @@ public class FileAsiakasDao implements AsiakasDao<Asiakas, String> {
         stmt.close();
         conn.close();
     }
-    
+    */
 }

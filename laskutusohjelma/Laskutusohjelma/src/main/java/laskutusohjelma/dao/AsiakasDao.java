@@ -12,9 +12,12 @@ package laskutusohjelma.dao;
  */
 import java.util.*;
 import java.sql.*;
+import javafx.collections.ObservableList;
 public interface AsiakasDao<T, K> {
-    T findOne(K key) throws SQLException; //tätä tarvitaan kun haetaan nimellä
-    List<T> findAll() throws SQLException; // kun halutaan kaikki esiin valikosta
-    T save(T object) throws SQLException; //halutaan päivittää tietoja
-    void delete(K key) throws SQLException; // halutaan poistaa joku 
+    //T findOne(K key) throws SQLException; //tätä tarvitaan kun haetaan nimellä
+    ObservableList<T> findAll() throws SQLException; // kun halutaan kaikki esiin valikosta
+    K findYNumber(K name) throws SQLException;
+    void createCustomer(T customer) throws SQLException;
+    //T save(T object) throws SQLException; //halutaan päivittää tietoja
+    //void delete(K key) throws SQLException; // halutaan poistaa joku 
 }

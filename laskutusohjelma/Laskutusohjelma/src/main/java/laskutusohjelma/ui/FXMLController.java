@@ -16,32 +16,42 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import laskutusohjelma.dao.AsiakasDao;
+import laskutusohjelma.dao.FileAsiakasDao;
 import laskutusohjelma.dao.FileUserDao;
+import laskutusohjelma.dao.UserDao;
+import laskutusohjelma.domain.InvoiceService;
 import laskutusohjelma.domain.SQLiteDatabase;
-import laskutusohjelma.domain.User;
 
 /**
  *
  * @author ollijokinen
  */
 public class FXMLController implements Initializable {
-    private FileUserDao userDao;
     private SQLiteDatabase database;
+    private InvoiceService invoiceService;
+    private Paaohjelma application;
     
     @FXML
     private TextField username;
     
-    @FXML
-    private TextField status;
+   
     
     /*
     When you call this method, you'll login and change the scene to scene2 where you can
     create an invoice. 
     */
+    
+    public void setInvoiceService(InvoiceService invoiceService) {
+        this.invoiceService = invoiceService;
+    }
+    
+    public void setApplication(Paaohjelma application) {
+        this.application = application;
+    }
+
     
     /**
      * loginPressed metodia kutsutaan, kun käyttäjä painaa login etusivulla. Jos tunnus on validi, niin käyttäjä kirjautuu
@@ -51,32 +61,19 @@ public class FXMLController implements Initializable {
      * @throws IOException 
      */
     
+    
     @FXML
     public void loginPressed(ActionEvent event) throws IOException, SQLException {
-        System.out.println("User loggin' in...");
-        
-        //database = new SQLiteDatabase();
-        userDao = new FileUserDao(database);
-        if(userDao.findByUsername(username.getText())){
-            String welcomeNameForInvoiceView = userDao.returnName(username.getText());
+            if(invoiceService.loginCheck(username.getText())) {
+                invoiceService.setLoggedInUsername(username.getText());
+                application.setInvoiceScene2();
+            }else {
+                System.out.println("NOT GONNA HAPPEN!!");
+            }
             
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/FXMLLasku.fxml"));
-            Parent scene2Parent = loader.load();
-            Scene scene2View = new Scene(scene2Parent);
             
-            //access a controller and call a method
-            FXMLLaskuController controller = loader.getController();
-            controller.initData(welcomeNameForInvoiceView);
-            controller.fillComboBox();
             
-            createScene(event, scene2View);
-            
-        }else {
-            System.out.println("et pääse kirjautumaan");
-        }
-    
-        
+           
     }
     
     /**
@@ -88,9 +85,7 @@ public class FXMLController implements Initializable {
     @FXML
     public void signUpPressed(ActionEvent event) throws IOException {
         System.out.println("Signup pressed...");
-        Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXMLSignupInfo.fxml"));
-        Scene scene2View = new Scene(scene2Parent);
-        createScene(event, scene2View);
+        application.setSignUpScene();
     }
     
     /**
@@ -99,20 +94,19 @@ public class FXMLController implements Initializable {
      * @throws IOException 
      */
     
-    public void createScene(ActionEvent event, Scene newScene) {
+    /*public void createScene(ActionEvent event, Scene newScene) {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(newScene);
         window.show();
-    }
+    }*/
     
-    public void downloadCustomerList() {
-        
-    }
     
+ 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Loading user data....");
         System.out.println("Creating database for users and customers");
+        
     }    
     
 }

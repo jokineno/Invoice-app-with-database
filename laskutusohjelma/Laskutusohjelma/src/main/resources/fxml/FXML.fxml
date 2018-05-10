@@ -15,7 +15,6 @@
          <children>
             <Label layoutX="83.0" layoutY="23.0" text="Sign in" />
             <TextField fx:id="username" layoutX="21.0" layoutY="61.0" promptText="username" />
-            <TextField layoutX="21.0" layoutY="115.0" promptText="password" />
             <Button layoutX="71.0" layoutY="159.0" mnemonicParsing="false" onAction="#loginPressed" style="-fx-border-color: gold;" text="Login">
                <opaqueInsets>
                   <Insets />

@@ -21,13 +21,11 @@ import laskutusohjelma.domain.User;
 public class FileUserDao implements UserDao<User, String> {
     private SQLiteDatabase database;
     
-    public FileUserDao (SQLiteDatabase database) {
+    public FileUserDao () {
         this.database = database;
     }
     
    
-    
-    
    
     @Override
     public void create(User user) throws SQLException {
@@ -53,11 +51,11 @@ public class FileUserDao implements UserDao<User, String> {
     */
 
     @Override
-    public boolean findByUsername(String name) throws SQLException {
+    public boolean findByUsername(String username) throws SQLException {
         Connection conn = database.getConnection();
         
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM User WHERE username = ?");
-        stmt.setObject(1, name);
+        stmt.setObject(1, username);
         
         ResultSet rs = stmt.executeQuery();
         
@@ -74,7 +72,8 @@ public class FileUserDao implements UserDao<User, String> {
         
     }
     
-    public String returnUsername(String name) throws SQLException {
+    @Override
+    public String returnUsernameByName(String name) throws SQLException {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM User WHERE name = ?");
         stmt.setObject(1, name);
@@ -89,9 +88,10 @@ public class FileUserDao implements UserDao<User, String> {
         return name1;
     }
     
-    public String returnName(String name) throws SQLException {
+    @Override
+    public String returnNameByUsername(String name) throws SQLException {
         Connection conn = database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM User WHERE username = ?");
+        PreparedStatement stmt = conn.prepareStatement("SELECT name FROM User WHERE username = ?");
         stmt.setObject(1, name);
         ResultSet rs = stmt.executeQuery();
         String name1 = rs.getString("name");
@@ -100,15 +100,14 @@ public class FileUserDao implements UserDao<User, String> {
         rs.close();
         conn.close();
        
-        
-        
         return name1;
     }
     
-    public String returnYNumber(String name) throws SQLException {
+    @Override
+    public String returnYNumber(String username) throws SQLException {
         Connection conn = database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT yNumber FROM User WHERE name = ?");
-        stmt.setObject(1, name);
+        PreparedStatement stmt = conn.prepareStatement("SELECT yNumber FROM User WHERE username = ?");
+        stmt.setObject(1, username);
         ResultSet rs = stmt.executeQuery();
         String yNumber1 = rs.getString("yNumber");
         
@@ -120,10 +119,11 @@ public class FileUserDao implements UserDao<User, String> {
         return yNumber1;
     }
     
-    public String returnBankAccount(String name) throws SQLException {
+    @Override
+    public String returnBankAccount(String username) throws SQLException {
         Connection conn = database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT accountNumber FROM User WHERE name = ?");
-        stmt.setObject(1, name);
+        PreparedStatement stmt = conn.prepareStatement("SELECT accountNumber FROM User WHERE username = ?");
+        stmt.setObject(1, username);
         ResultSet rs = stmt.executeQuery();
         String accountNumber1 = rs.getString("accountNumber");
         
@@ -134,6 +134,7 @@ public class FileUserDao implements UserDao<User, String> {
         
         return accountNumber1;
     }
+    
     
     public String returnUsernameByname(String name) throws SQLException {
         Connection conn = database.getConnection();
@@ -151,6 +152,8 @@ public class FileUserDao implements UserDao<User, String> {
     
     }
     
+    
+    @Override
     public void save(User user) throws SQLException {
        
         Connection conn = this.database.getConnection();
@@ -165,5 +168,16 @@ public class FileUserDao implements UserDao<User, String> {
         stmt.executeUpdate();
         stmt.close();
         conn.close();
+    }
+    
+    @Override
+    public User returnUserByName(String name) throws SQLException {
+        String name1 = name;
+        String usName = returnUsernameByName(name);
+        String yNumber = returnYNumber(name);
+        String bank = returnBankAccount(name);
+        User user = new User(name, usName, yNumber, bank);
+        
+        return user;
     }
 }

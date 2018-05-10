@@ -21,7 +21,6 @@
       <VBox layoutX="166.0" layoutY="108.0" prefHeight="200.0" prefWidth="162.0">
          <children>
             <TextField fx:id="username" promptText="username" />
-            <TextField promptText="password" />
             <TextField fx:id="companyname" promptText="Company name" />
             <TextField fx:id="accountNumber" promptText="account number" />
             <TextField fx:id="yNumber" promptText="y-number" />

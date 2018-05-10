@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import laskutusohjelma.dao.FileUserDao;
+import laskutusohjelma.domain.InvoiceService;
 import laskutusohjelma.domain.SQLiteDatabase;
 import laskutusohjelma.domain.User;
 
@@ -31,6 +32,8 @@ import laskutusohjelma.domain.User;
 public class ProfileController implements Initializable {
     private FileUserDao userDao;
     private SQLiteDatabase database;
+    private InvoiceService invoiceService;
+    private Paaohjelma application;
 
     @FXML
     private TextField accountNumber;
@@ -54,6 +57,14 @@ public class ProfileController implements Initializable {
      * @throws java.io.IOException
      */
     
+    public void setInvoiceService(InvoiceService invoiceService) {
+        this.invoiceService = invoiceService;
+    }
+    
+    public void setApplication(Paaohjelma application) {
+        this.application = application;
+    }
+    
      /**
      * käyttäjä voi palata laskuihin
      * @param companyname
@@ -61,20 +72,29 @@ public class ProfileController implements Initializable {
      * @throws IOException 
      */
     
-    public void initDataToProfile(String companyname, String bankAccount, String yNumber1) {
-        name.setText(companyname);
-        accountNumber.setText(bankAccount);
-        yNumber.setText(yNumber1);
-        
+   
+    public void initDataToProfile1() throws SQLException {
+        name.setText(invoiceService.returnNameByUsername(invoiceService.getLoggedInUsername()));
+        accountNumber.setText(invoiceService.bankAccount(invoiceService.getLoggedInUsername()));
+        yNumber.setText(invoiceService.returnYNumber(invoiceService.getLoggedInUsername()));
     }
     
-    public void initUserName(String name) {
-        username.setText(name);
+    public void initUserName() {
+        username.setText(invoiceService.getLoggedInUsername());
     }
     
     @FXML
     public void saveChangesPressed(ActionEvent event) throws IOException, SQLException {
-        System.out.println("saving changes...");
+        
+        String newAccountNumber = accountNumber.getText();
+        String newYNumber = yNumber.getText();
+        String newCompanyname = name.getText();
+        User user = new User (newCompanyname, invoiceService.getLoggedInUsername(), newYNumber, newAccountNumber);
+        
+        invoiceService.saveChanges(user);
+        application.setProfileScene2();
+        
+        /*System.out.println("saving changes...");
         
         
         FXMLLoader loader = new FXMLLoader();
@@ -83,7 +103,7 @@ public class ProfileController implements Initializable {
         Scene scene1View = new Scene(scene1Parent);
         
         ProfileController controller = loader.getController();
-        userDao = new FileUserDao(database);
+        //userDao = new FileUserDao(database);
         String usernameStaysTheSame = userDao.returnUsernameByname(username.getText());
         String newAccountNumber = accountNumber.getText();
         String newYNumber = yNumber.getText();
@@ -101,23 +121,24 @@ public class ProfileController implements Initializable {
         //set left Upper corner name
         controller.username.setText(newCompanyname);
         
-        createScene(event, scene1View);
+        createScene(event, scene1View);*/
     }
     
     
     @FXML
     public void backPressed(ActionEvent event) throws IOException, SQLException {
         //String welcomeNameForInvoiceView = userDao.returnUsername(username);
-        FXMLLoader loader = new FXMLLoader();
+        application.setInvoiceScene();
+        /*FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/FXMLLasku.fxml"));
         Parent scene1Parent = loader.load();
         Scene scene1View = new Scene(scene1Parent);
         
         FXMLLaskuController controller = loader.getController();
-        controller.initData(username.getText());
-        controller.fillComboBox();
+        //controller.initData(username.getText());
+        //controller.fillComboBox();
         
-        createScene(event, scene1View);
+        createScene(event, scene1View);*/
     }
     
      /**
