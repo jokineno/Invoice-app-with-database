@@ -17,4 +17,5 @@ Päivämäärä | Aika | Tehtävä
 7.5.|6|
 8.5.|5|
 9.5.|8|
-Yhteensä|59|tuntia
+10.5.|6|
+Yhteensä|65|tuntia

@@ -35,6 +35,7 @@ import com.itextpdf.layout.element.Paragraph;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Random;
 
 
 public class PDFCreator {
@@ -132,6 +133,7 @@ public class PDFCreator {
         document.add(new Paragraph("\n" + "\n")); 
         document.add(new Paragraph("Message: " + product.getMessage())); 
         document.add(new Paragraph("Date: " + product.getDate())); 
+        document.add(new Paragraph("Reference number: " + referenceNumberGenerator()));
         document.add(new Paragraph("\n" + "\n"));
         document.add(new Paragraph("FROM: \n" + "Company: " + user.getName() + "\n" + "Bank account: " + user.getTilinumero() + "\n" + "yNumber: " + user.getYtunnus()));  
         
@@ -161,6 +163,11 @@ public class PDFCreator {
        
         
         document.close();
+    }
+    
+    public Integer referenceNumberGenerator() {
+        return new Random().nextInt(9999-1000)+1000;
+              
     }
     
    /* public static Cell createBarcode (String code, PdfDocument pdfDoc) {
