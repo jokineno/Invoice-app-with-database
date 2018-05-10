@@ -91,7 +91,7 @@ public class PDFCreator {
     }
  
     
-    public void runPDF(String dest,Product product, User user, Asiakas customer) throws IOException {
+    public void runPDF(String dest, Product product, User user, Customer customer) throws IOException {
         File file = new File(DEST + dest);
         file.getParentFile().mkdirs();
         //new PDFCreator().createPDF(DEST, product, user, customer);
@@ -107,7 +107,7 @@ public class PDFCreator {
      * @throws IOException 
      */
     
-    public void createPDF(String dest, Product product, User user, Asiakas customer) throws IOException {
+    public void createPDF(String dest, Product product, User user, Customer customer) throws IOException {
         FileOutputStream fos = new FileOutputStream(dest);
         PdfWriter writer = new PdfWriter(fos);
         PdfDocument pdf = new PdfDocument(writer);
@@ -121,14 +121,14 @@ public class PDFCreator {
     *Tässä täytetään laskun tiedot 
     */
      
-    public void invoiceText(Document document, Product product, User user, Asiakas customer) {
+    public void invoiceText(Document document, Product product, User user, Customer customer) {
         //layout
         document.add(new Paragraph("\n" + "\n"));  
         document.add(new Paragraph("\n" + "\n"));  
         document.add(new Paragraph("TO: "));
         document.add(new Paragraph("Customer: " + customer.getName() + "\n" + "Customer's yNumber: " + customer.getyTunnus()));
         document.add(new Paragraph("\n" + "\n"));  
-        document.add(new Paragraph("Product: " + product.getPname() + "\n  " + "Price per unit: " + product.getPpu()  +"\n"+ "Amount: " + product.getAmount() + "\n  " + "VAT%: " + product.getVat()));
+        document.add(new Paragraph("Product: " + product.getPname() + "\n " + "Price per unit: " + product.getPpu() + "\n" + "Amount: " + product.getAmount() + "\n  " + "VAT%: " + product.getVat()));
         document.add(new Paragraph("FINAL PRICE: " + product.getPrice()));
         document.add(new Paragraph("\n" + "\n")); 
         document.add(new Paragraph("Message: " + product.getMessage())); 
@@ -140,7 +140,7 @@ public class PDFCreator {
         document.close(); 
     }
     
-    public void createPdf(String dest, Product product, User user, Asiakas customer ) throws IOException {
+    public void createPdf(String dest, Product product, User user, Customer customer) throws IOException {
         PdfDocument pdf = new PdfDocument(new PdfWriter(dest));
         PageSize pagesize = PageSize.A4; //page size is A4
         Document document = new Document(pdf, pagesize);
@@ -157,7 +157,7 @@ public class PDFCreator {
         //document.add(createBarcode(dest, pdf));
         
         //add invoice details - customer, price etc. 
-        invoiceText(document,product, user, customer);
+        invoiceText(document, product, user, customer);
         
         
        
@@ -166,8 +166,7 @@ public class PDFCreator {
     }
     
     public Integer referenceNumberGenerator() {
-        return new Random().nextInt(9999-1000)+1000;
-              
+        return new Random().nextInt(9999 - 1000) + 1000;
     }
     
    /* public static Cell createBarcode (String code, PdfDocument pdfDoc) {

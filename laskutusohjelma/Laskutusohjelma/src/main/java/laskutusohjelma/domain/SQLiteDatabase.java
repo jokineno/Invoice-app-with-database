@@ -2,31 +2,45 @@
 package laskutusohjelma.domain;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
+
+
 public class SQLiteDatabase {
     
     private static File file1;
-    private static Boolean test =false;
+    private static Boolean test = false;
     private static Connection conn;
     private static Boolean hasData = false;
     private static Boolean hasData2 = false;
+   
     public SQLiteDatabase() {
+        
     }
     
     public SQLiteDatabase(File file) {
         file1 = file;
     }
   
-    public static Connection getConnection() throws SQLException {
-
+    public static Connection getConn() throws SQLException, IOException {
+        
+        Properties properties = new Properties();
+        properties.load(new FileInputStream("config.properties"));
+        String databaseFile = properties.getProperty("mainDatabase");
+        
         if (test) {
-            conn = DriverManager.getConnection("jdbc:sqlite:" + file1.getAbsolutePath());
+            //conn = DriverManager.getConnection("jdbc:sqlite:" + file1.getAbsolutePath());
+            conn = DriverManager.getConnection("jdbc:sqlite" + databaseFile);
             try {
                 Class.forName("org.sqlite.JDBC");
             } catch (ClassNotFoundException ex) {
                 System.out.println(ex);
+                
             }
-            conn = DriverManager.getConnection("jdbc:sqlite:asiakasrekisteriDB.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:" + databaseFile);
+            
            
             initCustomer();
             initUser();
@@ -37,7 +51,7 @@ public class SQLiteDatabase {
             } catch (ClassNotFoundException ex) {
                 System.out.println(ex);
             }
-            conn = DriverManager.getConnection("jdbc:sqlite:asiakasrekisteriDB.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:" + databaseFile);
             
             initCustomer();
             initUser();
@@ -51,20 +65,20 @@ public class SQLiteDatabase {
     Method creates user table into database. 
     */
     private static void initUser() throws SQLException {
-            if(!hasData) {
-                hasData = true;
+        if (!hasData) {
+            hasData = true;
             
-                Statement stmt = conn.createStatement();
-                PreparedStatement stmt2 = conn.prepareStatement("CREATE TABLE IF NOT EXISTS User"
-                    + "(name String NOT NULL, username String NOT NULL PRIMARY KEY,"
-                    + " yNumber String,"
-                    + " accountNumber String)");
-                stmt2.execute();
-                stmt.close();
-                stmt2.close();
-                stmt.close();
-         
-            }
+            Statement stmt = conn.createStatement();
+            PreparedStatement stmt2 = conn.prepareStatement("CREATE TABLE IF NOT EXISTS User"
+                + "(name String NOT NULL, username String NOT NULL PRIMARY KEY,"
+                + " yNumber String,"
+                + " accountNumber String)");
+            stmt2.execute();
+            stmt.close();
+            stmt2.close();
+            stmt.close();
+        
+        }
    
     }
     
@@ -72,35 +86,36 @@ public class SQLiteDatabase {
     Method creates Customer table to database. 
     */
     private static void initCustomer() throws SQLException {
-            if(!hasData2) {
-                hasData2 = true;
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT name FROM sqlite_master WHERE type='table'");
+        if (!hasData2) {
+            hasData2 = true;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT name FROM sqlite_master WHERE type='table'");
                 
-                if(!rs.next()) {
-                    PreparedStatement stmt2 = conn.prepareStatement("CREATE TABLE Customer"
-                        + "(id Integer NOT NULL PRIMARY KEY, name String NOT NULL,"
-                        + " yNumber String)");
-                    stmt2.execute();
+            if (!rs.next()) {
+                PreparedStatement stmt2 = conn.prepareStatement("CREATE TABLE Customer"
+                    + "(id Integer NOT NULL PRIMARY KEY, name String NOT NULL,"
+                    + " yNumber String)");
+                stmt2.execute();
         
-                    PreparedStatement prep = conn.prepareStatement("INSERT INTO Customer"
-                        + "(id, name, yNumber)"
-                        + " VALUES (?,?,?)");
-                    prep.setInt(1, 1);
-                    prep.setString(2, "exampleCustomer");
-                    prep.setString(3, "1234567-8");
+                PreparedStatement prep = conn.prepareStatement("INSERT INTO Customer"
+                    + "(id, name, yNumber)"
+                    + " VALUES (?,?,?)");
+                prep.setInt(1, 1);
+                prep.setString(2, "exampleCustomer");
+                prep.setString(3, "1234567-8");
         
-                    prep.executeUpdate();
+                prep.executeUpdate();
     
-                    stmt.close();
-                    prep.close();
-                    stmt2.close();
-                }
-            
-            
                 stmt.close();
-            
+                prep.close();
+                stmt2.close();
+                
             }
+            
+            
+            stmt.close();
+            
+        }
     }
 }
     

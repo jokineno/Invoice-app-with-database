@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import laskutusohjelma.domain.Asiakas;
+import laskutusohjelma.domain.Customer;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

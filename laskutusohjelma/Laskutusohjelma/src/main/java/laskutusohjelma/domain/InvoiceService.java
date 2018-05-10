@@ -18,7 +18,7 @@ public class InvoiceService  {
     private String username;
     
        
-    public InvoiceService (FileUserDao userDao, FileAsiakasDao asiakasDao) {
+    public InvoiceService(FileUserDao userDao, FileAsiakasDao asiakasDao) {
         this.userDao = userDao;
         this.asiakasDao = asiakasDao;
         this.database = new SQLiteDatabase();
@@ -27,13 +27,17 @@ public class InvoiceService  {
     }
     
     public  void initializeDatabase() throws SQLException {
-        this.database.getConnection();
+        try {
+            this.database.getConn();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
     
     public boolean loginCheck(String username) throws SQLException {
         if (userDao.findByUsername(username)) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -54,7 +58,7 @@ public class InvoiceService  {
         this.userDao.create(user);
     }
     
-    public void addNewCustomer(Asiakas customer) throws SQLException {
+    public void addNewCustomer(Customer customer) throws SQLException {
         this.asiakasDao.createCustomer(customer);
     }
     
@@ -62,11 +66,11 @@ public class InvoiceService  {
         return this.userDao.returnBankAccount(username);
     }
     
-    public String returnYNumber (String username) throws SQLException {
+    public String returnYNumber(String username) throws SQLException {
         return this.userDao.returnYNumber(username);
     }
     
-    public ObservableList<Asiakas> fillComboBox() throws SQLException {
+    public ObservableList<Customer> fillComboBox() throws SQLException {
         return this.asiakasDao.findAll();
     }
     
@@ -82,15 +86,15 @@ public class InvoiceService  {
         String name = this.userDao.returnNameByUsername(username1);
         String yNumber = this.userDao.returnYNumber(username1);
         String accountNumber = this.userDao.returnBankAccount(username1);
-        return new User (name, username1, yNumber, accountNumber);
+        return new User(name, username1, yNumber, accountNumber);
                 
     }
     
-    public void createPDF(String pdfName, Product productName, User user, Asiakas customer) throws IOException {
+    public void createPDF(String pdfName, Product productName, User user, Customer customer) throws IOException {
         
         if (pdfName.equals("")) {
             this.pdfcreator.runPDF("newInvoice" + productName.getDate(), productName, user, customer);
-        }else {
+        } else {
             this.pdfcreator.runPDF(pdfName, productName, user, customer);
         }
     }
@@ -102,7 +106,7 @@ public class InvoiceService  {
             Double.parseDouble(amount);
             Integer.parseInt(vat);
             Double.parseDouble(finalPrice);
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             System.out.println("CHECK YOU NUMBER FORMATTING!");
             return false;
         }

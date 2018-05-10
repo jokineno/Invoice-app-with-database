@@ -2,12 +2,12 @@
 package laskutusohjelma.domain;
 
 
-public class Asiakas {
+public class Customer {
     private Integer id;
     private String name; 
     private String yTunnus;
     
-    public Asiakas(Integer id, String name, String yTunnus) {
+    public Customer(Integer id, String name, String yTunnus) {
         this.id = id;
         this.name = name;
         this.yTunnus = yTunnus;

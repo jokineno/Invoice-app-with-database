@@ -11,7 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import laskutusohjelma.domain.Asiakas;
+import laskutusohjelma.domain.Customer;
 import laskutusohjelma.domain.InvoiceService;
 import laskutusohjelma.domain.Product;
 import laskutusohjelma.domain.SQLiteDatabase;
@@ -132,7 +132,7 @@ public class FXMLLaskuController implements Initializable {
             
             Product newProduct = new Product(product1, vat1,  final1, amount1, ppu,message1, date1);
             User user = invoiceService.returnUserByUsername(invoiceService.getLoggedInUsername());
-            Asiakas customer = new Asiakas(1, receive, yNumber1);
+            Customer customer = new Customer(1, receive, yNumber1);
         
             invoiceService.createPDF(pdfname, newProduct, user, customer);
         }
@@ -144,8 +144,8 @@ public class FXMLLaskuController implements Initializable {
         
     }
     
-    public Asiakas addCustomer() {
-       return new Asiakas (1,customerName.getText(), customerYNumber.getText());
+    public Customer addCustomer() {
+       return new Customer (1,customerName.getText(), customerYNumber.getText());
     }
     
     public void addCustomerPressed(ActionEvent event) throws IOException, SQLException {
