@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package laskutusohjelma.domain;
 
 import java.io.IOException;
@@ -13,10 +9,7 @@ import laskutusohjelma.dao.FileAsiakasDao;
 import laskutusohjelma.dao.FileUserDao;
 import laskutusohjelma.dao.UserDao;
 
-/**
- *
- * @author ollijokinen
- */
+
 public class InvoiceService  {
     private FileUserDao userDao;
     private FileAsiakasDao asiakasDao;
@@ -33,12 +26,10 @@ public class InvoiceService  {
         this.pdfcreator = new PDFCreator();
     }
     
-    
     public  void initializeDatabase() throws SQLException {
         this.database.getConnection();
     }
     
-   
     public boolean loginCheck(String username) throws SQLException {
         if (userDao.findByUsername(username)) {
             return true;
@@ -46,11 +37,11 @@ public class InvoiceService  {
             return false;
         }
     }
-   
     
     public String getLoggedInUsername() {
         return this.username;
     }
+    
     public void setLoggedInUsername(String username) {
         this.username = username;
     }
@@ -102,6 +93,20 @@ public class InvoiceService  {
         }else {
             this.pdfcreator.runPDF(pdfName, productName, user, customer);
         }
+    }
+    
+    public boolean checkTextFields(String ppu, String amount, String vat, String finalPrice) {
+        
+        try {
+            Double.parseDouble(ppu);
+            Double.parseDouble(amount);
+            Integer.parseInt(vat);
+            Double.parseDouble(finalPrice);
+        }catch (NumberFormatException e) {
+            System.out.println("CHECK YOU NUMBER FORMATTING!");
+            return false;
+        }
+        return true;
     }
     
     

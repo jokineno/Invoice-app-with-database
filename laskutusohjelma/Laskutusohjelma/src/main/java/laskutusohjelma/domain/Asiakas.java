@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package laskutusohjelma.domain;
 
-/**
- *
- * @author ollijokinen
- */
+
 public class Asiakas {
     private Integer id;
     private String name; 
     private String yTunnus;
-    
     
     public Asiakas(Integer id, String name, String yTunnus) {
         this.id = id;
@@ -46,6 +38,7 @@ public class Asiakas {
         this.yTunnus = yTunnus;
     }
     
+    @Override
     public String toString() {
         return "" + this.name;
     }

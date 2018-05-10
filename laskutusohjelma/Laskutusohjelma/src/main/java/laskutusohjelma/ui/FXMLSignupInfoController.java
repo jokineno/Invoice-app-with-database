@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package laskutusohjelma.ui;
 
 import java.io.IOException;
@@ -80,12 +76,12 @@ public class FXMLSignupInfoController implements Initializable {
         System.out.println("Creating an account and signing up...");
         
         User user = new User (companyname.getText(), username.getText(), yNumber.getText(), accountNumber.getText());
-        if (username.getText().isEmpty() == false) {
+        if (username.getText().isEmpty() == false && invoiceService.loginCheck(username.getText()) == false) {
         invoiceService.createUser(user);
         invoiceService.setLoggedInUsername(username.getText());
         application.setInvoiceScene2();
         }else {
-            System.out.println("try again");
+            System.out.println("empty username or username is already in use");
         }
     }
     

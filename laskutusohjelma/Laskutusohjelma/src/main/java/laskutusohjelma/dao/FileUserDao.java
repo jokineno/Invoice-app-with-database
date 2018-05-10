@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package laskutusohjelma.dao;
 
 import java.sql.Connection;
@@ -14,10 +10,6 @@ import java.util.List;
 import laskutusohjelma.domain.SQLiteDatabase;
 import laskutusohjelma.domain.User;
 
-/**
- *
- * @author ollijokinen
- */
 public class FileUserDao implements UserDao<User, String> {
     private SQLiteDatabase database;
     
@@ -25,8 +17,6 @@ public class FileUserDao implements UserDao<User, String> {
         this.database = database;
     }
     
-   
-   
     @Override
     public void create(User user) throws SQLException {
         Connection conn = database.getConnection();
@@ -64,7 +54,6 @@ public class FileUserDao implements UserDao<User, String> {
             return false;
         }
         
-       
         stmt.close();
         rs.close();
         conn.close();
@@ -115,7 +104,6 @@ public class FileUserDao implements UserDao<User, String> {
         rs.close();
         conn.close();
         
-        
         return yNumber1;
     }
     
@@ -130,7 +118,6 @@ public class FileUserDao implements UserDao<User, String> {
         stmt.close();
         rs.close();
         conn.close();
-        
         
         return accountNumber1;
     }
@@ -147,9 +134,7 @@ public class FileUserDao implements UserDao<User, String> {
         rs.close();
         conn.close();
         
-        
         return username;
-    
     }
     
     
@@ -163,7 +148,6 @@ public class FileUserDao implements UserDao<User, String> {
         stmt.setObject(1, user.getName());
         stmt.setObject(2, user.getYtunnus());
         stmt.setObject(3, user.getTilinumero());
-        
         
         stmt.executeUpdate();
         stmt.close();

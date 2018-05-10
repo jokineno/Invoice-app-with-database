@@ -1,11 +1,6 @@
 
 package laskutusohjelma.domain;
 
-/**
- *
- * @author ollijokinen
- * Class where you create a connection to a database
- */
 import java.io.File;
 import java.sql.*;
 public class SQLiteDatabase {
@@ -25,7 +20,6 @@ public class SQLiteDatabase {
     public static Connection getConnection() throws SQLException {
 
         if (test) {
-            System.out.println("jeejeeej");
             conn = DriverManager.getConnection("jdbc:sqlite:" + file1.getAbsolutePath());
             try {
                 Class.forName("org.sqlite.JDBC");
@@ -62,7 +56,7 @@ public class SQLiteDatabase {
             
                 Statement stmt = conn.createStatement();
                 PreparedStatement stmt2 = conn.prepareStatement("CREATE TABLE IF NOT EXISTS User"
-                    + "(name String, username String,"
+                    + "(name String NOT NULL, username String NOT NULL PRIMARY KEY,"
                     + " yNumber String,"
                     + " accountNumber String)");
                 stmt2.execute();
@@ -85,7 +79,7 @@ public class SQLiteDatabase {
                 
                 if(!rs.next()) {
                     PreparedStatement stmt2 = conn.prepareStatement("CREATE TABLE Customer"
-                        + "(id Integer, name String,"
+                        + "(id Integer NOT NULL PRIMARY KEY, name String NOT NULL,"
                         + " yNumber String)");
                     stmt2.execute();
         

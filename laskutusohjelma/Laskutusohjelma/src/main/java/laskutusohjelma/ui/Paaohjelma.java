@@ -9,22 +9,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import laskutusohjelma.dao.AsiakasDao;
 import laskutusohjelma.dao.FileAsiakasDao;
 import laskutusohjelma.dao.FileUserDao;
-import laskutusohjelma.dao.UserDao;
 import laskutusohjelma.domain.InvoiceService;
-import laskutusohjelma.domain.SQLiteDatabase;
-import laskutusohjelma.ui.FXMLLaskuController;
 
 /**
  *
@@ -37,8 +28,6 @@ public class Paaohjelma extends Application {
     
     private InvoiceService invoiceService; 
    
-    
-    
     public void initializeDatabase() throws SQLException {
         invoiceService.initializeDatabase();
     }
@@ -92,7 +81,6 @@ public class Paaohjelma extends Application {
         ProfileController profileViewController = profileView.getController();
         profileViewController.setInvoiceService(invoiceService); 
         profileViewController.setApplication(this);
-        //profileViewController.initDataToProfile1();
         profileScene = new Scene(profilePane);
        
     }
@@ -111,6 +99,7 @@ public class Paaohjelma extends Application {
         stage.setScene(profileScene);
     }
     
+    //profile loader for ui
     public void setProfileScene2() throws IOException, SQLException {
         FXMLLoader profileView = new FXMLLoader(getClass().getResource("/fxml/Profile.fxml"));
         Parent profilePane = profileView.load();
@@ -123,11 +112,11 @@ public class Paaohjelma extends Application {
         stage.setScene(profileScene);
     }
     
-    
-    
     public void setInvoiceScene() {
         stage.setScene(invoiceScene);
     }
+    
+    //invoice loader for ui. 
     public void setInvoiceScene2() throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/FXMLLasku.fxml"));
@@ -141,10 +130,6 @@ public class Paaohjelma extends Application {
         invoiceScene = new Scene(invoicePane);
         stage.setScene(invoiceScene);
     }
-    
-    
-    
-    
     
     /**
      * @param args the command line arguments

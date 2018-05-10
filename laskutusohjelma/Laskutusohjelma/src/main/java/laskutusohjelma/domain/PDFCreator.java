@@ -1,9 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package laskutusohjelma.domain;
+
+import com.itextpdf.barcodes.BarcodeEAN;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Table;
+//import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+//import org.junit.experimental.categories.Category;
+
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -27,10 +35,8 @@ import com.itextpdf.layout.element.Paragraph;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-/**
- *
- * @author ollijokinen
- */
+
+
 public class PDFCreator {
     public static final String DEST = "PDFfiles/";
     /**
@@ -121,15 +127,11 @@ public class PDFCreator {
         document.add(new Paragraph("TO: "));
         document.add(new Paragraph("Customer: " + customer.getName() + "\n" + "Customer's yNumber: " + customer.getyTunnus()));
         document.add(new Paragraph("\n" + "\n"));  
-        document.add(new Paragraph("Product: " + product.getPname() + "\n  " + "Amount: " + product.getAmount() + "\n  " + "VAT%: " + product.getVat()));
+        document.add(new Paragraph("Product: " + product.getPname() + "\n  " + "Price per unit: " + product.getPpu()  +"\n"+ "Amount: " + product.getAmount() + "\n  " + "VAT%: " + product.getVat()));
         document.add(new Paragraph("FINAL PRICE: " + product.getPrice()));
         document.add(new Paragraph("\n" + "\n")); 
         document.add(new Paragraph("Message: " + product.getMessage())); 
         document.add(new Paragraph("Date: " + product.getDate())); 
-        document.add(new Paragraph("\n" + "\n"));  
-        document.add(new Paragraph("\n" + "\n"));  
-        document.add(new Paragraph("\n" + "\n")); 
-        document.add(new Paragraph("\n" + "\n"));
         document.add(new Paragraph("\n" + "\n"));
         document.add(new Paragraph("FROM: \n" + "Company: " + user.getName() + "\n" + "Bank account: " + user.getTilinumero() + "\n" + "yNumber: " + user.getYtunnus()));  
         
@@ -150,10 +152,26 @@ public class PDFCreator {
         p.addTabStops(tabstops);
         p.add(new Tab()).add("Incredible Invoices").add(new Tab());
         document.add(p);
+        //document.add(createBarcode(dest, pdf));
         
         //add invoice details - customer, price etc. 
         invoiceText(document,product, user, customer);
         
+        
+       
+        
         document.close();
     }
+    
+   /* public static Cell createBarcode (String code, PdfDocument pdfDoc) {
+        BarcodeEAN barcode = new BarcodeEAN(pdfDoc);
+        barcode.setCodeType(BarcodeEAN.EAN8);
+        barcode.setCode(code);
+        Cell cell = new Cell().add(new Image(barcode.createFormXObject(null, null, pdfDoc)));
+        cell.setPaddingTop(10);
+        cell.setPaddingRight(10);
+        cell.setPaddingBottom(10);
+        cell.setPaddingLeft(10);
+        return cell;
+    }*/
 }    

@@ -1,13 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author ollijokinen
- */
 
 package laskutusohjelma.dao;
 import java.util.*;
@@ -62,28 +52,6 @@ public class FileAsiakasDao implements AsiakasDao<Asiakas, String> {
         
     }
     
-   /* @Override
-    public Asiakas findOne(String name) throws SQLException {
-        Connection conn = database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Asiakas WHERE name = ?");
-        stmt.setString(1, name);
-
-        ResultSet rs = stmt.executeQuery();
-        boolean hasOne = rs.next();
-        if (!hasOne) {
-            return null;
-        }
-
-        Asiakas a = new Asiakas(rs.getInt("id"), rs.getString("name"),
-            rs.getString("yNumber"));
-  
-        stmt.close();
-        rs.close();
-        conn.close();
-
-        return a;
-        
-    }*/
     @Override
     public String findYNumber(String name) throws SQLException {
         Connection conn = this.database.getConnection();
@@ -131,49 +99,5 @@ public class FileAsiakasDao implements AsiakasDao<Asiakas, String> {
         conn.close();
         return asiakkaat;
     }
-     /**
-     * tallennetaan asiakas
-     * @param event
-     * @throws IOException 
-     */
-
-    /**
-     * tallennetaan asiakas
-     * @param asiakas
-     * @param event
-     * @throws IOException
-     */
    
-    /*@Override
-    //ensiksi vain tallennetaan myöhemmin voidaan myös muokata
-    public Asiakas save(Asiakas asiakas) throws SQLException {
-        Connection conn = database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Customer" + " (id, name, yNumber)" +  "VALUES (?,?,?)");
-        
-        stmt.setInt(1, asiakas.getId());
-        stmt.setString(2, asiakas.getName());
-        stmt.setString(3, asiakas.getyTunnus());
-        
-        Asiakas a = new Asiakas(asiakas.getId(), asiakas.getName(), asiakas.getyTunnus());
-        return a;
-    }  */ 
-    
-     /**
-     * poistetaan asiakas
-     * @param event
-     * @throws IOException 
-     */
-  
-    /*@Override
-    public void delete(String name) throws SQLException {
-        Connection conn = database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("DELETE FROM Customer WHERE name = ?");
-
-        stmt.setString(1, name);
-        stmt.executeUpdate();
-
-        stmt.close();
-        conn.close();
-    }
-    */
 }
