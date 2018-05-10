@@ -12,7 +12,6 @@ package laskutusohjelma.domain;
 public class User {
     private String name; 
     private String username; //email address
-    private String password;
     private String ytunnus;
     private String tilinumero;
     

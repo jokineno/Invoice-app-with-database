@@ -41,6 +41,8 @@ public class PDFCreator {
      * @throws IOException 
      * runPDF metodi luo itse pdf tiedoston annettuun tallennussijaintiin
      */
+    
+    
     class MyLine implements ILineDrawer {
         private float lineWidth = 1;
         private float offset = 5;
@@ -104,8 +106,6 @@ public class PDFCreator {
         PdfDocument pdf = new PdfDocument(writer);
         Document document = new Document(pdf);
         invoiceText(document, product, user, customer);
-        
-       
     }
     
     /**
@@ -115,22 +115,22 @@ public class PDFCreator {
     */
      
     public void invoiceText(Document document, Product product, User user, Asiakas customer) {
-        
-        document.add(new Paragraph("\n" + "\n"));  //from the user
+        //layout
+        document.add(new Paragraph("\n" + "\n"));  
         document.add(new Paragraph("\n" + "\n"));  
         document.add(new Paragraph("TO: "));
         document.add(new Paragraph("Customer: " + customer.getName() + "\n" + "Customer's yNumber: " + customer.getyTunnus()));
         document.add(new Paragraph("\n" + "\n"));  
         document.add(new Paragraph("Product: " + product.getPname() + "\n  " + "Amount: " + product.getAmount() + "\n  " + "VAT%: " + product.getVat()));
-        document.add(new Paragraph("\n" + "\n"));  //from the user
         document.add(new Paragraph("FINAL PRICE: " + product.getPrice()));
-        document.add(new Paragraph("Message: " + product.getMessage())); //from the user
-        document.add(new Paragraph("Date: " + product.getDate()));  //from the user
-        document.add(new Paragraph("\n" + "\n"));  //from the user
+        document.add(new Paragraph("\n" + "\n")); 
+        document.add(new Paragraph("Message: " + product.getMessage())); 
+        document.add(new Paragraph("Date: " + product.getDate())); 
         document.add(new Paragraph("\n" + "\n"));  
-        document.add(new Paragraph("\n" + "\n"));  //from the user
+        document.add(new Paragraph("\n" + "\n"));  
+        document.add(new Paragraph("\n" + "\n")); 
         document.add(new Paragraph("\n" + "\n"));
-        document.add(new Paragraph("\n" + "\n"));  //from the user
+        document.add(new Paragraph("\n" + "\n"));
         document.add(new Paragraph("FROM: \n" + "Company: " + user.getName() + "\n" + "Bank account: " + user.getTilinumero() + "\n" + "yNumber: " + user.getYtunnus()));  
         
         document.close(); 
@@ -138,19 +138,21 @@ public class PDFCreator {
     
     public void createPdf(String dest, Product product, User user, Asiakas customer ) throws IOException {
         PdfDocument pdf = new PdfDocument(new PdfWriter(dest));
-        PageSize pagesize = PageSize.A4;
+        PageSize pagesize = PageSize.A4; //page size is A4
         Document document = new Document(pdf, pagesize);
+        
         float w = pagesize.getWidth() - document.getLeftMargin() - document.getRightMargin();
         MyLine line = new MyLine();
         List<TabStop> tabstops = new ArrayList();
-        tabstops.add(new TabStop(w / 2, TabAlignment.CENTER, line));
+        tabstops.add(new TabStop(w / 2, TabAlignment.CENTER, line));  //title to center
         tabstops.add(new TabStop(w, TabAlignment.LEFT, line));
         Paragraph p = new Paragraph();
         p.addTabStops(tabstops);
-        p.add(new Tab()).add("Invoice").add(new Tab());
+        p.add(new Tab()).add("Incredible Invoices").add(new Tab());
         document.add(p);
+        
+        //add invoice details - customer, price etc. 
         invoiceText(document,product, user, customer);
-        //document.add(p);
         
         document.close();
     }

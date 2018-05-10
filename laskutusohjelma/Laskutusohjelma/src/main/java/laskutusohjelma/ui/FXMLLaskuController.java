@@ -194,7 +194,7 @@ public class FXMLLaskuController implements Initializable {
     public void createPdfInvoicePressed(ActionEvent event) throws IOException, SQLException {
         System.out.println("create pdf pressed");
         
-        //userDao = new FileUserDao(database);
+        //textfields
         String receive = receiver.getText();
         String yNumber1 = yNumber.getText();
         String product1 = product.getText();
@@ -207,16 +207,10 @@ public class FXMLLaskuController implements Initializable {
         String pdfname = namethepdf.getText();
         
         Product newProduct = new Product(product1, vat1, final1, amount1, message1, date1);
-        //User user = userDao.returnUserByName(welcomeuser.getText());
+        User user = invoiceService.returnUserByUsername(invoiceService.getLoggedInUsername());
         Asiakas customer = new Asiakas(1, receive, yNumber1);
         
-        PDFCreator creator = new PDFCreator();
-        
-        if (pdfname.equals("")) {
-        creator.runPDF("newInvoice", newProduct, user, customer);
-        }else {
-            creator.runPDF(pdfname, newProduct, user, customer);
-        }
+        invoiceService.createPDF(pdfname, newProduct, user, customer);
         
     }
     

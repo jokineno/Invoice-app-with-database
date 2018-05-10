@@ -5,6 +5,7 @@
  */
 package laskutusohjelma.domain;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import javafx.collections.ObservableList;
 import laskutusohjelma.dao.AsiakasDao;
@@ -29,6 +30,7 @@ public class InvoiceService  {
         this.asiakasDao = asiakasDao;
         this.database = new SQLiteDatabase();
         this.username = username;
+        this.pdfcreator = new PDFCreator();
     }
     
     
@@ -83,6 +85,23 @@ public class InvoiceService  {
     
     public void saveChanges(User user) throws SQLException {
         this.userDao.save(user);
+    }
+    
+    public User returnUserByUsername(String username1) throws SQLException {
+        String name = this.userDao.returnNameByUsername(username1);
+        String yNumber = this.userDao.returnYNumber(username1);
+        String accountNumber = this.userDao.returnBankAccount(username1);
+        return new User (name, username1, yNumber, accountNumber);
+                
+    }
+    
+    public void createPDF(String pdfName, Product productName, User user, Asiakas customer) throws IOException {
+        
+        if (pdfName.equals("")) {
+            this.pdfcreator.runPDF("newInvoice" + productName.getDate(), productName, user, customer);
+        }else {
+            this.pdfcreator.runPDF(pdfName, productName, user, customer);
+        }
     }
     
     

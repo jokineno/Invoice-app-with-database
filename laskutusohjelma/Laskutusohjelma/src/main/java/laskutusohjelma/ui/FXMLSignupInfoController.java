@@ -79,20 +79,14 @@ public class FXMLSignupInfoController implements Initializable {
     public void createAccountPressed(ActionEvent event) throws IOException, SQLException {
         System.out.println("Creating an account and signing up...");
         
-       /* //create account based on textfields that user has filled up
-        User user = new User(companyname.getText(), username.getText(), yNumber.getText(), accountNumber.getText());
+        User user = new User (companyname.getText(), username.getText(), yNumber.getText(), accountNumber.getText());
+        if (username.getText().isEmpty() == false) {
         invoiceService.createUser(user);
-        
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/FXMLLasku.fxml"));
-        Parent scene1Parent = loader.load();
-        Scene scene1View = new Scene(scene1Parent);
-        
-        FXMLLaskuController controller = loader.getController();
-        controller.initData(companyname.getText());
-        controller.fillComboBox();
-        createScene(event, scene1View);*/
-        
+        invoiceService.setLoggedInUsername(username.getText());
+        application.setInvoiceScene2();
+        }else {
+            System.out.println("try again");
+        }
     }
     
      /**
@@ -104,9 +98,6 @@ public class FXMLSignupInfoController implements Initializable {
     public void backPressed(ActionEvent event) throws IOException {
         System.out.println("back pressed...");
         application.setLoginScene();
-        /*Parent scene2Parent = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
-        Scene scene2View = new Scene(scene2Parent);
-        createScene(event, scene2View);*/
         
     }
     
@@ -116,11 +107,7 @@ public class FXMLSignupInfoController implements Initializable {
      * @throws IOException 
      */
     
-    public void createScene(ActionEvent event, Scene newScene) {
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(newScene);
-        window.show();
-    }
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
