@@ -8,6 +8,9 @@ Ohjelma käynnistetään komennolla
 
 java -jar laskutusohjelma.jar
 
+Mikäli ohjelma ei käynnisty, niin lataa config.properties samaan kansioon, kuin jossa .jar tiedosto on. 
+
+
 # Ilmoitusten seuraaminen <h2> 
 
 Ilmoitukset tulevat konsoliin. 
