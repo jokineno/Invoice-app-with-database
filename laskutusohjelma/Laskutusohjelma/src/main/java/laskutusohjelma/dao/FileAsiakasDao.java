@@ -7,6 +7,10 @@ import javafx.collections.ObservableList;
 import laskutusohjelma.domain.Customer;
 import laskutusohjelma.domain.SQLiteDatabase;
 
+/**
+ * creates methods that are defined in asiakasDao
+ * @author ollijokinen
+ */
 public class FileAsiakasDao implements AsiakasDao<Customer, String> {
     
     final SQLiteDatabase database; 
@@ -15,13 +19,11 @@ public class FileAsiakasDao implements AsiakasDao<Customer, String> {
         this.database = database;
     }
     
-     /**
-     * etsitään asiakas tietokannasta
-     * @param event
-     * @throws java.sql.SQLException
-     * @throws IOException 
+    /**
+     * Counts a tableSize of a CustomerTable. It is used to generate a new id for a customer.
+     * @return Integer
+     * @throws SQLException database error catched
      */
-    
     public Integer tableSize() throws SQLException {
         try {
             Connection conn = this.database.getConnection();
@@ -41,6 +43,11 @@ public class FileAsiakasDao implements AsiakasDao<Customer, String> {
         return null;
     }
     
+    /**
+     * creates a new customer. Used
+     * @param customer user input in an invoiceScene
+     * @throws SQLException database error catched
+     */
     @Override
     public void createCustomer(Customer customer) throws SQLException {
         try {
@@ -61,6 +68,12 @@ public class FileAsiakasDao implements AsiakasDao<Customer, String> {
         }
     }
     
+    /**
+     * searches customer yNumber by customer name
+     * @param name user input
+     * @return String
+     * @throws SQLException database error catch
+     */
     @Override
     public String findYNumber(String name) throws SQLException {
         try {
@@ -83,12 +96,11 @@ public class FileAsiakasDao implements AsiakasDao<Customer, String> {
         
         return null;
     }
-  /**
-     * etsitään kaikki käyttäjät tietokannasta
-     * @param event
-     * @return 
-     * @throws java.sql.SQLException
-     * @throws IOException 
+    
+    /**
+     * finds all the customers. Used in invoiceService in order to fill a comboBox
+     * @return ObservableList
+     * @throws SQLException database error catched
      */
     @Override
     public ObservableList<Customer> findAll() throws SQLException {

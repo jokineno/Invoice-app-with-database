@@ -47,6 +47,8 @@ Tiedostoon [checkstyle.xlm](https://github.com/jokineno/otm-harjoitustyo/blob/ma
 
 Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto target/site/checkstyle.html
 
+Lopullisessa työssä on kaksi virheilmoitusta, jotka ovat liian pitkien metodien syytä. Mielestäni kuitenkin näitä ei voi muuttaa, niin että se helpottaisi ohjelman käyttämistä.
+
 # Suoritettavan jarin generointi <h3>
 
 Pakkauksen luominen onnistuu terminaalissa komennolla:

@@ -20,7 +20,7 @@ import laskutusohjelma.domain.User;
 
 /**
  * FXML Controller class
- *
+ * profile scene
  * @author ollijokinen
  */
 public class ProfileController implements Initializable {
@@ -35,37 +35,44 @@ public class ProfileController implements Initializable {
     @FXML private Label username;
     
     /**
-     * Initializes the controller class.
-     * @param event
-     * @throws java.io.IOException
+     * sets invoice service
+     * @param invoiceService user input
      */
-    
     public void setInvoiceService(InvoiceService invoiceService) {
         this.invoiceService = invoiceService;
     }
     
+    /**
+     * sets application
+     * @param application user input
+     */
     public void setApplication(Paaohjelma application) {
         this.application = application;
     }
     
-     /**
-     * käyttäjä voi palata laskuihin
-     * @param companyname
-     * @param event
-     * @throws IOException 
+    /**
+     * fills the textfields based on user details
+     * @throws SQLException database error catch
      */
-    
-   
     public void initDataToProfile1() throws SQLException {
         name.setText(invoiceService.returnNameByUsername(invoiceService.getLoggedInUsername()));
         accountNumber.setText(invoiceService.bankAccount(invoiceService.getLoggedInUsername()));
         yNumber.setText(invoiceService.returnYNumber(invoiceService.getLoggedInUsername()));
     }
     
+    /**
+     * fills the username to a upper left corner
+     */
     public void initUserName() {
         username.setText(invoiceService.getLoggedInUsername());
     }
     
+    /**
+     * user clicks save changes and program saves textfield changes for a username
+     * @param event used only to build scene without main methods
+     * @throws IOException input output error catch
+     * @throws SQLException database error catch
+     */
     @FXML
     public void saveChangesPressed(ActionEvent event) throws IOException, SQLException {
         
@@ -79,23 +86,18 @@ public class ProfileController implements Initializable {
         
     }
     
-    
+    /**
+     * user clicks back and moves to a invoice scene
+     * @param event used only to build scene without main methods
+     * @throws IOException input output error
+     * @throws SQLException database error
+     */
     @FXML
     public void backPressed(ActionEvent event) throws IOException, SQLException {
         application.setInvoiceScene();
     }
     
-     /**
-     * vältetään toisteista koodia. luodaan uusi scene
-     * @param event
-     * @throws IOException 
-     */
     
-    public void createScene(ActionEvent event, Scene newScene) {
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(newScene);
-        window.show();
-    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         

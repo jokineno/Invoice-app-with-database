@@ -22,7 +22,7 @@ import laskutusohjelma.domain.User;
 
 /**
  * FXML Controller class
- *
+ * sign up scene
  * @author ollijokinen
  */
 public class FXMLSignupInfoController implements Initializable {
@@ -49,28 +49,28 @@ public class FXMLSignupInfoController implements Initializable {
     private TextField yNumber;
     
     
-   /* private SQLiteDatabase database;
-    private FileUserDao userDatabase;
-    */
-     /**
-     * käyttäjä luo uuden tilin
-     * @param event
-     * @throws IOException 
+    /**
+     * sets invoice service
+     * @param invoiceService user input
      */
-    
     public void setInvoiceService(InvoiceService invoiceService) {
         this.invoiceService = invoiceService;
     }
     
+    /**
+     * sets application
+     * @param application user input
+     */
     public void setApplication(Paaohjelma application) {
         this.application = application;
     }
     
     /**
-     * käyttäjä luo uuden tilin
-     * @param event
-     * @throws IOException
-     * 
+     * user clicks create a new account. Program creates a new account if textfields are filled properly. 
+     * username MUST BE FILLED and username have to UNIQUE
+     * @param event used only to build scene without main methods
+     * @throws IOException input output error catched
+     * @throws SQLException database error cathed
      */
     public void createAccountPressed(ActionEvent event) throws IOException, SQLException {
         System.out.println("Creating an account and signing up...");
@@ -85,25 +85,18 @@ public class FXMLSignupInfoController implements Initializable {
         }
     }
     
-     /**
-     * käyttäjä voi palata etusivulle
-     * @param event
-     * @throws IOException 
+    /**
+     * user clicks back to main and moves to a login scene
+     * @param event used only to build scene without main methods
+     * @throws IOException input output error catched
      */
-    
     public void backPressed(ActionEvent event) throws IOException {
         System.out.println("back pressed...");
         application.setLoginScene();
         
     }
     
-     /**
-     * vältetään toisteista koodia. luodaan uusi scene
-     * @param event
-     * @throws IOException 
-     */
     
-  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         

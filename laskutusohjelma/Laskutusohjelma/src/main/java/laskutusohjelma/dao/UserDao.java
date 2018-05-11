@@ -6,10 +6,10 @@ import java.util.List;
 import laskutusohjelma.domain.User;
 
 /**
- *
+ * interface UserDao defines methods used in FileUserDao
  * @author ollijokinen
- * @param <T>
- * @param <K>
+ * @param <T> first parameter
+ * @param <K> second parameter
  */
 public interface UserDao<T, K> {
     

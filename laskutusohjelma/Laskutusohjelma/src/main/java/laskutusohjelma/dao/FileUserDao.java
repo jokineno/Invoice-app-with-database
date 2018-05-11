@@ -10,13 +10,26 @@ import java.util.List;
 import laskutusohjelma.domain.SQLiteDatabase;
 import laskutusohjelma.domain.User;
 
+/**
+ * FileUserDao Class provides methods for searching and saving data from a user database.
+ * @author ollijokinen
+ */
 public class FileUserDao implements UserDao<User, String> {
     private SQLiteDatabase database;
     
+    /**
+     * Constructor sets up a database
+     * @param database sqlite database
+     */
     public FileUserDao(SQLiteDatabase database) {
         this.database = database;
     }
     
+    /**
+     * create(User user) creates new user into database. 
+     * @param user user's input
+     * @throws SQLException database error catched
+     */
     @Override
     public void create(User user) throws SQLException {
         
@@ -36,57 +49,50 @@ public class FileUserDao implements UserDao<User, String> {
         
     }
     
-    /*
-    when logging in the system checks if your username exists. if not, it wont't log in. if so it logs user in
-    */
-
+    /**
+     * searches user by its username from a database
+     * @param username user's input
+     * @return true if user exists, false if user is not in a database
+     * @throws SQLException database error catched
+     */
     @Override
     public boolean findByUsername(String username) throws SQLException {
         
         try {
-        Connection conn = this.database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM User WHERE username = ?");
-        stmt.setObject(1, username);
-        ResultSet rs = stmt.executeQuery();
-        boolean hasOne = rs.next();
-        if (!hasOne) {
+            Connection conn = this.database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM User WHERE username = ?");
+            stmt.setObject(1, username);
+            ResultSet rs = stmt.executeQuery();
+            boolean hasOne = rs.next();
+            if (!hasOne) {
+                rs.close();
+                stmt.close();
+                conn.close();
+                return false;
+            }
+        
             rs.close();
             stmt.close();
             conn.close();
-            return false;
-        }
-        
-        rs.close();
-        stmt.close();
-        conn.close();
             
-        return true;
+            return true;
         } catch (Exception e) {
-            System.out.println(e.getMessage() + "findbyusername");
+            System.out.println(e.getMessage());
         }
         
         return false;
        
     }
     
-    @Override
-    public String returnUsernameByName(String name) throws SQLException {
-        
-        Connection conn = this.database.getConnection();
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM User WHERE name = ?");
-        stmt.setObject(1, name);
-        ResultSet rs = stmt.executeQuery();
-        String name1 = rs.getString("name");
-        
-        
-        rs.close();
-        stmt.close();
-        conn.close();
-        return name1;
-        
-        
-    }
+   
+   
     
+    /**
+     * returns user's name by searching username
+     * @param name user input
+     * @return String name1 or null
+     * @throws SQLException database error catch
+     */
     @Override
     public String returnNameByUsername(String name) throws SQLException {
        
@@ -105,6 +111,12 @@ public class FileUserDao implements UserDao<User, String> {
         
     }
     
+    /**
+     * returns user's ynumber by searching username
+     * @param username user input
+     * @return String yNumber or null (in not exist)
+     * @throws SQLException database error catch
+     */
     @Override
     public String returnYNumber(String username) throws SQLException {
        
@@ -122,6 +134,12 @@ public class FileUserDao implements UserDao<User, String> {
         
     }
     
+    /**
+     * returns bankaccountnumber by searching username
+     * @param username user input
+     * @return String accountNumber or null (if not exist)
+     * @throws SQLException database error catch
+     */
     @Override
     public String returnBankAccount(String username) throws SQLException {
        
@@ -140,8 +158,14 @@ public class FileUserDao implements UserDao<User, String> {
        
     }
     
-    
-    public String returnUsernameByname(String name) throws SQLException {
+    /**
+     * returns username by searching name
+     * @param name user input
+     * @return String username or null
+     * @throws SQLException database error catch
+     */
+    @Override
+    public String returnUsernameByName(String name) throws SQLException {
        
         Connection conn = this.database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("SELECT username FROM User WHERE name = ?");
@@ -157,7 +181,11 @@ public class FileUserDao implements UserDao<User, String> {
             
     }
     
-    
+    /**
+     * saves user in database. 
+     * @param user User dives input String user
+     * @throws SQLException database error catched
+     */
     @Override
     public void save(User user) throws SQLException {
        
@@ -175,6 +203,12 @@ public class FileUserDao implements UserDao<User, String> {
         conn.close();
     }
     
+    /**
+     * returns User by searching name
+     * @param name user input
+     * @return User user
+     * @throws SQLException database error catched
+     */
     @Override
     public User returnUserByName(String name) throws SQLException {
         String name1 = name;

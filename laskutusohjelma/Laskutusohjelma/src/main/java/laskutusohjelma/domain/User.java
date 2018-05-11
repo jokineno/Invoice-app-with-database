@@ -1,44 +1,70 @@
 
 package laskutusohjelma.domain;
 
-
+/**
+ * defines user
+ * @author ollijokinen
+ */
 public class User {
     private String name; 
     private String username; 
-    private String ytunnus;
-    private String tilinumero;
+    private String yNumber;
+    private String bankAccount;
     
-    //tähän on lisätty tilinumero -> muokkaa testejä
-    public User(String name, String username, String ytunnus, String tilinumero) {
+    
+    /**
+     * constructor defines user parameters String, String, String, String
+     * @param name name of a user
+     * @param username username of a user
+     * @param yNumber yNumber of a user
+     * @param bankAccount bankAccount of a user
+     */
+    public User(String name, String username, String yNumber, String bankAccount) {
         this.name = name; 
         this.username = username; 
-        this.ytunnus = ytunnus;
-        this.tilinumero = tilinumero;
+        this.yNumber = yNumber;
+        this.bankAccount = bankAccount;
     }
 
+    /**
+     * returns name of a user
+     * @return  String
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * returns username
+     * @return String
+     */
     public String getUsername() {
         return this.username;
     }
     
-    public String getYtunnus() {
-        return this.ytunnus;
-    }
-    
-    public String getTilinumero() {
-        return this.tilinumero;
-    }
-    
-     /**
-     * käyttäjän toString tulostus
-     * @param event
-     * @throws IOException 
+    /**
+     * returns yNumber of a user
+     * @return String
      */
+    public String getYtunnus() {
+        return this.yNumber;
+    }
     
+    /**
+     * returns bankAccount of a user
+     * @return String
+     */
+    public String getTilinumero() {
+        return this.bankAccount;
+    }
+    
+     
+    
+    /**
+     * prints a user
+     * @return String
+     */
     public String toString() {
-        return "name: " + this.name + ", username: " + this.username + ", yTunnus: " + this.ytunnus + ", tilinumero: " + this.tilinumero;
+        return "name: " + this.name + ", username: " + this.username + ", yTunnus: " + this.yNumber + ", tilinumero: " + this.bankAccount;
     }
 }

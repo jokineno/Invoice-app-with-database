@@ -8,13 +8,23 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 
-
+/**
+ * SQLiteDatabase provides database connection and creates database tables
+ * @author ollijokinen
+ */
 public class SQLiteDatabase {
     
     
     private Connection conn;
     private String databaseUrl;
     
+    /**
+     * 
+     * @param databaseUrl is the address of a database which is defined in config.properties
+     * @throws SQLException database error catched
+     * @throws FileNotFoundException if file is not founded
+     * @throws IOException connection error
+     */
     public SQLiteDatabase(String databaseUrl) throws SQLException, FileNotFoundException, IOException {
         this.conn = DriverManager.getConnection("jdbc:sqlite:" + databaseUrl);
         this.databaseUrl = databaseUrl;
@@ -22,7 +32,10 @@ public class SQLiteDatabase {
     }
     
     
-    
+    /**
+     * creates User and Customer tables into database if not existing. 
+     * @throws SQLException database error catched
+     */
     public void createTables() throws SQLException {
         PreparedStatement createCustomer = conn.prepareStatement("CREATE TABLE IF NOT EXISTS Customer"
             + "(id Integer NOT NULL PRIMARY KEY, name String NOT NULL,"
@@ -40,6 +53,11 @@ public class SQLiteDatabase {
         createCustomer.close();
     }
     
+    /**
+     * Connects to a database
+     * @return a connection or null
+     * @throws SQLException database error catched
+     */
     public  Connection getConnection() throws SQLException {
         try {
             Connection conn1 = DriverManager.getConnection("jdbc:sqlite:" + databaseUrl);
@@ -50,7 +68,10 @@ public class SQLiteDatabase {
         }
         
     }
-    
+    /**
+     * Closes a connection to a database
+     * @throws SQLException database error catched
+     */
     public void closeConnection() throws SQLException {
         conn.close();
     }

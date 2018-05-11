@@ -20,29 +20,31 @@ public class FXMLController implements Initializable {
     @FXML
     private TextField username;
     
-    /*
-    When you call this method, you'll login and change the scene to scene2 where you can
-    create an invoice. 
-    */
     
+    
+    /**
+     * sets invoiceService for a scene
+     * @param invoiceService user input
+     */
     public void setInvoiceService(InvoiceService invoiceService) {
         this.invoiceService = invoiceService;
     }
     
+    /**
+     * sets application for a scene
+     * @param application user input
+     */
     public void setApplication(Paaohjelma application) {
         this.application = application;
     }
 
     
     /**
-     * loginPressed metodia kutsutaan, kun käyttäjä painaa login etusivulla. Jos tunnus on validi, niin käyttäjä kirjautuu
-     * jos käyttäjätunnus on olemassa, niin lasku-sivu tervehtii "welcome pena" tms. 
-     * Se myös siirtää kirjautuneen tiedot profile näkymään. 
-     * @param event
-     * @throws IOException 
+     * user clicks log in and logs in username exists
+     * @param event used only to build scene without main methods
+     * @throws IOException input output exception
+     * @throws SQLException database exception
      */
-    
-    
     @FXML
     public void loginPressed(ActionEvent event) throws IOException, SQLException {
         if(invoiceService.loginCheck(username.getText())) {
@@ -53,23 +55,17 @@ public class FXMLController implements Initializable {
         }
     }
     
-    /**
-     * kun käyttäjä painaa signup niin kirjaudutaan signup sivula
-     * @param event
-     * @throws IOException 
-     */
     
+    /**
+     * user clicks signup and moves to a new scene
+     * @param event used only to build a scene without main methods
+     * @throws IOException input output exception
+     */
     @FXML
     public void signUpPressed(ActionEvent event) throws IOException {
         System.out.println("Signup pressed...");
         application.setSignUpScene();
     }
-    
-    /**
-     * createscene luo uuden scenen - vältetään copypaste koodia
-     * @param event
-     * @throws IOException 
-     */
     
     
     @Override

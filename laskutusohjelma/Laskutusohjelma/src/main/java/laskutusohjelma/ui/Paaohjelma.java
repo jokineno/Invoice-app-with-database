@@ -17,7 +17,7 @@ import laskutusohjelma.domain.InvoiceService;
 import laskutusohjelma.domain.SQLiteDatabase;
 
 /**
- *
+ * Sets the program and gives methods to move from scene to scene
  * @author ollijokinen
  */
 public class Paaohjelma extends Application {
@@ -27,6 +27,12 @@ public class Paaohjelma extends Application {
     
     private InvoiceService invoiceService; 
    
+    
+    /**
+     * builds and opens login scene
+     * @param stage stage
+     * @throws Exception avoid system failure
+     */
     @Override
     public void start(Stage stage) throws Exception {
         //building and loading scene
@@ -36,9 +42,14 @@ public class Paaohjelma extends Application {
         
     }
     
+    /**
+     * downloads views, sets FileUserDao, FileAsiakasDao, SQLiteDatabase,
+     * Invoice Service, and sets database configurations. 
+     * @throws Exception avoid system failure
+     */
     @Override 
     public void init() throws Exception {
-        
+        //properties define database configurations
         Properties properties = new Properties();
         properties.load(new FileInputStream("config.properties"));
         String databaseFile = properties.getProperty("mainDatabase");
@@ -85,21 +96,32 @@ public class Paaohjelma extends Application {
        
     }
     
+    /**
+     * builds loginscene
+     */
     public void setLoginScene() {
-        
         stage.setScene(startViewScene);
     }
-
+    
+    /**
+     * builds signup scene
+     */
     public void setSignUpScene() {
         stage.setScene(signUpScene);
     }   
     
-    
+    /**
+     * builds profile scene
+     */
     public void setProfileScene() {
         stage.setScene(profileScene);
     }
     
-    //profile loader for ui
+    /**
+     * 
+     * @throws IOException input output error
+     * @throws SQLException database error
+     */
     public void setProfileScene2() throws IOException, SQLException {
         FXMLLoader profileView = new FXMLLoader(getClass().getResource("/fxml/Profile.fxml"));
         Parent profilePane = profileView.load();
@@ -112,11 +134,18 @@ public class Paaohjelma extends Application {
         stage.setScene(profileScene);
     }
     
+    /**
+     * builds invoice scene. used in init method
+     */
     public void setInvoiceScene() {
         stage.setScene(invoiceScene);
     }
     
-    //invoice loader for ui. 
+    /**
+     * builds invoice scene while using a program. Downloads also a combobox and receiver and yNumber textfields based on a selection. 
+     * @throws IOException input output error
+     * @throws SQLException database error catch
+     */
     public void setInvoiceScene2() throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/FXMLLasku.fxml"));
@@ -132,6 +161,7 @@ public class Paaohjelma extends Application {
     }
     
     /**
+     * Launches a program
      * @param args the command line arguments
      */
     public static void main(String[] args) {

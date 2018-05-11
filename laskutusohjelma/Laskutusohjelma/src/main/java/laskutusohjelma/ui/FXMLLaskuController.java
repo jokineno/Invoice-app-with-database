@@ -19,7 +19,7 @@ import laskutusohjelma.domain.User;
 
 /**
  * FXML Controller class
- *
+ * InvoiceScene
  * @author ollijokinen
  */
 public class FXMLLaskuController implements Initializable {
@@ -47,30 +47,41 @@ public class FXMLLaskuController implements Initializable {
     @FXML private TextField namethepdf;
     
     /**
-     * käyttäjä voi laskunäkymästä kirjautua ulos
-     * @param invoiceService
-     * @param event
-     * @throws IOException 
+     * sets invoice service
+     * @param invoiceService user input
      */
-    
     public void setInvoiceService(InvoiceService invoiceService) {
         this.invoiceService = invoiceService;
     }
     
+    /**
+     * sets application
+     * @param application user input
+     */
     public void setApplication(Paaohjelma application) {
         this.application = application;
     }
     
+    /**
+     * fills the username text in left upper corner
+     * @throws SQLException database error catch
+     */
     public void initData() throws SQLException {
         welcomeuser.setText(invoiceService.getLoggedInUsername());
     }
     
-    
+    /**
+     * fills the combobox with customers
+     * @throws SQLException database error catch
+     */
     public void fillComboBox() throws SQLException {
        drop.setItems(invoiceService.fillComboBox());
     }
     
-    //fill receiver and ynumber textfields based on selection
+    /**
+     * fills the receiver and ynumber textfields based on a combobox selection
+     * @throws SQLException database error catch
+     */
     public void fillReceiverAndYNumber() throws SQLException {
         drop.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> receiver.setText(newValue.toString()));
       
@@ -83,34 +94,48 @@ public class FXMLLaskuController implements Initializable {
         });
     }
     
-    //fill form based on a selected name
+    /**
+     * if user adds a new customer a combobox gets updated
+     * @param event used only to build scene without main methods
+     * @throws IOException connection error
+     * @throws SQLException database error catch
+     */
     @FXML
     public void customerSelected(ActionEvent event) throws IOException, SQLException {
         application.setInvoiceScene();
     }
     
+    /**
+     * user clicks logout and moves to a login scene
+     * @param event used only to build scene without main methods
+     * @throws IOException input output catched
+     */
     @FXML
     public void logoutPressed(ActionEvent event) throws IOException {
         application.setLoginScene();
     }
     
-    /**
-     * käyttäjä voi muokata profiilin tietoja painamalla profile
-     * @param event
-     * @throws IOException 
-     */
     
+    
+    /**
+     * user clics profile and moves to a profile scene
+     * @param event used only to build scene without main methods
+     * @throws IOException io error
+     * @throws SQLException database exception
+     */
     @FXML
     public void profilePressed(ActionEvent event) throws IOException, SQLException {
         application.setProfileScene2();
         
     }
-     /**
-     * käyttäjä klikkaa create pdf invoice ja uusi lasku luodaan
-     * @param event
-     * @throws IOException 
-     */
+   
     
+    /**
+     * user clicks create invoice and program generates a new pdf invoice based on user details and textfield inputs
+     * @param event used only to build scene without main methods
+     * @throws IOException input output error
+     * @throws SQLException  database error
+     */
     @FXML
     public void createPdfInvoicePressed(ActionEvent event) throws IOException, SQLException {
         System.out.println("create pdf pressed");
@@ -144,10 +169,20 @@ public class FXMLLaskuController implements Initializable {
         
     }
     
+    /**
+     * creates a new customer
+     * @return Customer
+     */
     public Customer addCustomer() {
        return new Customer (1,customerName.getText(), customerYNumber.getText());
     }
     
+    /**
+     * uploads an added customer into a combobox
+     * @param event used only to build scene without main methods
+     * @throws IOException input output error catched
+     * @throws SQLException database error
+     */
     public void addCustomerPressed(ActionEvent event) throws IOException, SQLException {
         invoiceService.addNewCustomer(addCustomer());
         application.setInvoiceScene2();

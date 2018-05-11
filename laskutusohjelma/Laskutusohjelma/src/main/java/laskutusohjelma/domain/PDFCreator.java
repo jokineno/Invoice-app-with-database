@@ -8,9 +8,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Table;
-//import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-//import org.junit.experimental.categories.Category;
 
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.geom.PageSize;
@@ -37,19 +35,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
-
+/**
+ * Creates pdf file
+ * @author ollijokinen
+ */
 public class PDFCreator {
     public static final String DEST = "PDFfiles/";
+   
     /**
-     * 
-     * @param product
-     * @param user
-     * @param customer
-     * @throws IOException 
-     * runPDF metodi luo itse pdf tiedoston annettuun tallennussijaintiin
+     * Defines layout parameters
      */
-    
-    
     class MyLine implements ILineDrawer {
         private float lineWidth = 1;
         private float offset = 5;
@@ -64,62 +59,81 @@ public class PDFCreator {
                 .stroke()
                 .restoreState();
         }
- 
+        
+        /**
+         * MyLine's Override method. 
+         * @return float lineWidth
+         */
         @Override
         public float getLineWidth() {
             return lineWidth;
         }
+        /**
+         * MyLine's Override method. 
+         * @param float user input
+         */
         @Override
         public void setLineWidth(float lineWidth) {
             this.lineWidth = lineWidth;
         }
+        /**
+         * MyLine's overridable method. Returns color
+         * @return Color
+         */
         @Override
         public Color getColor() {
             return color;
         }
+        
+        /**
+         * Set text color
+         * @param color user input
+         */
         @Override
         public void setColor(Color color) {
             this.color = color;
         }
+        
+        /**
+         * get offSet
+         * @return float offset
+         */
         public float getOffset() {
             return offset;
         }
+        
+        /**
+         * set offSet
+         * @param poffset user input
+         */
         public void setOffset(float poffset) {
             this.offset = offset;
         }
  
     }
  
-    
+    /**
+     * Creates a pdf file with .pdf ending. Fills a form with product, user and customer details. 
+     * @param dest user input
+     * @param product user input
+     * @param user user input
+     * @param customer user input
+     * @throws IOException database error catched
+     */
     public void runPDF(String dest, Product product, User user, Customer customer) throws IOException {
         File file = new File(DEST + dest);
         file.getParentFile().mkdirs();
         new PDFCreator().createPdf(DEST + dest + ".pdf", product, user, customer);
     }
     
-    /**
-     * 
-     * @param dest tallennussijainti
-     * @param product käyttäjä antaa
-     * @param user käyttäjä antaa
-     * @param customer käyttäjä antaa
-     * @throws IOException 
-     */
-    
-    public void createPDF(String dest, Product product, User user, Customer customer) throws IOException {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdf = new PdfDocument(writer);
-        Document document = new Document(pdf);
-        invoiceText(document, product, user, customer);
-    }
-    
-    /**
-     * @param syötteet annetaan käyttöliittymässä käyttäjän toimesta. 
-     * User tiedot täyttyvät automaattisesti, kun käyttäjä luonut profiilin. 
-    *Tässä täytetään laskun tiedot 
-    */
-     
+   
+     /**
+      * Text and layout for a pdf file
+      * @param document user input
+      * @param product user input
+      * @param user user input
+      * @param customer user input
+      */
     public void invoiceText(Document document, Product product, User user, Customer customer) {
         //layout
         document.add(new Paragraph("\n" + "\n"));  
@@ -139,6 +153,15 @@ public class PDFCreator {
         document.close(); 
     }
     
+    /**
+     * Sets a title and its format. adds invoice details by using invoiceText method 
+     * 
+     * @param dest user input + defined .pdf
+     * @param product user input
+     * @param user user input
+     * @param customer user input
+     * @throws IOException database error catched
+     */
     public void createPdf(String dest, Product product, User user, Customer customer) throws IOException {
         PdfDocument pdf = new PdfDocument(new PdfWriter(dest));
         PageSize pagesize = PageSize.A4; //page size is A4
@@ -149,21 +172,19 @@ public class PDFCreator {
         List<TabStop> tabstops = new ArrayList();
         tabstops.add(new TabStop(w / 2, TabAlignment.CENTER, line));  //title to center
         tabstops.add(new TabStop(w, TabAlignment.LEFT, line));
+       
         Paragraph p = new Paragraph();
         p.addTabStops(tabstops);
         p.add(new Tab()).add("Incredible Invoices").add(new Tab());
         document.add(p);
-        //document.add(createBarcode(dest, pdf));
-        
-        //add invoice details - customer, price etc. 
         invoiceText(document, product, user, customer);
-        
-        
-       
-        
         document.close();
     }
     
+    /**
+     * generates a random reference number. 
+     * @return Integer
+     */
     public Integer referenceNumberGenerator() {
         return new Random().nextInt(9999 - 1000) + 1000;
     }
