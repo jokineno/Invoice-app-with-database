@@ -201,6 +201,10 @@ public class InvoiceService  {
         return true;
     }
     
+    public void deleteAll() throws SQLException {
+        userDao.deleteAll();
+    }
+    
     
         
         

@@ -18,6 +18,7 @@ import laskutusohjelma.dao.AsiakasDao;
 import laskutusohjelma.dao.FileAsiakasDao;
 import laskutusohjelma.dao.FileUserDao;
 import laskutusohjelma.domain.Customer;
+import laskutusohjelma.domain.InvoiceService;
 import laskutusohjelma.domain.SQLiteDatabase;
 import laskutusohjelma.domain.User;
 import org.junit.After;
@@ -40,12 +41,12 @@ public class DaoTest {
     private SQLiteDatabase database;
     private Customer customer;
     private User user;
+    private InvoiceService invoiceService;
     
     public DaoTest() {
         
     }
   
-    
     @Before
     public void setUp() throws SQLException, IOException {
         //create database for tests
@@ -60,6 +61,11 @@ public class DaoTest {
         user = new User ("testi", "testiUser", "1234-5", "fi1234");
         asiakasDao.createCustomer(customer);
         userDao.create(user);
+        
+        
+        
+        
+        
     }
     
     @After
@@ -76,7 +82,6 @@ public class DaoTest {
     @Test
     public void customerTest() throws SQLException {
        assertTrue(1 == asiakasDao.findAll().size());
-       assertEquals(0, asiakasDao.findAll().size());
     }
     
    

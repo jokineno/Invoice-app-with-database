@@ -24,7 +24,7 @@ Käyttöliittymä sisältää 4 näkymää
 
 jokainen näistä on toteutettu omana -scene oliona. Näkymistä on ainoastsaan yksi kerrallaan näkyvissä. Käyttöliittymä on rakennettu ohjelmallisesti luokassa laskutusohjelma.ui.Paaohjelma
 
-#Sovelluslogiikka <h2>
+# Sovelluslogiikka <h2>
 
 Sovelluslogiikan muodostaa InvoiceService -luokka, joka käyttää muita luokkia toteutuksessaan. 
 
