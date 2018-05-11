@@ -19,6 +19,8 @@ Laskutusohjelman avulla voiluoda pdf-muotoisia laskuja. Laskut tallentuvat tieto
 
 # Release <h3>
 [Release viikko6](https://github.com/jokineno/otm-harjoitustyo/releases/tag/viikko6)
+
+
 [Loppupalautus](https://github.com/jokineno/otm-harjoitustyo/releases/tag/loppupalautus)
 
 # Ohjelman kääntyminen <h3> 
