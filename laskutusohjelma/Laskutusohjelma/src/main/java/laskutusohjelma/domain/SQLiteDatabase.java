@@ -59,7 +59,7 @@ public class SQLiteDatabase {
      * deletes all data from database
      * @throws SQLException database connection catch
      */
-    /*public void deleteAll() throws SQLException {
+    public void deleteAll() throws SQLException {
         PreparedStatement getTables = conn.prepareStatement("SELECT name FROM sqlite_master WHERE type='table'");
         ResultSet tablesRs = getTables.executeQuery();
 
@@ -79,7 +79,7 @@ public class SQLiteDatabase {
         //conn.close();
         createTables();
     
-    }*/
+    }
     
     /**
      * Connects to a database

@@ -55,6 +55,7 @@ public class InvoiceServiceDao {
         invoiceService = new InvoiceService(userDao, asiakasDao, database);
         
         invoiceService.createTables();
+        
         user = new User("testi", "testiUser", "123-4", "fi123");
         customer = new Customer (1, "testi", "123");
         invoiceService.createUser(user);
@@ -76,6 +77,8 @@ public class InvoiceServiceDao {
     @Test
     public void loggedIn() throws SQLException {
         invoiceService.setLoggedInUsername("123");
+        System.out.println(invoiceService.getLoggedInUsername());
+        System.out.println("jooojooo");
         assertEquals("123", invoiceService.getLoggedInUsername());
     }
     
