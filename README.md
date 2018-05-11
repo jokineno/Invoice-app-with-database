@@ -17,8 +17,9 @@ Laskutusohjelman avulla voiluoda pdf-muotoisia laskuja. Laskut tallentuvat tieto
 
 [Työaikakirjanpito.md](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md) 
 
-# Release/viikko6 <h3>
-[Release](https://github.com/jokineno/otm-harjoitustyo/releases/tag/viikko6)
+# Release <h3>
+[Release viikko6](https://github.com/jokineno/otm-harjoitustyo/releases/tag/viikko6)
+[Loppupalautus](https://github.com/jokineno/otm-harjoitustyo/releases/tag/loppupalautus)
 
 # Ohjelman kääntyminen <h3> 
 Ohjelma kääntyy NetBeansissa vihreällä "Run"- nappulalla 
