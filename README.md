@@ -13,7 +13,7 @@ Laskutusohjelman avulla voiluoda pdf-muotoisia laskuja. Laskut tallentuvat tieto
 
 [Arkkitehtuuri.md](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
-Testausdokumentti
+[Testausdokumentti]()
 
 [Työaikakirjanpito.md](https://github.com/jokineno/otm-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md) 
 

@@ -12,10 +12,11 @@ Päivämäärä | Aika | Tehtävä
 2.5.|5|checkstyleä, javadoc, yleistä korjailua, käyttöliittymään perehtymistä. tietokantoihin perehtyminen
 3.5.|2|tietokantoja
 3.5.|6|tietokantojen ja javafx synkkaamista
-5.5.|4|
-6.5|4|
-7.5.|6|
-8.5.|5|
-9.5.|8|
-10.5.|6|
-Yhteensä|65|tuntia
+5.5.|4|properties käyttöönotto
+6.5|4|sovelluksen luokkiin kaunistelua
+7.5.|6| sqlitedatabasen uudelleen tekeminen
+8.5.|5| yhteysongelmien kanssa taistelua
+9.5.|8| javadocs, checkstyle, testaus
+10.5.|6| hiomista
+11.5.|5| testaus ja dokumentaatio
+Yhteensä|71|tuntia
