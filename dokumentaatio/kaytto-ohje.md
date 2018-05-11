@@ -23,10 +23,14 @@ Laskun luominen onnistuu, kun täytät kysytyt kentät. Painamalla create pdf in
 PDF pohja on vielä hyvin yksinkertainen, mutta siinä on yksinkertaiseen sähköpostilla tai postitse lähetettävään laskuun tarvittavat kentät.
 
 "price per unit", "amount", "vat", "finalPrice" -kentät tulee täyttää numeroilla. Jos tekstikentissä ei ole numeroita, niin ohjelma ei suostu luomaan pdf tiedostoa. 
-"price per unit" - double - esim 10.2
-"amount" - double - esim 10
-"vat" - integer - esim 0, 10, 14, 24
-"finalPrice" - double - esim 102.0 
+
+* "price per unit" - double - esim 10.2
+
+* "amount" - double - esim 10
+
+* "vat" - integer - esim 0, 10, 14, 24
+
+* "finalPrice" - double - esim 102.0 
 
 Laskupohja on pdf-muotoinen tiedosto, jossa on valmiiksi täytettynä lähettäjän tiedot. 
 
@@ -46,11 +50,11 @@ Vaihtamalla y-tunnusta, pankkiyhteyttä tai yrityksen nimeä voit täyttää tek
 # Liikkuminen scenejen välillä <h2> 
 
 Näkymän vaihtaminen on yksinkertaista. 
-Login -> SignUp - paina signUp
-SignUp-> Login - paina back to main 
-Login -> invoiceView -> paina login (oikea käyttäjätunnus ehtona) 
-invoiceView -> Profile -> paina Profile
-invoiceView -> Login -> paina logout
-SignUp->InvoiceView -> paina create account (tekstikentät oikein täytettynä on ehto siirtymiselle)
-Profile -> profile -> save changes 
-Profile -> invoiceView -> back 
+* Login -> SignUp - paina signUp
+* SignUp-> Login - paina back to main 
+* Login -> invoiceView -> paina login (oikea käyttäjätunnus ehtona) 
+* invoiceView -> Profile -> paina Profile
+* invoiceView -> Login -> paina logout
+* SignUp->InvoiceView -> paina create account (tekstikentät oikein täytettynä on ehto siirtymiselle)
+* Profile -> profile -> save changes 
+* Profile -> invoiceView -> back 
