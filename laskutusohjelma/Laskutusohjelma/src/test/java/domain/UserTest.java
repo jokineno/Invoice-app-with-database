@@ -41,12 +41,6 @@ public class UserTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
-    
     @Test 
     public void constructrorTest() {
         assertEquals("name: Olli, username: Ollero, yTunnus: 1234567-8, tilinumero: FI98 1234 1234 1234 12", user.toString());

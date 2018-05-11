@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -52,6 +54,32 @@ public class SQLiteDatabase {
         createUser.execute();
         createCustomer.close();
     }
+    
+    /**
+     * deletes all data from database
+     * @throws SQLException database connection catch
+     */
+    /*public void deleteAll() throws SQLException {
+        PreparedStatement getTables = conn.prepareStatement("SELECT name FROM sqlite_master WHERE type='table'");
+        ResultSet tablesRs = getTables.executeQuery();
+
+        List<String> tables = new ArrayList<>();
+
+        while (tablesRs.next()) {
+            tables.add(tablesRs.getString("name"));
+        }
+
+        for (String table : tables) {
+            PreparedStatement dropTable = conn.prepareStatement("DROP TABLE IF EXISTS " + table);
+            dropTable.execute();
+            dropTable.close();
+        }
+
+        tablesRs.close();
+        //conn.close();
+        createTables();
+    
+    }*/
     
     /**
      * Connects to a database

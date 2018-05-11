@@ -106,6 +106,7 @@ public class FileUserDao implements UserDao<User, String> {
         rs.close();
         stmt.close();
         conn.close();
+        
         return name1;
         
         
@@ -203,20 +204,25 @@ public class FileUserDao implements UserDao<User, String> {
         conn.close();
     }
     
-    /**
-     * returns User by searching name
-     * @param name user input
-     * @return User user
-     * @throws SQLException database error catched
-     */
-    @Override
-    public User returnUserByName(String name) throws SQLException {
-        String name1 = name;
-        String usName = returnUsernameByName(name);
-        String yNumber = returnYNumber(name);
-        String bank = returnBankAccount(name);
-        User user = new User(name, usName, yNumber, bank);
+    
+    public void deleteAll() throws SQLException {
+        PreparedStatement getTables = this.database.getConnection().prepareStatement("SELECT name FROM sqlite_master WHERE type='table'");
+        ResultSet tablesRs = getTables.executeQuery();
+
+        List<String> tables = new ArrayList<>();
+
+        while (tablesRs.next()) {
+            tables.add(tablesRs.getString("name"));
+        }
+
+        for (String table : tables) {
+            PreparedStatement dropTable = this.database.getConnection().prepareStatement("DROP TABLE IF EXISTS " + table);
+            dropTable.execute();
+            dropTable.close();
+        }
+
+        tablesRs.close();
+        this.database.closeConnection();
         
-        return user;
     }
 }

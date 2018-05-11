@@ -8,6 +8,14 @@ Ohjelma käynnistetään komennolla
 
 java -jar laskutusohjelma.jar
 
+# Ilmoitusten seuraaminen <h2> 
+
+Ilmoitukset tulevat konsoliin. 
+
+- Esimerkiksi jos yrität kirjautua ohjelmaan käyttäjätunnuksella, joka ei ole olemassa, niin konsoliin tulostuu "NOT GONNA HAPPEN". 
+- Seuraa siis konsolia aina, jos on epäselvä tilanne. 
+
+
 # Kirjautuminen <h2>
 
 Sovellus käynnistyy kirjautumisnäkymään 

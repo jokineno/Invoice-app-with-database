@@ -66,5 +66,6 @@ public class User {
      */
     public String toString() {
         return "name: " + this.name + ", username: " + this.username + ", yTunnus: " + this.yNumber + ", tilinumero: " + this.bankAccount;
+        
     }
 }

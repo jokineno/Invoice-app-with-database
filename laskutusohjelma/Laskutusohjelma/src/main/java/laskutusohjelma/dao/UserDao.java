@@ -20,5 +20,4 @@ public interface UserDao<T, K> {
     K returnYNumber(K name) throws SQLException;
     K returnBankAccount(K username) throws SQLException;
     void save(T user) throws SQLException;
-    T returnUserByName(K name) throws SQLException;
 }

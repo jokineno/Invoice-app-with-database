@@ -34,7 +34,10 @@ public class FileAsiakasDao implements AsiakasDao<Customer, String> {
             while (rs.next()) {
                 tableSize = rs.getInt(1);
             }
-        
+            
+            rs.close();
+            stmt.close();
+            conn.close();
         
             return tableSize;
         } catch (Exception e) {
@@ -139,6 +142,35 @@ public class FileAsiakasDao implements AsiakasDao<Customer, String> {
         }
         
         return null;
+    }
+    
+    /**
+     * deletes all data from database
+     * @throws SQLException database connection error
+     */
+    public void deleteAll() throws SQLException {
+        PreparedStatement getTables = this.database.getConnection().prepareStatement("SELECT name FROM sqlite_master WHERE type='table'");
+        ResultSet tablesRs = getTables.executeQuery();
+
+        List<String> tables = new ArrayList<>();
+
+        while (tablesRs.next()) {
+            tables.add(tablesRs.getString("name"));
+        }
+
+        for (String table : tables) {
+            PreparedStatement dropTable = this.database.getConnection().prepareStatement("DROP TABLE IF EXISTS " + table);
+            dropTable.execute();
+            dropTable.close();
+        }
+        
+        tablesRs.close();
+        this.database.closeConnection();
+        
+        
+        
+        
+    
     }
    
 }

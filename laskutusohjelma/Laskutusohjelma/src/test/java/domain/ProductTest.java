@@ -24,13 +24,7 @@ public class ProductTest {
         
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+   
     
     @Before
     public void setUp() {
@@ -78,4 +72,15 @@ public class ProductTest {
     public void dateTest() {
         assertEquals("21.2.2012", product.getDate());
     }   
+    
+    @Test
+    public void setAmountTest() {
+        product.setAmount(1);
+        assertTrue(1 == product.getAmount());
+    }
+    
+    @Test
+    public void getPrice() {
+        assertTrue(100 == product.getPrice());
+    }
 }
