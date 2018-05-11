@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package domain;
 
-import laskutusohjelma.domain.User;
+import laskutusohjelma.domain.Customer;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,9 +17,11 @@ import static org.junit.Assert.*;
  *
  * @author ollijokinen
  */
-public class UserTest {
+public class CustomerTest {
+    private Customer customer;
     
-    public UserTest() {
+    public CustomerTest() {
+        customer = new Customer (1, "test", "12356-7");
     }
     
     @BeforeClass
@@ -37,16 +40,18 @@ public class UserTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void constructor() {
+        assertEquals("test", customer.toString());
+    }
     
-    @Test 
-    public void konstruktoriToimii() {
-        User user = new User ("Olli", "Ollero", "1234567-8", "FI98 1234 1234 1234 12");
-        
-        assertEquals("name: Olli, username: Ollero, yTunnus: 1234567-8, tilinumero: FI98 1234 1234 1234 12", user.toString());
+    @Test
+    public void yNumberTest() {
+        assertEquals("12356-7", customer.getyTunnus());
+    }
+    
+    @Test
+    public void nameTest() {
+        assertEquals("test", customer.getName());
     }
 }

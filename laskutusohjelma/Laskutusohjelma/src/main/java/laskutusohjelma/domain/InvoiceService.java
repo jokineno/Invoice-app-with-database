@@ -18,28 +18,22 @@ public class InvoiceService  {
     private String username;
     
        
-    public InvoiceService(FileUserDao userDao, FileAsiakasDao asiakasDao) {
+    public InvoiceService(FileUserDao userDao, FileAsiakasDao asiakasDao, SQLiteDatabase database) {
         this.userDao = userDao;
         this.asiakasDao = asiakasDao;
-        this.database = new SQLiteDatabase();
+        this.database = database;
         this.username = username;
         this.pdfcreator = new PDFCreator();
     }
     
-    public  void initializeDatabase() throws SQLException {
-        try {
-            this.database.getConn();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    
+    
+    public void createTables() throws SQLException {
+        this.database.createTables();
     }
     
     public boolean loginCheck(String username) throws SQLException {
-        if (userDao.findByUsername(username)) {
-            return true;
-        } else {
-            return false;
-        }
+        return userDao.findByUsername(username);
     }
     
     public String getLoggedInUsername() {

@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package laskutusohjelma.ui;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +14,7 @@ import javafx.stage.Stage;
 import laskutusohjelma.dao.FileAsiakasDao;
 import laskutusohjelma.dao.FileUserDao;
 import laskutusohjelma.domain.InvoiceService;
+import laskutusohjelma.domain.SQLiteDatabase;
 
 /**
  *
@@ -28,17 +27,8 @@ public class Paaohjelma extends Application {
     
     private InvoiceService invoiceService; 
    
-    public void initializeDatabase() throws SQLException {
-        invoiceService.initializeDatabase();
-    }
-    
-    
     @Override
     public void start(Stage stage) throws Exception {
-        //initializing database
-        initializeDatabase();
-        
-        
         //building and loading scene
         this.stage = stage;
         setLoginScene();
@@ -48,7 +38,17 @@ public class Paaohjelma extends Application {
     
     @Override 
     public void init() throws Exception {
-        invoiceService = new InvoiceService(new FileUserDao(), new FileAsiakasDao());
+        
+        Properties properties = new Properties();
+        properties.load(new FileInputStream("config.properties"));
+        String databaseFile = properties.getProperty("mainDatabase");
+        SQLiteDatabase database = new SQLiteDatabase(databaseFile);
+        
+        FileUserDao userDao = new FileUserDao(database);
+        FileAsiakasDao asiakasDao = new FileAsiakasDao(database);
+        
+        invoiceService = new InvoiceService(userDao, asiakasDao, database);
+        invoiceService.createTables();
         
         FXMLLoader startView = new FXMLLoader(getClass().getResource("/fxml/FXML.fxml"));
         Parent loginPane = startView.load();

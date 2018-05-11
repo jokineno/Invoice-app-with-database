@@ -94,7 +94,6 @@ public class PDFCreator {
     public void runPDF(String dest, Product product, User user, Customer customer) throws IOException {
         File file = new File(DEST + dest);
         file.getParentFile().mkdirs();
-        //new PDFCreator().createPDF(DEST, product, user, customer);
         new PDFCreator().createPdf(DEST + dest + ".pdf", product, user, customer);
     }
     
@@ -168,16 +167,5 @@ public class PDFCreator {
     public Integer referenceNumberGenerator() {
         return new Random().nextInt(9999 - 1000) + 1000;
     }
-    
-   /* public static Cell createBarcode (String code, PdfDocument pdfDoc) {
-        BarcodeEAN barcode = new BarcodeEAN(pdfDoc);
-        barcode.setCodeType(BarcodeEAN.EAN8);
-        barcode.setCode(code);
-        Cell cell = new Cell().add(new Image(barcode.createFormXObject(null, null, pdfDoc)));
-        cell.setPaddingTop(10);
-        cell.setPaddingRight(10);
-        cell.setPaddingBottom(10);
-        cell.setPaddingLeft(10);
-        return cell;
-    }*/
+   
 }    

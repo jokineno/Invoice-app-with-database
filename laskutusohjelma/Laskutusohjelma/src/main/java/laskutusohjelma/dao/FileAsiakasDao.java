@@ -11,8 +11,8 @@ public class FileAsiakasDao implements AsiakasDao<Customer, String> {
     
     final SQLiteDatabase database; 
     
-    public FileAsiakasDao() {
-        this.database = new SQLiteDatabase();
+    public FileAsiakasDao(SQLiteDatabase database) {
+        this.database = database;
     }
     
      /**
@@ -24,7 +24,7 @@ public class FileAsiakasDao implements AsiakasDao<Customer, String> {
     
     public Integer tableSize() throws SQLException {
         try {
-            Connection conn = this.database.getConn();
+            Connection conn = this.database.getConnection();
             PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM Customer");
             ResultSet rs = stmt.executeQuery();
             Integer tableSize = null;
@@ -44,18 +44,18 @@ public class FileAsiakasDao implements AsiakasDao<Customer, String> {
     @Override
     public void createCustomer(Customer customer) throws SQLException {
         try {
-            Connection conn = this.database.getConn();
+            
+            Connection conn = this.database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Customer" + " (id, name, yNumber)" +  "VALUES (?,?,?)");
         
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Customer" + " (id, name, yNumber)" +  "VALUES (?,?,?)");
         
+            stmt.setInt(1, tableSize() + 1);
+            stmt.setString(2, customer.getName());
+            stmt.setString(3, customer.getyTunnus());
+            stmt.executeUpdate();
         
-        stmt.setInt(1, tableSize() + 1);
-        stmt.setString(2, customer.getName());
-        stmt.setString(3, customer.getyTunnus());
-        stmt.executeUpdate();
-        
-        stmt.close();
-        conn.close();
+            stmt.close();
+            conn.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -63,22 +63,24 @@ public class FileAsiakasDao implements AsiakasDao<Customer, String> {
     
     @Override
     public String findYNumber(String name) throws SQLException {
-        try{
-        Connection conn = this.database.getConn();
-        PreparedStatement stmt = conn.prepareStatement("SELECT yNumber FROM Customer WHERE name = ?");
-        stmt.setObject(1, name);
-        ResultSet rs = stmt.executeQuery();
-        String yNumber = rs.getString("yNumber");
+        try {
+            Connection conn = this.database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement("SELECT yNumber FROM Customer WHERE name = ?");
+            stmt.setObject(1, name);
+            ResultSet rs = stmt.executeQuery();
+            String yNumber = rs.getString("yNumber");
        
      
-        stmt.close();
-        rs.close();
-        conn.close();
+            
+            rs.close();
+            stmt.close();
+            conn.close();
         
-        return yNumber;
+            return yNumber;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        
         return null;
     }
   /**
@@ -92,33 +94,38 @@ public class FileAsiakasDao implements AsiakasDao<Customer, String> {
     public ObservableList<Customer> findAll() throws SQLException {
         try {
             
+            Connection conn = this.database.getConnection();
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Customer");
         
-        Connection conn = this.database.getConn();
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Customer");
+            ResultSet resultSet = stmt.executeQuery();
+            ObservableList<Customer> asiakkaat = FXCollections.observableArrayList();
         
-        ResultSet resultSet = stmt.executeQuery();
-        ObservableList<Customer> asiakkaat = FXCollections.observableArrayList();
+            while (resultSet.next()) {
+                Integer id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String ytunnus = resultSet.getString("yNumber");
+                Customer a = new Customer(id, name, ytunnus);
+                asiakkaat.add(a);
+            }
         
-        while (resultSet.next()) {
-            Integer id = resultSet.getInt("id");
-            String name = resultSet.getString("name");
-            String ytunnus = resultSet.getString("yNumber");
-            Customer a = new Customer(id, name, ytunnus);
-            asiakkaat.add(a);
+            if (asiakkaat.isEmpty()) {
+                resultSet.close();
+                stmt.close();
+                conn.close();
+                return null;
+            }
             
-        }
-        
-        if (asiakkaat.isEmpty()) {
-            return null;
-        }
-        
-        stmt.close();
-        resultSet.close();
-        conn.close();
-        return asiakkaat;
+            resultSet.close();
+            stmt.close();
+            conn.close();
+            return asiakkaat;
+            
         } catch (Exception e) {
+            System.out.println("ennen");
             System.out.println(e.getMessage());
+            System.out.println("jälkeen");
         }
+        
         return null;
     }
    

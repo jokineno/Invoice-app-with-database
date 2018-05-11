@@ -25,26 +25,17 @@ public class Product {
         return pname;
     }
 
-    public void setPname(String pname) {
-        this.pname = pname;
-    }
-
+   
     public int getVat() {
         return vat;
     }
 
-    public void setVat(int vat) {
-        this.vat = vat;
-    }
-
+   
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
+  
     public double getAmount() {
         return amount;
     }
@@ -57,16 +48,16 @@ public class Product {
         return this.message;
     }
     
-    public void setMessage(CharSequence message) {
-        this.message = message;
-    }
-    
     public CharSequence getDate() {
         return this.date;
     }
     
     public double getPpu() {
         return this.ppu;
+    }
+    
+    public String toString() {
+        return this.pname;
     }
     
     
