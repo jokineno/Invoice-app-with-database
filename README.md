@@ -1,7 +1,7 @@
 ### This is a course work in University of Helsinki<h3>
 - Documentation is written in Finnish. Programming Language used in the project is Java. This project is a sketch of Invoicing system in which customers can be added to a database. After selecting a customer an invoice template gets filled automatically with the selected customer information. 
 
-# OTM-HARJOITUSTYO - Laskutusohjelma<h1> 
+# Invoicing program with a customer database<h1> 
  
 Laskutusohjelman avulla voiluoda pdf-muotoisia laskuja. Laskut tallentuvat tietokantaan. Lisäksi ohjelmassa voi luoda asiakasrekisterin.  Tietokannat tallentuu käyttäjän koneelle. 
 
